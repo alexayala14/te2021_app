@@ -5,6 +5,7 @@ import 'package:te2021_app/widgets/MenuJuegos.dart';
 import 'package:te2021_app/widgets/MenuPrincipal.dart';
 import 'package:te2021_app/widgets/Tutorial.dart';
 import 'package:te2021_app/widgets/Carmen.dart';
+import 'package:te2021_app/widgets/Mapa.dart';
 
 
 void main() {
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/tutorial':(context) => Tutorial(),
         '/acerca':(context) => AcercaDe(),
         '/carmen':(context) => Carmen(),
+        '/mapa':(context) => Mapa(),
 
       },
     );

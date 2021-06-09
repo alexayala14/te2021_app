@@ -22,11 +22,17 @@ class MenuLateral extends StatelessWidget{
           Ink(
             color: Colors.indigo,
             child: new ListTile(
-              title: Text("Juegos", style: TextStyle(color: Colors.white),),
+              title: Text("Inicio", style: TextStyle(color: Colors.white),),
               onTap: (){
-                Navigator.of(context).pushNamed('/juegos');
+                Navigator.of(context).pushNamed('/');
               },
             ),
+          ),
+          new ListTile(
+            title: Text("Juegos",),
+            onTap: (){
+              Navigator.of(context).pushNamed('/juegos');
+            },
           ),
           new ListTile(
             title: Text("Galeria"),
@@ -38,6 +44,12 @@ class MenuLateral extends StatelessWidget{
             title: Text("Tutorial"),
             onTap: (){
               Navigator.of(context).pushNamed('/tutorial');
+            },
+          ),
+          new ListTile(
+            title: Text("Mapa"),
+            onTap: (){
+              Navigator.of(context).pushNamed('/mapa');
             },
           ),
           new ListTile(

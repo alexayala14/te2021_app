@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 class MenuJuegos extends StatelessWidget {
+  List<String> events = [
+    "Carmen",
+    "Juego1",
+    "Juego2",
+    "Juego3",
+    "Juego4",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

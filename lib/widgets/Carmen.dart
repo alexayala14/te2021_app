@@ -57,7 +57,7 @@ class _CarmenState extends State<Carmen> {
                                   border: Border.all(color: Colors.white,width: 5),
                                 borderRadius: const BorderRadius.all(const Radius.circular(5)),
                                   image: DecorationImage(
-                                    image: AssetImage('assets/renacimiento.jpg',
+                                    image: AssetImage('assets/Coliseo.jpg',
                                     ),
                                   ),
                               ),
