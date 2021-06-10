@@ -24,14 +24,14 @@ class MenuPrincipal extends StatelessWidget {
           ),
         ),
         child: Container(
-          margin: const EdgeInsets.only(top: 80.0),
+          margin: const EdgeInsets.all(10),
           child: GridView(
             //physics: BouncingScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
             children: events.map((title){
             return GestureDetector(
               child: Card(
-                margin: const EdgeInsets.all(10.0),
+                margin: const EdgeInsets.all(100.0),
                 child: getCardByTitle(title)),
               onTap: (){
                 Fluttertoast.showToast(msg:title);
@@ -46,7 +46,9 @@ class MenuPrincipal extends StatelessWidget {
               },);
               }).toList(),
             ),
-    ),));
+    ),
+      )
+    );
     }
 
     Column getCardByTitle(String title){

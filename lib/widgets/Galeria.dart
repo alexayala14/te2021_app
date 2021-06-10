@@ -43,7 +43,7 @@ class _GaleriaState extends State<Galeria> {
         child: CircularProgressIndicator(),
       );
     }
-    return Scaffold(appBar: AppBar(backgroundColor: Colors.deepOrangeAccent,),
+    return Scaffold(appBar: AppBar(backgroundColor: Colors.purple,),
         body: GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,
       ),

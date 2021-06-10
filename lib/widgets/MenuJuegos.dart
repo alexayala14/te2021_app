@@ -15,25 +15,68 @@ class MenuJuegos extends StatelessWidget {
       appBar: AppBar(
         title: Text('Menu Juegos'),
       ),
-      body: Center(
-        child: Column(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/fondo1.jpg'),fit: BoxFit.cover
+          ),
+        ),
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-           IconButton(icon: Icon(Icons.account_balance),iconSize: 18, onPressed: (){
-             Navigator.of(context).pop();
-           },),
-            IconButton(icon: Icon(Icons.ondemand_video_outlined),iconSize: 18, onPressed: (){
-              Navigator.of(context).pushNamed('/carmen');
-            },)
-           /* Icon(Icons.agriculture_rounded,size: 30,color: Colors.purple,),
-              onPressed: (){
-              Navigator.of(context).pop();
-            },
-            Icon(Icons.account_balance,size: 30,color: Colors.purple,),
-              onPressed: (){
-              Navigator.of(context).pop();
-          },*/
-          ],
+          Expanded(
+          flex: 6,
+          child:AnimatedContainer(
+          // margin: EdgeInsets.all(5),
+            duration: Duration(milliseconds: 10000),
+            curve: Curves.elasticOut,
+            child:Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Card(
+                margin: const EdgeInsets.all(100.0),
+                child: IconButton(icon: Icon(Icons.account_balance),iconSize: 80, onPressed: (){
+                  Navigator.of(context).pop();
+                },),
+              ),
+              Card(
+                margin: const EdgeInsets.all(100.0),
+                child: IconButton(icon: Icon(Icons.ondemand_video_outlined),iconSize: 80, onPressed: (){
+                  Navigator.of(context).pushNamed('/carmen');
+                },),
+              ),
+
+            ],
+          ),
+          )
+          ),
+          Expanded(
+          flex: 6,
+            child:AnimatedContainer(
+          // margin: EdgeInsets.all(5),
+          duration: Duration(milliseconds: 10000),
+          curve: Curves.elasticOut,
+            child:Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Card(
+                  margin: const EdgeInsets.all(100.0),
+                  child: IconButton(icon: Icon(Icons.account_balance),iconSize: 80, onPressed: (){
+                    Navigator.of(context).pop();
+                  },),
+                ),
+                Card(
+                  margin: const EdgeInsets.all(100.0),
+                  child: IconButton(icon: Icon(Icons.ondemand_video_outlined),iconSize: 80, onPressed: (){
+                    Navigator.of(context).pushNamed('/carmen');
+                  },),
+                ),
+
+              ],
+            )
+            )
+          ),
+          ]
         ),
       ),
     );
