@@ -10,6 +10,7 @@ import 'package:te2021_app/widgets/Mapa.dart';
 
 void main() {
   runApp(MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
@@ -34,8 +35,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
 
 
 

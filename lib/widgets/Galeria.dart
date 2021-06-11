@@ -1,9 +1,13 @@
 import 'dart:convert';
-
+//import 'package:firebase/firebase.dart';
 import 'package:flutter/material.dart';
 //import 'package:video_player_360/video_player_360.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:flutter/foundation.dart';
+import 'dart:developer';
+
+
 
 class Galeria extends StatefulWidget {
   @override
@@ -24,11 +28,13 @@ class _GaleriaState extends State<Galeria> {
   }
 
   void _loadImageIds() async {
-    final response = await http.get(Uri.parse('https:/picsum.photos/v2/list'));
+    final response = await http.get(Uri.parse('https://te2021-239d7-default-rtdb.firebaseio.com/img.json'));
     final json = jsonDecode(response.body);
     List<String> _ids = [];
     for (var image in json) {
-      _ids.add(image['id']);
+      _ids.add(image);
+      debugPrint('TEXTO IMGGGGGG:'+image);
+      //log('data: $data');
     }
     setState(() {
       loading=false;
@@ -56,7 +62,8 @@ class _GaleriaState extends State<Galeria> {
             ),
           );
         },
-        child: Image.network('https:/picsum.photos/${ids[index]}',
+        child:
+        Image.network('${ids[index]}',
         ),
       ),
       itemCount: ids.length,
@@ -119,10 +126,32 @@ class ImagePage extends  StatelessWidget{
     ),
       backgroundColor: Colors.black,
       body: Center(
-        child: Image.network('https:/picsum.photos/${id}',
+        child: Image.network(id,
         ),
+
       ),
     );
   }
 
 }
+
+
+
+
+/*
+void main() {
+  initializeApp(
+      apiKey: "YourApiKey",
+      authDomain: "YourAuthDomain",
+      databaseURL: "YourDatabaseUrl",
+      projectId: "YourProjectId",
+      storageBucket: "YourStorageBucket");
+
+  Database db = database();
+  DatabaseReference ref = db.ref('messages');
+
+  ref.onValue.listen((e) {
+    DataSnapshot datasnapshot = e.snapshot;
+    // Do something with datasnapshot
+  });
+}*/
