@@ -36,38 +36,76 @@ class _MapaState extends State<Mapa> {
     Image.asset('assets/roma.jpg', fit: BoxFit.cover, key: Key('1')),
     Image.asset('assets/Coliseo.jpg', fit: BoxFit.cover, key: Key('2')),
     Image.asset('assets/renacimiento.jpg', fit: BoxFit.cover, key: Key('3')),
-    Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-      key:Key('4'),
+
+      Center(
+      child:AlertDialog(
+      title: Text('   Pinturas'),
+      content: Text('Todas las pinturas pertenecen al mismo artista?'),
+      backgroundColor: Colors.purple[100],
+      key: Key('4'),
+      actions: <Widget>[
+      TextButton(child: Text('Si'), onPressed: () {
+      // Navigator.of(context).pushNamed('/juegos');
+      //final player = AudioCache();
+      //player.play('templarios.mp3');
+        Get.toNamed('/juegos');
 
 
-      children:<Widget>[
-  AlertDialog(
-  title: Text('   Pinturas'),
-  content: Text('Todas las pinturas pertenecen al mismo artista?'),
-  backgroundColor: Colors.purple[100],
-  key: Key('6'),
-  actions: <Widget>[
-  TextButton(child: Text('Si'), onPressed: () {
-  // Navigator.of(context).pushNamed('/juegos');
-  //final player = AudioCache();
-  //player.play('templarios.mp3');
-    Get.toNamed('/juegos');
+      }),
+      TextButton(child: Text('No'), onPressed: () {
+      //Navigator.of(context).pop('No');
 
 
-  }),
-  TextButton(child: Text('No'), onPressed: () {
-  //Navigator.of(context).pop('No');
+      }),
+      ],
+      ),
+      ),
+  Center(
+        child:AlertDialog(
+          title: Text('   Pinturas'),
+          content: Text('Todas las pinturas son del periodo barroco?'),
+          backgroundColor: Colors.purple[100],
+          key: Key('5'),
+          actions: <Widget>[
+            TextButton(child: Text('Si'), onPressed: () {
+              // Navigator.of(context).pushNamed('/juegos');
+              //final player = AudioCache();
+              //player.play('templarios.mp3');
+              Get.toNamed('/juegos');
 
 
-  }),
-  ],
+            }),
+            TextButton(child: Text('No'), onPressed: () {
+              //Navigator.of(context).pop('No');
+
+
+            }),
+          ],
+        ),
   ),
+  Center(
+        child:AlertDialog(
+          title: Text('   Incorrecto Vuelva a intentar'),
+          content: Text('Es la pintura renacentista que abarca el período de la historia del arte europeo entre el arte de la Edad Media y el barroco.\n Como todo el arte del Renacimiento, la pintura de esta época está relacionada con la idea de volver a la antigüedad clásica,\n el impacto que tuvo el humanismo sobre artistas y sus patronos,\n gracias a la adquisición de nuevas sensibilidades y técnicas artísticas.'),
+          backgroundColor: Colors.purple[100],
+          key: Key('6'),
+          actions: <Widget>[
+            TextButton(child: Text('Aceptar'), onPressed: () {
+              // Navigator.of(context).pushNamed('/juegos');
+              //final player = AudioCache();
+              //player.play('templarios.mp3');
+              Get.toNamed('/juegos');
 
 
-      ]
-    ),
+            }),
+            /*TextButton(child: Text('No'), onPressed: () {
+              //Navigator.of(context).pop('No');
 
+
+            }),*/
+          ],
+        ),
+  ),
 
     //showDialog(
     //context:context,
@@ -75,10 +113,33 @@ class _MapaState extends State<Mapa> {
     Center(
 
       child:  AlertDialog(
-          title: Text('   Carmen San Diego'),
+        title: Text('   TecnoArt'),
+        content: Text('Felicitaciones Superaste el Nivel!!'),
+        backgroundColor: Colors.purple[100],
+        key: Key('7'),
+        actions: <Widget>[
+          TextButton(child: Text('Continuar'), onPressed: () {
+            // Navigator.of(context).pushNamed('/juegos');
+            final player = AudioCache();
+            player.play('templarios.mp3');
+
+          }),
+          TextButton(child: Text('Salir'), onPressed: () {
+            //Navigator.of(context).pop('No');
+
+
+          }),
+        ],
+      ),
+      //),
+    ),
+    Center(
+
+      child:  AlertDialog(
+          title: Text('   TecnoArt'),
           content: Text('Esta seguro que quiere salir?'),
           backgroundColor: Colors.purple[100],
-          key: Key('4'),
+          key: Key('8'),
           actions: <Widget>[
           TextButton(child: Text('Si'), onPressed: () {
            // Navigator.of(context).pushNamed('/juegos');
@@ -96,15 +157,7 @@ class _MapaState extends State<Mapa> {
     //),
     ),
 
-    Container(
-      key: Key('5'),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/fondo1.jpg'),fit: BoxFit.cover
-        ),
-      ),
 
-    ),
 
 
   ];

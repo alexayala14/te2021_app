@@ -47,7 +47,7 @@ class MenuLateral extends StatelessWidget{
             },
           ),
           new ListTile(
-            title: Text("Mapa"),
+            title: Text("TecnoArt"),
             onTap: (){
               Navigator.of(context).pushNamed('/mapa');
             },

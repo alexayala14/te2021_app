@@ -41,7 +41,7 @@ class MenuJuegos extends StatelessWidget {
               ),
               Card(
                 margin: const EdgeInsets.all(100.0),
-                child: IconButton(icon: Icon(Icons.ondemand_video_outlined),iconSize: 80, onPressed: (){
+                child: IconButton(icon: ImageIcon(AssetImage('assets/tecnoart.jpg')),iconSize: 80, onPressed: (){
                   Navigator.of(context).pushNamed('/carmen');
                 },),
               ),

@@ -7,7 +7,7 @@ class MenuPrincipal extends StatelessWidget {
     "Juegos",
     "Tutorial",
     "Galeria",
-    "Mapa",
+    "TecnoArt",
   ];
 
   @override
@@ -39,7 +39,7 @@ class MenuPrincipal extends StatelessWidget {
                   Navigator.of(context).pushNamed('/juegos');
                 else if(title=="Galeria")
                   Navigator.of(context).pushNamed('/galeria');
-                else if(title=="Mapa")
+                else if(title=="TecnoArt")
                   Navigator.of(context).pushNamed('/mapa');
                 else if(title=="Tutorial")
                   Navigator.of(context).pushNamed('/tutorial');
@@ -54,11 +54,11 @@ class MenuPrincipal extends StatelessWidget {
     Column getCardByTitle(String title){
       String img = "";
       if (title=="Juegos")
-        img = "assets/libreria.jpg";
+        img = "assets/dados.png";
       else if(title=="Galeria")
-        img = "assets/libreria.jpg";
-      else if(title=="Mapa")
-        img = "assets/libreria.jpg";
+        img = "assets/gale.jpg";
+      else if(title=="TecnoArt")
+        img = "assets/tecnoart.jpg";
       else if(title=="Tutorial")
         img = "assets/libreria.jpg";
       else
