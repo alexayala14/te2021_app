@@ -6,10 +6,10 @@ import 'package:te2021_app/widgets/MenuPrincipal.dart';
 import 'package:te2021_app/widgets/Tutorial.dart';
 import 'package:te2021_app/widgets/Carmen.dart';
 import 'package:te2021_app/widgets/Mapa.dart';
-
+import 'package:get/get.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(GetMaterialApp(home:MyApp()));
 
 }
 
@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
