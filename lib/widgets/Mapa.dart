@@ -7,6 +7,9 @@ import 'package:te2021_app/blocs/usuarioBloc.dart';
 import 'package:get/get.dart';
 
 class Mapa extends StatefulWidget {
+  /*int counter;
+  Mapa(this.counter);
+  int _counter = 0;*/
   @override
   _MapaState createState() => _MapaState();
 }
@@ -15,9 +18,10 @@ class _MapaState extends State<Mapa> {
   final UsuarioBloc _usuarioBloc = UsuarioBloc();
   int index = 0;
   int _count = 0;
-  int _counter = 0;
+  //int _counter;
 
-  void _incrementCounter() {
+
+  /*void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -26,7 +30,8 @@ class _MapaState extends State<Mapa> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
-  }
+  }*/
+
   @override
   void dispose() {
     _usuarioBloc.dispose();
@@ -40,7 +45,7 @@ class _MapaState extends State<Mapa> {
       Center(
       child:AlertDialog(
       title: Text('   Pinturas'),
-      content: Text('Todas las pinturas pertenecen al mismo artista?'),
+      content: Text(' ALGO VA ACA'),
       backgroundColor: Colors.purple[100],
       key: Key('4'),
       actions: <Widget>[
@@ -48,7 +53,8 @@ class _MapaState extends State<Mapa> {
       // Navigator.of(context).pushNamed('/juegos');
       //final player = AudioCache();
       //player.play('templarios.mp3');
-        Get.toNamed('/juegos');
+       //_incrementCounter;
+
 
 
       }),

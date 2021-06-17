@@ -5,7 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 class MenuPrincipal extends StatelessWidget {
   List<String> events = [
     "Juegos",
-    "Tutorial",
+    "Dices",
     "Galeria",
     "TecnoArt",
   ];
@@ -41,8 +41,8 @@ class MenuPrincipal extends StatelessWidget {
                   Navigator.of(context).pushNamed('/galeria');
                 else if(title=="TecnoArt")
                   Navigator.of(context).pushNamed('/mapa');
-                else if(title=="Tutorial")
-                  Navigator.of(context).pushNamed('/tutorial');
+                else if(title=="Dices")
+                  Navigator.of(context).pushNamed('/dados');
               },);
               }).toList(),
             ),
@@ -59,7 +59,7 @@ class MenuPrincipal extends StatelessWidget {
         img = "assets/gale.jpg";
       else if(title=="TecnoArt")
         img = "assets/tecnoart.jpg";
-      else if(title=="Tutorial")
+      else if(title=="Dices")
         img = "assets/libreria.jpg";
       else
         img = "assets/libreria.jpg";

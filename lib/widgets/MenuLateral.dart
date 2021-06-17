@@ -24,7 +24,7 @@ class MenuLateral extends StatelessWidget{
             child: new ListTile(
               title: Text("Inicio", style: TextStyle(color: Colors.white),),
               onTap: (){
-                Navigator.of(context).pushNamed('/');
+                Navigator.of(context).pushNamed('/menuPrincipal');
               },
             ),
           ),

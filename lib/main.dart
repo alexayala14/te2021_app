@@ -6,6 +6,7 @@ import 'package:te2021_app/widgets/MenuPrincipal.dart';
 import 'package:te2021_app/widgets/Tutorial.dart';
 import 'package:te2021_app/widgets/Carmen.dart';
 import 'package:te2021_app/widgets/Mapa.dart';
+import 'package:te2021_app/widgets/Login.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -24,13 +25,15 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
       ),
       routes: {
-        '/':(context) => MenuPrincipal(),
+        '/':(context) => Login(),
+        '/menuPrincipal':(context) => MenuPrincipal(),
         '/juegos':(context) => MenuJuegos(),
         '/galeria':(context) => Galeria(),
         '/tutorial':(context) => Tutorial(),
         '/acerca':(context) => AcercaDe(),
         '/carmen':(context) => Carmen(),
         '/mapa':(context) => Mapa(),
+
 
       },
     );
