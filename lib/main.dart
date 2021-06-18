@@ -3,6 +3,9 @@ import 'package:te2021_app/widgets/AcercaDe.dart';
 import 'package:te2021_app/widgets/Galeria.dart';
 import 'package:te2021_app/widgets/MenuJuegos.dart';
 import 'package:te2021_app/widgets/MenuPrincipal.dart';
+import 'package:te2021_app/widgets/Pregunta.dart';
+import 'package:te2021_app/widgets/Respuesta.dart';
+import 'package:te2021_app/widgets/Score.dart';
 import 'package:te2021_app/widgets/Tutorial.dart';
 import 'package:te2021_app/widgets/Carmen.dart';
 import 'package:te2021_app/widgets/Mapa.dart';
@@ -33,6 +36,9 @@ class MyApp extends StatelessWidget {
         '/acerca':(context) => AcercaDe(),
         '/carmen':(context) => Carmen(),
         '/mapa':(context) => Mapa(),
+        '/pregunta':(context) => Pregunta(),
+        '/respuesta':(context) => Respuesta(),
+        '/score':(context) => Score(),
 
 
       },
