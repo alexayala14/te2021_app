@@ -29,10 +29,12 @@ class LoginState extends State<Login> {
     child:Form(
       key: _formKey,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text('Usuario'),
+          Text('Usuario',style: TextStyle(color: Colors.purple,fontWeight: FontWeight.bold),),
           TextFormField(
+            maxLength: 30,
+
             // The validator receives the text that the user has entered.
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -41,8 +43,9 @@ class LoginState extends State<Login> {
               return null;
             },
           ),
-          Text('Contraseña'),
+          Text('Contraseña',style: TextStyle(color: Colors.purple,fontWeight: FontWeight.bold,),),
           TextFormField(
+            maxLength: 30,
             // The validator receives the text that the user has entered.
             validator: (value) {
               if (value == null || value.isEmpty) {
