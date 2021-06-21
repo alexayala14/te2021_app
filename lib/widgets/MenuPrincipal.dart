@@ -36,7 +36,9 @@ class MenuPrincipal extends StatelessWidget {
               onTap: (){
                 Fluttertoast.showToast(msg:title);
                 if (title=="Juegos")
-                  Navigator.of(context).pushNamed('/pregunta');
+                 // Navigator.of(context).pushNamed('/pregunta');
+                  //Navigator.of(context).pushNamed('/counterDisplay');
+                  Navigator.of(context).pushNamed('/pantalla');
                 else if(title=="Galeria")
                   Navigator.of(context).pushNamed('/galeria');
                 else if(title=="TecnoArt")

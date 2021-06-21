@@ -9,6 +9,7 @@ import 'package:te2021_app/widgets/Score.dart';
 import 'package:te2021_app/widgets/Tutorial.dart';
 import 'package:te2021_app/widgets/Carmen.dart';
 import 'package:te2021_app/widgets/Mapa.dart';
+import 'package:te2021_app/widgets/Pantalla.dart';
 import 'package:te2021_app/widgets/Login.dart';
 import 'package:get/get.dart';
 
@@ -36,7 +37,9 @@ class MyApp extends StatelessWidget {
         '/acerca':(context) => AcercaDe(),
         '/carmen':(context) => Carmen(),
         '/mapa':(context) => Mapa(),
-        '/pregunta':(context) => Pregunta(),
+        //'/pregunta':(context) => Pregunta(),
+        '/counterDisplay':(context) => Counter(),
+        '/pantalla':(context) => Pantalla(),
         '/respuesta':(context) => Respuesta(),
         '/score':(context) => Score(),
 

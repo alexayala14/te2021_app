@@ -15,8 +15,18 @@ class Respuesta extends StatelessWidget{
           MiBoton(
             onPressed: (parametro){
               print("paso por respuesta");
+              print("Es el Parametro: "+parametro);
+              Navigator.of(context).pushNamed('/score');
             },
-            texto: 'segundo boton', key: null,
+            onPressed1: (contador){
+              print("paso por respuesta");
+              print("Es el Parametro: "+"$contador");
+              contador++;
+              print("Es el Parametro CONTADOR SUMADO ES: "+"$contador");
+              Navigator.of(context).pushNamed('/score');
+            },
+            texto: 'segundo boton respuesta', key: null,
+            contador: 2,
           )
         ],
       ),

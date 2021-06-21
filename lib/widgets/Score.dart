@@ -7,7 +7,7 @@ class Score extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('preguntas'),
+        title: Text('Score'),
       ),body: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -15,8 +15,16 @@ class Score extends StatelessWidget{
           MiBoton(
             onPressed: (parametro){
               print("paso por Score");
+              print("Es el Parametro: "+parametro);
+              Navigator.of(context).pushNamed('/menuPrincipal');
             },
-            texto: 'segundo boton', key: null,
+            onPressed1: (contador){
+              print("paso por Score");
+              print("Es el Parametro: "+"$contador");
+              Navigator.of(context).pushNamed('/menuPrincipal');
+            },
+            texto: 'segundo boton Score',
+            contador: 1,
           )
         ],
       ),
