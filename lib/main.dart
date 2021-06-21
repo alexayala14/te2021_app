@@ -14,7 +14,7 @@ import 'package:te2021_app/widgets/Login.dart';
 import 'package:get/get.dart';
 
 void main() {
-  runApp(GetMaterialApp(home:MyApp()));
+  runApp(MyApp());
 
 }
 
