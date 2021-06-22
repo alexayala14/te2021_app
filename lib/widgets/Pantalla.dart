@@ -20,6 +20,13 @@ class _PantallaState extends State<Pantalla> {
   bool respuestaOk=false;
   int _counterCicle=0;
   bool banderaPista=false;
+  String _pintor1= 'Leonardo';
+  String _pintor2='Dali';
+  String _pintor3='Goya';
+  SingingCharacter _character1=SingingCharacter.leonardo;
+  SingingCharacter _character2=SingingCharacter.dali;
+  SingingCharacter _character3=SingingCharacter.goya;
+  SingingCharacter _characterVerdadero=SingingCharacter.leonardo;
   void _increment() {
     setState(() {
       _counter=_counter + 10;
@@ -79,44 +86,75 @@ class _PantallaState extends State<Pantalla> {
       if(_counterCicle==1){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/dados.png';
-
+        SingingCharacter? _character1=SingingCharacter.leonardo;
+        SingingCharacter? _character2=SingingCharacter.dali;
+        SingingCharacter? _character3=SingingCharacter.goya;
+        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
 
       }else if(_counterCicle==2){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/Coliseo.jpg';
-
+        SingingCharacter? _character1=SingingCharacter.leonardo;
+        SingingCharacter? _character2=SingingCharacter.dali;
+        SingingCharacter? _character3=SingingCharacter.goya;
+        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
 
       }else if(_counterCicle==3){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/libreria.jpg';
-
+        SingingCharacter? _character1=SingingCharacter.leonardo;
+        SingingCharacter? _character2=SingingCharacter.dali;
+        SingingCharacter? _character3=SingingCharacter.goya;
+        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
       }else if(_counterCicle==4){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/roma.jpg';
-
+        SingingCharacter? _character1=SingingCharacter.leonardo;
+        SingingCharacter? _character2=SingingCharacter.dali;
+        SingingCharacter? _character3=SingingCharacter.goya;
+        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
       }else if(_counterCicle==5){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/tecnoart.jpg';
-
+        SingingCharacter? _character1=SingingCharacter.leonardo;
+        SingingCharacter? _character2=SingingCharacter.dali;
+        SingingCharacter? _character3=SingingCharacter.goya;
+        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
       }else if(_counterCicle==6){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/gale.jpg';
-
+        SingingCharacter? _character1=SingingCharacter.leonardo;
+        SingingCharacter? _character2=SingingCharacter.dali;
+        SingingCharacter? _character3=SingingCharacter.goya;
+        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
       }else if(_counterCicle==7){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/dados.png';
-
+        SingingCharacter? _character1=SingingCharacter.leonardo;
+        SingingCharacter? _character2=SingingCharacter.dali;
+        SingingCharacter? _character3=SingingCharacter.goya;
+        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
       }else if(_counterCicle==8){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/dados.png';
-
+        SingingCharacter? _character1=SingingCharacter.leonardo;
+        SingingCharacter? _character2=SingingCharacter.dali;
+        SingingCharacter? _character3=SingingCharacter.goya;
+        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
       }else if(_counterCicle==9){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/dados.png';
-
+        SingingCharacter? _character1=SingingCharacter.leonardo;
+        SingingCharacter? _character2=SingingCharacter.dali;
+        SingingCharacter? _character3=SingingCharacter.goya;
+        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
       }else if(_counterCicle==10){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/dados.png';
+        SingingCharacter? _character1=SingingCharacter.leonardo;
+        SingingCharacter? _character2=SingingCharacter.dali;
+        SingingCharacter? _character3=SingingCharacter.goya;
+        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
         _counterCicle=0;
       }
     });
@@ -148,15 +186,15 @@ class _PantallaState extends State<Pantalla> {
               unselectedWidgetColor: Colors.red
           ),
           child:ListTile(
-          title: const Text('Leonardo',style: TextStyle(fontSize: 20,color: Colors.purple,fontWeight: FontWeight.bold,),),
+          title: Text('${_pintor1}',style: TextStyle(fontSize: 20,color: Colors.purple,fontWeight: FontWeight.bold,),),
           leading: Radio<SingingCharacter>(
-            value: SingingCharacter.leonardo,
+            value: _character1,
             groupValue: _character,
             onChanged: (SingingCharacter? value) {
               setState(() {
                 _character = value;
                 print("es el valor${value}");
-                if(SingingCharacter.leonardo==value){
+                if(_characterVerdadero==value){
                   bandera=true;
                   /*CounterIncrementor(onPressed: _increment);
                   CounterDisplay(count: _counter);*/
@@ -185,15 +223,15 @@ class _PantallaState extends State<Pantalla> {
               unselectedWidgetColor: Colors.red
           ),
           child:ListTile(
-          title: const Text('Dali',style: TextStyle(fontSize: 20,color: Colors.purple,fontWeight: FontWeight.bold,),),
+          title: Text('${_pintor2}',style: TextStyle(fontSize: 20,color: Colors.purple,fontWeight: FontWeight.bold,),),
           leading: Radio<SingingCharacter>(
-            value: SingingCharacter.dali,
+            value: _character2,
             groupValue: _character,
             onChanged: (SingingCharacter? value) {
               setState(() {
                 _character = value;
                 print("es el valor${value}");
-                if(SingingCharacter.leonardo==value){
+                if(_characterVerdadero==value){
                   bandera=true;
                   respuestaOk=true;
                   print("EL VALOR DE LA BANDERA ES${bandera}");
@@ -215,15 +253,15 @@ class _PantallaState extends State<Pantalla> {
               unselectedWidgetColor: Colors.red
           ),
           child:ListTile(
-          title: const Text('Goya',style: TextStyle(fontSize: 20,color: Colors.purple,fontWeight: FontWeight.bold,),),
+          title: Text('${_pintor3}',style: TextStyle(fontSize: 20,color: Colors.purple,fontWeight: FontWeight.bold,),),
           leading: Radio<SingingCharacter>(
-            value: SingingCharacter.goya,
+            value: _character3,
             groupValue: _character,
             onChanged: (SingingCharacter? value) {
               setState(() {
                 _character = value;
                 print("es el valor${value}");
-                if(SingingCharacter.leonardo==value){
+                if(_characterVerdadero==value){
                   bandera=true;
                   respuestaOk=true;
                   print("EL VALOR DE LA BANDERA ES${bandera}");

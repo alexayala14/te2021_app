@@ -11,6 +11,7 @@ import 'package:te2021_app/widgets/Carmen.dart';
 import 'package:te2021_app/widgets/Mapa.dart';
 import 'package:te2021_app/widgets/Pantalla.dart';
 import 'package:te2021_app/widgets/Login.dart';
+import 'package:te2021_app/widgets/SplashScreen.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         '/counterDisplay':(context) => Counter(),
         '/pantalla':(context) => Pantalla(),
         '/respuesta':(context) => Respuesta(),
+        '/screen':(context) => SplashScreen(),
         '/score':(context) => Score(),
 
 
