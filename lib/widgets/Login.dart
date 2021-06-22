@@ -66,8 +66,8 @@ class LoginState extends State<Login> {
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text('Processing Data')));
                   //Navigator.of(context).pushNamed('/menuPrincipal');
-                  /*Navigator.of(context).pushNamed('/pantalla');*/
-                  Navigator.of(context).pushNamed('/screen');
+                  Navigator.of(context).pushNamed('/pantalla');
+                  //Navigator.of(context).pushNamed('/screen');
                 }
               },
               child: Text('Submit'),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:te2021_app/widgets/Pregunta.dart';
 import 'package:te2021_app/widgets/Pista.dart';
-enum SingingCharacter { verdadero,leonardo, dali, goya,falso }
+enum SingingCharacter { verdadero,leonardo, dali, goya,falso,greco,boticelli,Brueghel,Tiziano,Miguel,Giovanni }
 
 class Pantalla extends StatefulWidget {
   const Pantalla({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _PantallaState extends State<Pantalla> {
   bool bandera=true;
   int _counter=0;
   String pista= "Necesita ayuda? Presione el boton de pista.";
-  String imagen='assets/renacimiento.jpg';
+  String imagen='assets/creacion.jpg';
   bool respuestaOk=false;
   int _counterCicle=0;
   bool banderaPista=false;
@@ -46,10 +46,10 @@ class _PantallaState extends State<Pantalla> {
   void _changePista(){
     setState(() {
       if(banderaPista==true && _counterCicle==1){
-        pista= "Pista1";
+        pista= "Pista: Fue un polímata florentino del Renacimiento italiano,Creía que existía una vinculación entre el arte y las matemáticas";
         banderaPista=false;
       }else if(banderaPista==true && _counterCicle==2){
-        pista= "Pista2";
+        pista= "Pista Fue un pintor del Quattrocento italiano,Su nombre real era Alessandro di Mariano di Vanni Filipepi";
         banderaPista=false;
       }else if(banderaPista==true && _counterCicle==3){
         pista= "Pista3";
@@ -58,7 +58,7 @@ class _PantallaState extends State<Pantalla> {
         pista= "Pista4";
         banderaPista=false;
       }else if(banderaPista==true && _counterCicle==5){
-        pista= "Pista5";
+        pista= "Pista Pintor Nacido en 1541, en Heraclión, actual capital de Creta (Grecia)";
         banderaPista=false;
       }else if(banderaPista==true && _counterCicle==6){
         pista= "Pista6";
@@ -70,10 +70,10 @@ class _PantallaState extends State<Pantalla> {
         pista= "Pista8";
         banderaPista=false;
       }else if(banderaPista==true && _counterCicle==9){
-        pista= "Pista9";
+        pista= "Pista Pintor Nacido en 1541, en Heraclión, actual capital de Creta (Grecia)";
         banderaPista=false;
       }else if(banderaPista==true && _counterCicle==10){
-        pista= "Pista10";
+        pista= "Pista: Fue un polímata florentino del Renacimiento italiano,Creía que existía una vinculación entre el arte y las matemáticas";
         banderaPista=false;
       }else{
         pista= "Necesita ayuda? Presione el boton de pista.";
@@ -85,76 +85,106 @@ class _PantallaState extends State<Pantalla> {
     setState(() {
       if(_counterCicle==1){
         print("PASA POR EL CICLO ${_counterCicle}");
-        imagen='assets/dados.png';
+        imagen='assets/madonna.jpg';
         SingingCharacter? _character1=SingingCharacter.leonardo;
         SingingCharacter? _character2=SingingCharacter.dali;
         SingingCharacter? _character3=SingingCharacter.goya;
         SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _pintor1= 'Miguel Ángel';
+         _pintor2='Rafael Sanzio';
+         _pintor3='Goya';
 
       }else if(_counterCicle==2){
         print("PASA POR EL CICLO ${_counterCicle}");
-        imagen='assets/Coliseo.jpg';
+        imagen='assets/venus.jpg';
         SingingCharacter? _character1=SingingCharacter.leonardo;
         SingingCharacter? _character2=SingingCharacter.dali;
         SingingCharacter? _character3=SingingCharacter.goya;
         SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _pintor1= 'Leonardo';
+         _pintor2='Miguel Ángel';
+         _pintor3='Goya';
 
       }else if(_counterCicle==3){
         print("PASA POR EL CICLO ${_counterCicle}");
-        imagen='assets/libreria.jpg';
+        imagen='assets/venusurbino.jpg';
         SingingCharacter? _character1=SingingCharacter.leonardo;
         SingingCharacter? _character2=SingingCharacter.dali;
         SingingCharacter? _character3=SingingCharacter.goya;
         SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _pintor1= 'Leonardo';
+         _pintor2='Dali';
+         _pintor3='Goya';
       }else if(_counterCicle==4){
         print("PASA POR EL CICLO ${_counterCicle}");
-        imagen='assets/roma.jpg';
+        imagen='assets/torrebabelbruegel.jpg';
         SingingCharacter? _character1=SingingCharacter.leonardo;
         SingingCharacter? _character2=SingingCharacter.dali;
         SingingCharacter? _character3=SingingCharacter.goya;
         SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _pintor1= 'Leonardo da vinci';
+         _pintor2='Tiziano';
+         _pintor3='Pieter Brueghel el Viejo';
       }else if(_counterCicle==5){
         print("PASA POR EL CICLO ${_counterCicle}");
-        imagen='assets/tecnoart.jpg';
+        imagen='assets/veronicagreco.jpg';
         SingingCharacter? _character1=SingingCharacter.leonardo;
         SingingCharacter? _character2=SingingCharacter.dali;
         SingingCharacter? _character3=SingingCharacter.goya;
         SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _pintor1= 'Leonardo';
+         _pintor2='Dali';
+         _pintor3='Goya';
       }else if(_counterCicle==6){
         print("PASA POR EL CICLO ${_counterCicle}");
-        imagen='assets/gale.jpg';
+        imagen='assets/cristo.jpg';
         SingingCharacter? _character1=SingingCharacter.leonardo;
         SingingCharacter? _character2=SingingCharacter.dali;
         SingingCharacter? _character3=SingingCharacter.goya;
         SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _pintor1= 'Leonardo';
+         _pintor2='Miguel Ángel';
+         _pintor3='Giovanni Bellini';
       }else if(_counterCicle==7){
         print("PASA POR EL CICLO ${_counterCicle}");
-        imagen='assets/dados.png';
+        imagen='assets/adanevadurero.jpg';
         SingingCharacter? _character1=SingingCharacter.leonardo;
         SingingCharacter? _character2=SingingCharacter.dali;
         SingingCharacter? _character3=SingingCharacter.goya;
         SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _pintor1= 'Leonardo';
+         _pintor2='Dali';
+         _pintor3='Alberto Durero';
       }else if(_counterCicle==8){
         print("PASA POR EL CICLO ${_counterCicle}");
-        imagen='assets/dados.png';
+        imagen='assets/virgenleonardo.jpg';
         SingingCharacter? _character1=SingingCharacter.leonardo;
         SingingCharacter? _character2=SingingCharacter.dali;
         SingingCharacter? _character3=SingingCharacter.goya;
         SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _pintor1= 'Leonardo';
+         _pintor2='Dali';
+         _pintor3='Goya';
       }else if(_counterCicle==9){
         print("PASA POR EL CICLO ${_counterCicle}");
-        imagen='assets/dados.png';
+        imagen='assets/vistagreco.jpg';
         SingingCharacter? _character1=SingingCharacter.leonardo;
         SingingCharacter? _character2=SingingCharacter.dali;
         SingingCharacter? _character3=SingingCharacter.goya;
         SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _pintor1= 'Leonardo';
+         _pintor2='Dali';
+         _pintor3='Goya';
       }else if(_counterCicle==10){
         print("PASA POR EL CICLO ${_counterCicle}");
-        imagen='assets/dados.png';
+        imagen='assets/mona.jpg';
         SingingCharacter? _character1=SingingCharacter.leonardo;
         SingingCharacter? _character2=SingingCharacter.dali;
         SingingCharacter? _character3=SingingCharacter.goya;
         SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _pintor1= 'Leonardo';
+         _pintor2='Dali';
+         _pintor3='Goya';
         _counterCicle=0;
       }
     });
@@ -163,9 +193,11 @@ class _PantallaState extends State<Pantalla> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Container(
-      height: double.infinity,
-      width: double.infinity,
+      body:Center(
+        child:Container(
+      /*height: double.infinity,
+      width: double.infinity,*/
+          alignment: Alignment.center,
         decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/fondo1.jpg'),fit: BoxFit.cover
@@ -321,6 +353,7 @@ class _PantallaState extends State<Pantalla> {
                   bandera=true;
                   if(respuestaOk==true){
                     _increment();
+                    ///Navigator.of(context).pushNamed('/screen');
                     respuestaOk=false;
                   }
                 }
@@ -348,8 +381,9 @@ class _PantallaState extends State<Pantalla> {
           ),
           SizedBox(height: 30),
           Container(
-            height: 200,
+            height: 100,
             width: 1500,
+            alignment: Alignment.center,
             margin: EdgeInsets.all(30.0),
 
             decoration: BoxDecoration(
@@ -366,6 +400,7 @@ class _PantallaState extends State<Pantalla> {
       ],
     ),
       ),
+    ),
     );
   }
 }
