@@ -19,7 +19,9 @@ class _PantallaState extends State<Pantalla> {
   String imagen='assets/creacion.jpg';
   bool respuestaOk=false;
   int _counterCicle=0;
+  int _counterRespuesta=0;
   bool banderaPista=false;
+  bool toggleable=true;
   String _pintor1= 'Leonardo';
   String _pintor2='Dali';
   String _pintor3='Goya';
@@ -43,9 +45,26 @@ class _PantallaState extends State<Pantalla> {
     });
   }
 
+  void _incrementRespuesta() {
+    setState(() {
+      ++_counterRespuesta;
+    });
+  }
+
   void _changePista(){
     setState(() {
-      if(banderaPista==true && _counterCicle==1){
+      if(banderaPista==true && _counterCicle==0){
+        if(_counterRespuesta==0){
+          pista="El pintor pertenece al rencimiento, nacio en 1775";
+          banderaPista=false;
+        }else if(_counterRespuesta==1){
+        pista= "Pista: reintento1";
+        banderaPista=false;
+        }else if(_counterRespuesta==2){
+          pista= "Pista: reintento2";
+          banderaPista=false;
+        }
+      }else if(banderaPista==true && _counterCicle==1){
         pista= "Pista: Fue un polímata florentino del Renacimiento italiano,Creía que existía una vinculación entre el arte y las matemáticas";
         banderaPista=false;
       }else if(banderaPista==true && _counterCicle==2){
@@ -222,6 +241,8 @@ class _PantallaState extends State<Pantalla> {
           leading: Radio<SingingCharacter>(
             value: _character1,
             groupValue: _character,
+            toggleable: true,
+            autofocus: false,
             onChanged: (SingingCharacter? value) {
               setState(() {
                 _character = value;
@@ -259,6 +280,8 @@ class _PantallaState extends State<Pantalla> {
           leading: Radio<SingingCharacter>(
             value: _character2,
             groupValue: _character,
+            toggleable: true,
+            autofocus: false,
             onChanged: (SingingCharacter? value) {
               setState(() {
                 _character = value;
@@ -289,6 +312,8 @@ class _PantallaState extends State<Pantalla> {
           leading: Radio<SingingCharacter>(
             value: _character3,
             groupValue: _character,
+            toggleable: true,
+            autofocus: false,
             onChanged: (SingingCharacter? value) {
               setState(() {
                 _character = value;
@@ -329,9 +354,9 @@ class _PantallaState extends State<Pantalla> {
               _decrement();
               bandera=false;
               }
-              if(_counterCicle==0){
+              /*if(_counterCicle==0){
                 pista="El pintor pertenece al rencimiento, nacio en 1775";
-              }
+              }*/
 
             });
           },//onPressed,
@@ -345,16 +370,34 @@ class _PantallaState extends State<Pantalla> {
           ElevatedButton(
             onPressed: (){
               setState(() {
-                _incrementCicle();
-                _changeCicle();
-                banderaPista=false;
-                _changePista();
+                /*_incrementCicle();*/
+                //_changeCicle();
+                //banderaPista=false;
+                //_changePista();
                 if(_character!=SingingCharacter.verdadero){
                   bandera=true;
                   if(respuestaOk==true){
                     _increment();
-                    ///Navigator.of(context).pushNamed('/screen');
+                    _incrementCicle();
+                    _changeCicle();
+                    _changePista();
+                    //Navigator.of(context).pushNamed('/screen');
                     respuestaOk=false;
+                    _counterRespuesta=0;
+                  }
+                  else {
+                    _incrementRespuesta();
+                    if(_counterRespuesta <=2){
+                      banderaPista=true;
+                      _decrement();
+                      print('la respuesta esss:${_counterRespuesta}');
+                      _changePista();
+                    }else {
+                      _incrementCicle();
+                      _changeCicle();
+                      _changePista();
+                      _counterRespuesta=0;
+                    }
                   }
                 }
                 else{
@@ -403,4 +446,5 @@ class _PantallaState extends State<Pantalla> {
     ),
     );
   }
+
 }

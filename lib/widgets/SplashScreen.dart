@@ -10,7 +10,7 @@ class SplashScreen extends StatelessWidget {
       body:SplashScreenView(
       navigateRoute: Pantalla(),
       duration: 5000,
-      imageSize: 130,
+      imageSize: 400,
       imageSrc: "assets/feliz1.gif",
       text: "Correcto",
       //textType: TextType.ColorizeAnimationText,
