@@ -11,7 +11,7 @@ class SplashScreenPrincipal extends StatelessWidget {
       body:SplashScreenView(
         navigateRoute: Login(),
         duration: 5000,
-        imageSize: 130,
+        imageSize: 200,
         imageSrc: "assets/logoutn.png",
         text: "Correcto",
         //textType: TextType.ColorizeAnimationText,

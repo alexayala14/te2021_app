@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:te2021_app/widgets/Pregunta.dart';
 import 'package:te2021_app/widgets/Pista.dart';
 enum SingingCharacter { verdadero,leonardo, dali, goya,falso,greco,boticelli,Brueghel,Tiziano,Miguel,Giovanni }
@@ -223,26 +224,55 @@ class _PantallaState extends State<Pantalla> {
           ),
         ),
       child:Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          new Image.asset('${imagen}',
+          SizedBox(height: 10),
+      DecoratedBox(
+      decoration: BoxDecoration(
+        color: Colors.black12,
+        border: Border.all(),
+        borderRadius: BorderRadius.circular(20),
+      ),
+        child:  new Image.asset('${imagen}',
             height: 300,
             width: 500,
 
           ),
+      ),
+
           SizedBox(height: 30),
-          Text("Seleccione la opcion correcta",style: TextStyle(fontSize: 40,color: Colors.white,fontWeight: FontWeight.bold,),),
-          SizedBox(height: 30),
+          Text("Seleccione la opcion correcta",style: TextStyle(fontSize: 40,color: Colors.white,fontWeight: FontWeight.bold,),textAlign: TextAlign.center,),
+          SizedBox(height: 40),
+      Center(
+        child:Container(
+        alignment: Alignment.center,
+        margin: EdgeInsets.all(50.0),
+
+        child:Row(
+            mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+
+        children:<Widget>[
+          CircleAvatar(
+            backgroundImage: AssetImage('assets/fondo1.jpg'),
+            radius: 50,
+          ),
           Theme(
           data: ThemeData(
               unselectedWidgetColor: Colors.red
           ),
-          child:ListTile(
-          title: Text('${_pintor1}',style: TextStyle(fontSize: 20,color: Colors.purple,fontWeight: FontWeight.bold,),),
-          leading: Radio<SingingCharacter>(
+          child:Expanded(child: ListTile(
+          title: Text('${_pintor1}',style: TextStyle(fontSize: 20,color: Colors.purple,fontWeight: FontWeight.bold,)/*,textAlign: TextAlign.center*/,),
+          leading: /*CircleAvatar(
+                backgroundImage: AssetImage('assets/fondo1.jpg'),
+                radius: 50,
+              ),*/
+              Radio<SingingCharacter>(
             value: _character1,
             groupValue: _character,
             toggleable: true,
             autofocus: false,
+
             onChanged: (SingingCharacter? value) {
               setState(() {
                 _character = value;
@@ -269,13 +299,25 @@ class _PantallaState extends State<Pantalla> {
             activeColor: Colors.green,
             //toggleable: true,
           ),
+          //     CircleAvatar(
+          //     backgroundImage: AssetImage('assets/fondo1.jpg'),
+          //   ),
+          //   ],
+          // ),
+        //),
+
         ),
-        ),
+          ),
+          ),
+          CircleAvatar(
+            backgroundImage: AssetImage('assets/fondo1.jpg'),
+            radius: 50,
+          ),
         Theme(
           data: ThemeData(
               unselectedWidgetColor: Colors.red
           ),
-          child:ListTile(
+          child: Expanded(child:ListTile(
           title: Text('${_pintor2}',style: TextStyle(fontSize: 20,color: Colors.purple,fontWeight: FontWeight.bold,),),
           leading: Radio<SingingCharacter>(
             value: _character2,
@@ -302,12 +344,17 @@ class _PantallaState extends State<Pantalla> {
             //toggleable: true,
           ),
         ),
+          ),
         ),
+          CircleAvatar(
+            backgroundImage: AssetImage('assets/fondo1.jpg'),
+            radius: 50,
+          ),
         Theme(
           data: ThemeData(
               unselectedWidgetColor: Colors.red
           ),
-          child:ListTile(
+          child: Expanded(child:ListTile(
           title: Text('${_pintor3}',style: TextStyle(fontSize: 20,color: Colors.purple,fontWeight: FontWeight.bold,),),
           leading: Radio<SingingCharacter>(
             value: _character3,
@@ -336,7 +383,12 @@ class _PantallaState extends State<Pantalla> {
           ),
         ),
         ),
-          SizedBox(width: 50),
+        ),
+          ],
+        ),
+      ),
+        ),
+          SizedBox(height: 50),
           Center(
 
             child: Table(
@@ -360,9 +412,9 @@ class _PantallaState extends State<Pantalla> {
 
             });
           },//onPressed,
-          child: Text('Pista',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,),),
+          child: Text('Pista',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,),),
           style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.all(30.0),
+            padding: EdgeInsets.all(15.0),
             minimumSize: Size(30.0,30.0),
           ),
         ),
@@ -406,13 +458,14 @@ class _PantallaState extends State<Pantalla> {
 
               });
             },//onPressed,
-            child: Text('Siguente',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,),),
+            child: Text('Siguiente',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,),textAlign: TextAlign.center,),
             style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.all(30.0),
+              padding: EdgeInsets.all(15.0),
               minimumSize: Size(30.0,30.0),
             ),
+
           ),
-            SizedBox(width: 30),
+            SizedBox(width: 50),
             CounterDisplay(count: _counter),
             SizedBox(width: 30),
             SizedBox(height: 30),

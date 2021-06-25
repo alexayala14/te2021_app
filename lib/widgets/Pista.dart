@@ -6,6 +6,6 @@ class PistaDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('Pista:  $pista',style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold,),);
+    return Text('Pista:  $pista',style: TextStyle(fontSize: 25,color: Colors.white,fontWeight: FontWeight.bold,),);
   }
 }

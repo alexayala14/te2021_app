@@ -26,14 +26,44 @@ class LoginState extends State<Login> {
         title: Text('Login'),
       ),
         body:Center(
-    child:Form(
+           // margin: new EdgeInsets.all(60.0),
+            //alignment: Alignment.centerRight,
+          child:Container(
+              margin: new EdgeInsets.all(60.0),
+            //color: Colors.purple,
+            width: 500,
+            height: 500,
+              decoration: new BoxDecoration(
+
+                  color: Colors.pinkAccent,
+
+                  borderRadius: new BorderRadius.all(new Radius.circular(25.7))
+              ),
+
+              child:Form(
       key: _formKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text('Usuario',style: TextStyle(color: Colors.purple,fontWeight: FontWeight.bold),),
+          Text('Usuario',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30,),),
           TextFormField(
             maxLength: 30,
+            style: TextStyle(fontSize: 20,),
+            textAlign: TextAlign.center,
+
+            // The validator receives the tex that the user has entered.
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
+          ),
+          Text('Contraseña',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30,),),
+          TextFormField(
+            maxLength: 30,
+            style: TextStyle(fontSize: 20,),
+            textAlign: TextAlign.center,
 
             // The validator receives the text that the user has entered.
             validator: (value) {
@@ -43,19 +73,8 @@ class LoginState extends State<Login> {
               return null;
             },
           ),
-          Text('Contraseña',style: TextStyle(color: Colors.purple,fontWeight: FontWeight.bold,),),
-          TextFormField(
-            maxLength: 30,
-            // The validator receives the text that the user has entered.
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            padding: const EdgeInsets.symmetric(vertical: 50.0),
             child: ElevatedButton(
               onPressed: () {
                 // Validate returns true if the form is valid, or false otherwise.
@@ -70,13 +89,14 @@ class LoginState extends State<Login> {
                   //Navigator.of(context).pushNamed('/screen');
                 }
               },
-              child: Text('Submit'),
+              child: Text('Submit',style: TextStyle(fontSize: 20,),)
             ),
           ),
         ],
       ),
     )
     )
+        ),
     );
   }
 }

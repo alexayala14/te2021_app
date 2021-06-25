@@ -39,6 +39,7 @@ dependencies:
   zflutter: ^0.0.1+2
   splashscreen: ^1.3.5
   splash_screen_view: ^3.0.0
+  avatars: ^2.1.0
 
 dev_dependencies:
   flutter_test:
