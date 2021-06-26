@@ -70,6 +70,16 @@ flutter:
   - assets/dados.png
   - assets/feliz1.gif
   - assets/logoutn.png
+  - assets/leonardo1.jpg
+  - assets/elviejo.jpg
+  - assets/durero.jpg
+  - assets/goya.jpg
+  - assets/dali.jpg
+  - assets/miguelangel.jpg
+  - assets/greco.jpg
+  - assets/rafael.jpg
+  - assets/tizziano.jpg
+  - assets/botticelli.jpg
   - assets/mona.jpg
   - assets/madonna.jpg
   - assets/venus.jpg
@@ -83,6 +93,7 @@ flutter:
   - assets/vistagreco.jpg
   - assets/virgenleonardo.jpg
   - assets/emojitriste.gif
+  - assets/marco.png
   - assets/gale.jpg
 
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:te2021_app/widgets/Pregunta.dart';
 import 'package:te2021_app/widgets/Pista.dart';
-enum SingingCharacter { verdadero,leonardo, dali, goya,falso,greco,boticelli,Brueghel,Tiziano,Miguel,Giovanni }
+enum SingingCharacter { verdadero,leonardo, dali, goya,falso,greco,boticelli,brueghel,tiziano,miguel,giovanni,rafael }
 
 class Pantalla extends StatefulWidget {
   const Pantalla({Key? key}) : super(key: key);
@@ -23,13 +23,20 @@ class _PantallaState extends State<Pantalla> {
   int _counterRespuesta=0;
   bool banderaPista=false;
   bool toggleable=true;
-  String _pintor1= 'Leonardo';
-  String _pintor2='Dali';
+  String _pintor1= 'Leonardo da Vinci';
+  String _pintor2='Salvador Dali';
   String _pintor3='Goya';
+  String _pintor4='Miguel Angel Buonarroti';
   SingingCharacter _character1=SingingCharacter.leonardo;
   SingingCharacter _character2=SingingCharacter.dali;
   SingingCharacter _character3=SingingCharacter.goya;
+  SingingCharacter _character4=SingingCharacter.miguel;
   SingingCharacter _characterVerdadero=SingingCharacter.leonardo;
+  BoxFit _fit=BoxFit.contain;
+  String _imagen1='assets/leonardo1.jpg';
+  String _imagen2='assets/dali.jpg';
+  String _imagen3='assets/goya.jpg';
+  String _imagen4='assets/miguelangel.jpg';
   void _increment() {
     setState(() {
       _counter=_counter + 10;
@@ -106,105 +113,165 @@ class _PantallaState extends State<Pantalla> {
       if(_counterCicle==1){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/madonna.jpg';
-        SingingCharacter? _character1=SingingCharacter.leonardo;
-        SingingCharacter? _character2=SingingCharacter.dali;
-        SingingCharacter? _character3=SingingCharacter.goya;
-        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
-         _pintor1= 'Miguel Ángel';
+         _character1=SingingCharacter.miguel;
+         _character2=SingingCharacter.rafael;
+         _character3=SingingCharacter.dali;
+        _character4=SingingCharacter.goya;
+         _characterVerdadero=SingingCharacter.rafael;
+         _pintor1= 'Miguel Ángel Buonarroti';
          _pintor2='Rafael Sanzio';
-         _pintor3='Goya';
+         _pintor3='Salvador Dali';
+        _pintor4='Goya';
+        _imagen1='assets/miguelangel.jpg';
+        _imagen2='assets/rafael.jpg';
+        _imagen3='assets/dali.jpg';
+        _imagen4='assets/goya.jpg';
 
       }else if(_counterCicle==2){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/venus.jpg';
-        SingingCharacter? _character1=SingingCharacter.leonardo;
-        SingingCharacter? _character2=SingingCharacter.dali;
-        SingingCharacter? _character3=SingingCharacter.goya;
-        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
-         _pintor1= 'Leonardo';
-         _pintor2='Miguel Ángel';
+         _character1=SingingCharacter.boticelli;
+         _character2=SingingCharacter.miguel;
+         _character3=SingingCharacter.goya;
+        _character4=SingingCharacter.rafael;
+         _characterVerdadero=SingingCharacter.boticelli;
+         _pintor1= 'Sandro Botticelli';
+         _pintor2='Miguel Ángel Buonarroti';
          _pintor3='Goya';
+        _pintor4='Rafael';
+        _imagen1='assets/botticelli.jpg';
+        _imagen2='assets/miguelangel.jpg';
+        _imagen3='assets/goya.jpg';
+        _imagen4='assets/rafael.jpg';
 
       }else if(_counterCicle==3){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/venusurbino.jpg';
-        SingingCharacter? _character1=SingingCharacter.leonardo;
-        SingingCharacter? _character2=SingingCharacter.dali;
-        SingingCharacter? _character3=SingingCharacter.goya;
-        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
-         _pintor1= 'Leonardo';
-         _pintor2='Dali';
-         _pintor3='Goya';
+         _character1=SingingCharacter.miguel;
+         _character2=SingingCharacter.leonardo;
+         _character3=SingingCharacter.tiziano;
+        _character4=SingingCharacter.goya;
+         _characterVerdadero=SingingCharacter.tiziano;
+         _pintor1= 'Miguel Angel Buonarroti';
+         _pintor2='Leonardo da Vinci';
+         _pintor3='Tiziano Vecellio';
+        _pintor4='Goya';
+        _imagen1='assets/miguelangel.jpg';
+        _imagen2='assets/leonardo1.jpg';
+        _imagen3='assets/tizziano.jpg';
+        _imagen4='assets/goya.jpg';
       }else if(_counterCicle==4){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/torrebabelbruegel.jpg';
-        SingingCharacter? _character1=SingingCharacter.leonardo;
-        SingingCharacter? _character2=SingingCharacter.dali;
-        SingingCharacter? _character3=SingingCharacter.goya;
-        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _character1=SingingCharacter.leonardo;
+         _character2=SingingCharacter.tiziano;
+         _character3=SingingCharacter.brueghel;
+        _character4=SingingCharacter.boticelli;
+         _characterVerdadero=SingingCharacter.brueghel;
          _pintor1= 'Leonardo da vinci';
-         _pintor2='Tiziano';
+         _pintor2='Tiziano Vecellio';
          _pintor3='Pieter Brueghel el Viejo';
+        _pintor4='Sandro Botticelli';
+        _imagen1='assets/leonardo1.jpg';
+        _imagen2='assets/tizziano.jpg';
+        _imagen3='assets/elviejo.jpg';
+        _imagen4='assets/botticelli.jpg';
       }else if(_counterCicle==5){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/veronicagreco.jpg';
-        SingingCharacter? _character1=SingingCharacter.leonardo;
-        SingingCharacter? _character2=SingingCharacter.dali;
-        SingingCharacter? _character3=SingingCharacter.goya;
-        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
-         _pintor1= 'Leonardo';
-         _pintor2='Dali';
-         _pintor3='Goya';
+         _character1=SingingCharacter.greco;
+         _character2=SingingCharacter.tiziano;
+         _character3=SingingCharacter.boticelli;
+        _character4=SingingCharacter.dali;
+         _characterVerdadero=SingingCharacter.greco;
+         _pintor1= 'El Greco';
+         _pintor2='Tiziano Vecellio';
+         _pintor3='Sandro Botticelli';
+        _pintor4='Salvador Dali';
+        _imagen1='assets/greco.jpg';
+        _imagen2='assets/tizziano.jpg';
+        _imagen3='assets/botticelli.jpg';
+        _imagen4='assets/dali.jpg';
       }else if(_counterCicle==6){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/cristo.jpg';
-        SingingCharacter? _character1=SingingCharacter.leonardo;
-        SingingCharacter? _character2=SingingCharacter.dali;
-        SingingCharacter? _character3=SingingCharacter.goya;
-        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _character1=SingingCharacter.leonardo;
+         _character2=SingingCharacter.miguel;
+         _character3=SingingCharacter.giovanni;
+        _character4=SingingCharacter.dali;
+         _characterVerdadero=SingingCharacter.leonardo;
          _pintor1= 'Leonardo';
-         _pintor2='Miguel Ángel';
+         _pintor2='Miguel Ángel Buonarroti';
          _pintor3='Giovanni Bellini';
+        _pintor4='Goya';
+        _imagen1='assets/leonardo1.jpg';
+        _imagen2='assets/dali.jpg';
+        _imagen3='assets/goya.jpg';
+        _imagen4='assets/goya.jpg';
       }else if(_counterCicle==7){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/adanevadurero.jpg';
-        SingingCharacter? _character1=SingingCharacter.leonardo;
-        SingingCharacter? _character2=SingingCharacter.dali;
-        SingingCharacter? _character3=SingingCharacter.goya;
-        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _character1=SingingCharacter.leonardo;
+         _character2=SingingCharacter.dali;
+         _character3=SingingCharacter.goya;
+        _character4=SingingCharacter.dali;
+         _characterVerdadero=SingingCharacter.leonardo;
          _pintor1= 'Leonardo';
          _pintor2='Dali';
          _pintor3='Alberto Durero';
+        _pintor4='Goya';
+        _imagen1='assets/leonardo1.jpg';
+        _imagen2='assets/dali.jpg';
+        _imagen3='assets/goya.jpg';
+        _imagen4='assets/goya.jpg';
       }else if(_counterCicle==8){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/virgenleonardo.jpg';
-        SingingCharacter? _character1=SingingCharacter.leonardo;
-        SingingCharacter? _character2=SingingCharacter.dali;
-        SingingCharacter? _character3=SingingCharacter.goya;
-        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _character1=SingingCharacter.leonardo;
+         _character2=SingingCharacter.dali;
+         _character3=SingingCharacter.goya;
+        _character4=SingingCharacter.dali;
+         _characterVerdadero=SingingCharacter.leonardo;
          _pintor1= 'Leonardo';
          _pintor2='Dali';
          _pintor3='Goya';
+        _pintor4='Goya';
+        _imagen1='assets/leonardo1.jpg';
+        _imagen2='assets/dali.jpg';
+        _imagen3='assets/goya.jpg';
+        _imagen4='assets/goya.jpg';
       }else if(_counterCicle==9){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/vistagreco.jpg';
-        SingingCharacter? _character1=SingingCharacter.leonardo;
-        SingingCharacter? _character2=SingingCharacter.dali;
-        SingingCharacter? _character3=SingingCharacter.goya;
-        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _character1=SingingCharacter.leonardo;
+         _character2=SingingCharacter.dali;
+         _character3=SingingCharacter.goya;
+        _character4=SingingCharacter.dali;
+         _characterVerdadero=SingingCharacter.leonardo;
          _pintor1= 'Leonardo';
          _pintor2='Dali';
          _pintor3='Goya';
+        _pintor4='Goya';
+        _imagen1='assets/leonardo1.jpg';
+        _imagen2='assets/dali.jpg';
+        _imagen3='assets/goya.jpg';
+        _imagen4='assets/goya.jpg';
       }else if(_counterCicle==10){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/mona.jpg';
-        SingingCharacter? _character1=SingingCharacter.leonardo;
-        SingingCharacter? _character2=SingingCharacter.dali;
-        SingingCharacter? _character3=SingingCharacter.goya;
-        SingingCharacter? _characterVerdadero=SingingCharacter.leonardo;
+         _character1=SingingCharacter.leonardo;
+         _character2=SingingCharacter.dali;
+         _character3=SingingCharacter.goya;
+        _character4=SingingCharacter.dali;
+         _characterVerdadero=SingingCharacter.leonardo;
          _pintor1= 'Leonardo';
          _pintor2='Dali';
          _pintor3='Goya';
+        _pintor4='Goya';
+        _imagen1='assets/leonardo1.jpg';
+        _imagen2='assets/dali.jpg';
+        _imagen3='assets/goya.jpg';
+        _imagen4='assets/goya.jpg';
         _counterCicle=0;
       }
     });
@@ -229,13 +296,18 @@ class _PantallaState extends State<Pantalla> {
           SizedBox(height: 10),
       DecoratedBox(
       decoration: BoxDecoration(
-        color: Colors.black12,
+        /*color: Colors.black12,
         border: Border.all(),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(20),*/
+        image: DecorationImage(
+            image: AssetImage('assets/marco.png'),fit:BoxFit.cover,
+        ),
       ),
         child:  new Image.asset('${imagen}',
-            height: 300,
-            width: 500,
+            /*fit: _fit,*/
+            height: 200,
+            width: 400,
+
 
           ),
       ),
@@ -254,7 +326,7 @@ class _PantallaState extends State<Pantalla> {
 
         children:<Widget>[
           CircleAvatar(
-            backgroundImage: AssetImage('assets/fondo1.jpg'),
+            backgroundImage: AssetImage('${_imagen1}'),
             radius: 50,
           ),
           Theme(
@@ -310,7 +382,7 @@ class _PantallaState extends State<Pantalla> {
           ),
           ),
           CircleAvatar(
-            backgroundImage: AssetImage('assets/fondo1.jpg'),
+            backgroundImage: AssetImage('${_imagen2}'),
             radius: 50,
           ),
         Theme(
@@ -347,7 +419,7 @@ class _PantallaState extends State<Pantalla> {
           ),
         ),
           CircleAvatar(
-            backgroundImage: AssetImage('assets/fondo1.jpg'),
+            backgroundImage: AssetImage('${_imagen3}'),
             radius: 50,
           ),
         Theme(
@@ -384,6 +456,44 @@ class _PantallaState extends State<Pantalla> {
         ),
         ),
         ),
+          CircleAvatar(
+            backgroundImage: AssetImage('${_imagen4}'),
+            radius: 50,
+          ),
+          Theme(
+            data: ThemeData(
+                unselectedWidgetColor: Colors.red
+            ),
+            child: Expanded(child:ListTile(
+              title: Text('${_pintor4}',style: TextStyle(fontSize: 20,color: Colors.purple,fontWeight: FontWeight.bold,),),
+              leading: Radio<SingingCharacter>(
+                value: _character4,
+                groupValue: _character,
+                toggleable: true,
+                autofocus: false,
+                onChanged: (SingingCharacter? value) {
+                  setState(() {
+                    _character = value;
+                    print("es el valor${value}");
+                    if(_characterVerdadero==value){
+                      bandera=true;
+                      respuestaOk=true;
+                      print("EL VALOR DE LA BANDERA ES${bandera}");
+                      bandera=false;
+
+                    }
+                    else{
+                      print("EL VALOR DE LA BANDERA ES${bandera}");
+                      respuestaOk=false;
+                    }
+                  });
+                },
+                activeColor: Colors.green,
+                //toggleable: true,
+              ),
+            ),
+            ),
+          ),
           ],
         ),
       ),
