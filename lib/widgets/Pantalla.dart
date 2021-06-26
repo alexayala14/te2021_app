@@ -294,20 +294,20 @@ class _PantallaState extends State<Pantalla> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SizedBox(height: 10),
-      DecoratedBox(
-      decoration: BoxDecoration(
-        /*color: Colors.black12,
+      ClipOval(
+      /*decoration: BoxDecoration(
+        color: Colors.black12,
         border: Border.all(),
-        borderRadius: BorderRadius.circular(20),*/
-        image: DecorationImage(
-            image: AssetImage('assets/marco.png'),fit:BoxFit.cover,
-        ),
-      ),
+        borderRadius: BorderRadius.circular(20),
+        *//*image: DecorationImage(
+            image: AssetImage('${imagen}'),fit:BoxFit.cover,
+        ),*//*
+      ),*/
         child:  new Image.asset('${imagen}',
             /*fit: _fit,*/
-            height: 200,
-            width: 400,
-
+            height: 300,
+            width: 300,
+          fit:BoxFit.fill,
 
           ),
       ),
@@ -331,10 +331,10 @@ class _PantallaState extends State<Pantalla> {
           ),
           Theme(
           data: ThemeData(
-              unselectedWidgetColor: Colors.red
+              unselectedWidgetColor: Colors.white
           ),
           child:Expanded(child: ListTile(
-          title: Text('${_pintor1}',style: TextStyle(fontSize: 20,color: Colors.purple,fontWeight: FontWeight.bold,)/*,textAlign: TextAlign.center*/,),
+          title: Text('${_pintor1}',style: TextStyle(fontSize: 23,color: Colors.white,fontWeight: FontWeight.bold,)/*,textAlign: TextAlign.center*/,),
           leading: /*CircleAvatar(
                 backgroundImage: AssetImage('assets/fondo1.jpg'),
                 radius: 50,
@@ -387,10 +387,10 @@ class _PantallaState extends State<Pantalla> {
           ),
         Theme(
           data: ThemeData(
-              unselectedWidgetColor: Colors.red
+              unselectedWidgetColor: Colors.white
           ),
           child: Expanded(child:ListTile(
-          title: Text('${_pintor2}',style: TextStyle(fontSize: 20,color: Colors.purple,fontWeight: FontWeight.bold,),),
+          title: Text('${_pintor2}',style: TextStyle(fontSize: 23,color: Colors.white,fontWeight: FontWeight.bold,),),
           leading: Radio<SingingCharacter>(
             value: _character2,
             groupValue: _character,
@@ -424,10 +424,10 @@ class _PantallaState extends State<Pantalla> {
           ),
         Theme(
           data: ThemeData(
-              unselectedWidgetColor: Colors.red
+              unselectedWidgetColor: Colors.white
           ),
           child: Expanded(child:ListTile(
-          title: Text('${_pintor3}',style: TextStyle(fontSize: 20,color: Colors.purple,fontWeight: FontWeight.bold,),),
+          title: Text('${_pintor3}',style: TextStyle(fontSize: 23,color: Colors.white,fontWeight: FontWeight.bold,),),
           leading: Radio<SingingCharacter>(
             value: _character3,
             groupValue: _character,
@@ -462,10 +462,10 @@ class _PantallaState extends State<Pantalla> {
           ),
           Theme(
             data: ThemeData(
-                unselectedWidgetColor: Colors.red
+                unselectedWidgetColor: Colors.white
             ),
             child: Expanded(child:ListTile(
-              title: Text('${_pintor4}',style: TextStyle(fontSize: 20,color: Colors.purple,fontWeight: FontWeight.bold,),),
+              title: Text('${_pintor4}',style: TextStyle(fontSize: 23,color: Colors.white,fontWeight: FontWeight.bold,),),
               leading: Radio<SingingCharacter>(
                 value: _character4,
                 groupValue: _character,

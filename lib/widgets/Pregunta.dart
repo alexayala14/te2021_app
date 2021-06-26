@@ -45,7 +45,7 @@ class CounterDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('Puntos:$count ',style: TextStyle(fontSize: 30,color: Colors.purple,fontWeight: FontWeight.bold,backgroundColor: Colors.lightBlueAccent),);
+    return Text('Puntos:$count ',style: TextStyle(fontSize: 30,color: Colors.white,fontWeight: FontWeight.bold,backgroundColor: Colors.purple),);
   }
 }
 
