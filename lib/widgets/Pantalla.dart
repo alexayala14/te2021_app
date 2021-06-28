@@ -356,9 +356,23 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         mainAxisAlignment: MainAxisAlignment.center,
 
         children:<Widget>[
-          CircleAvatar(
+          AnimatedBuilder(
+            animation: _animationController, builder: (BuildContext context,_) => Transform.rotate(
+            //scale:scaleAnimation.value,
+            //offset: Offset(rotateAnimation.value,0),
+            //angle:2*pi + 0.1,
+            angle: 0.01,
+            child:Transform(
+              //transform: Matrix4.skewX(0),
+              alignment: Alignment.center,
+              transform: Matrix4.identity()
+                ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),
+              child:CircleAvatar(
             backgroundImage: AssetImage('${_imagen1}'),
             radius: 50,
+          ),
+            ),
+        ),
           ),
           Theme(
           data: ThemeData(
@@ -413,9 +427,23 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         ),
           ),
           ),
-          CircleAvatar(
+          AnimatedBuilder(
+            animation: _animationController, builder: (BuildContext context,_) => Transform.rotate(
+            //scale:scaleAnimation.value,
+            //offset: Offset(rotateAnimation.value,0),
+            //angle:2*pi + 0.1,
+            angle: 0.01,
+            child:Transform(
+              //transform: Matrix4.skewX(0),
+              alignment: Alignment.center,
+              transform: Matrix4.identity()
+                ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),
+              child:CircleAvatar(
             backgroundImage: AssetImage('${_imagen2}'),
             radius: 50,
+          ),
+            ),
+          ),
           ),
         Theme(
           data: ThemeData(
@@ -451,9 +479,23 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         ),
           ),
         ),
-          CircleAvatar(
+          AnimatedBuilder(
+            animation: _animationController, builder: (BuildContext context,_) => Transform.rotate(
+            //scale:scaleAnimation.value,
+            //offset: Offset(rotateAnimation.value,0),
+            //angle:2*pi + 0.1,
+            angle: 0.01,
+            child:Transform(
+              //transform: Matrix4.skewX(0),
+              alignment: Alignment.center,
+              transform: Matrix4.identity()
+                ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),
+              child:CircleAvatar(
             backgroundImage: AssetImage('${_imagen3}'),
             radius: 50,
+          ),
+            ),
+          ),
           ),
         Theme(
           data: ThemeData(
@@ -490,9 +532,23 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         ),
         ),
         ),
-          CircleAvatar(
+          AnimatedBuilder(
+            animation: _animationController, builder: (BuildContext context,_) => Transform.rotate(
+            //scale:scaleAnimation.value,
+            //offset: Offset(rotateAnimation.value,0),
+            //angle:2*pi + 0.1,
+            angle: 0.01,
+            child:Transform(
+              //transform: Matrix4.skewX(0),
+              alignment: Alignment.center,
+              transform: Matrix4.identity()
+                ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),
+              child:CircleAvatar(
             backgroundImage: AssetImage('${_imagen4}'),
             radius: 50,
+          ),
+            ),
+          ),
           ),
           Theme(
             data: ThemeData(
@@ -596,6 +652,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                       _changeCicle();
                       _changePista();
                       _counterRespuesta=0;
+                      _animationController.forward();
                     }
                   }
                 }
