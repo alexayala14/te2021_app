@@ -25,7 +25,7 @@ class LoginState extends State<Login> {
       appBar: AppBar(
         title: Text('Login'),
       ),
-      backgroundColor: Colors.black12,
+      backgroundColor: Colors.brown[300],
         body:Center(
 
            // margin: new EdgeInsets.all(60.0),
@@ -37,7 +37,7 @@ class LoginState extends State<Login> {
             height: 500,
               decoration: new BoxDecoration(
 
-                  color: Colors.teal,
+                  color: Colors.brown[400],
 
                   borderRadius: new BorderRadius.all(new Radius.circular(25.7))
               ),
@@ -50,7 +50,7 @@ class LoginState extends State<Login> {
           Text('Usuario',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30,),),
           TextFormField(
             maxLength: 30,
-            style: TextStyle(fontSize: 20,),
+            style: TextStyle(fontSize: 20,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),
             textAlign: TextAlign.center,
 
             // The validator receives the tex that the user has entered.
@@ -64,7 +64,7 @@ class LoginState extends State<Login> {
           Text('Contraseña',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30,),),
           TextFormField(
             maxLength: 30,
-            style: TextStyle(fontSize: 20,),
+            style: TextStyle(fontSize: 20,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),
             textAlign: TextAlign.center,
 
             // The validator receives the text that the user has entered.
