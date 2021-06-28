@@ -29,7 +29,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.purple,
+        backgroundColor: Colors.red,
       ),
+
       routes: {
         '/':(context) => SplashScreenPrincipal(),
         '/login':(context) => Login(),

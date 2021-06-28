@@ -1,3 +1,6 @@
+import 'dart:html';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:te2021_app/widgets/Pregunta.dart';
@@ -12,7 +15,7 @@ class Pantalla extends StatefulWidget {
 }
 
 /// This is the private State class that goes with MyStatefulWidget.
-class _PantallaState extends State<Pantalla> {
+class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin {
   SingingCharacter? _character = SingingCharacter.verdadero;
   bool bandera=true;
   int _counter=0;
@@ -37,6 +40,21 @@ class _PantallaState extends State<Pantalla> {
   String _imagen2='assets/dali.jpg';
   String _imagen3='assets/goya.jpg';
   String _imagen4='assets/miguelangel.jpg';
+  late AnimationController _animationController;
+  late Animation <double> scaleAnimation;
+  late Animation <double> translateAnimation;
+  late Animation <double> rotateAnimation;
+
+  @override
+  void initState() {
+  _animationController = new AnimationController(duration: Duration(seconds: 3),vsync: this);
+  scaleAnimation = Tween<double>(begin: 1,end: 1.1).animate(_animationController);
+  translateAnimation = Tween<double>(begin: 0,end: 50).animate(CurvedAnimation(parent: _animationController,curve: Curves.bounceInOut));
+  rotateAnimation = Tween<double>(begin: 0,end: 50).animate(CurvedAnimation(parent: _animationController,curve: Curves.decelerate));
+
+  super.initState();
+  }
+
   void _increment() {
     setState(() {
       _counter=_counter + 10;
@@ -294,8 +312,19 @@ class _PantallaState extends State<Pantalla> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SizedBox(height: 10),
-      ClipOval(
-      /*decoration: BoxDecoration(
+       AnimatedBuilder(
+           animation: _animationController, builder: (BuildContext context,_) => Transform.rotate(
+           //scale:scaleAnimation.value,
+         //offset: Offset(rotateAnimation.value,0),
+          //angle:2*pi + 0.1,
+         angle: 0.01,
+           child:Transform(
+             //transform: Matrix4.skewX(0),
+             alignment: Alignment.center,
+             transform: Matrix4.identity()
+               ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),
+           child: ClipOval(
+             /*decoration: BoxDecoration(
         color: Colors.black12,
         border: Border.all(),
         borderRadius: BorderRadius.circular(20),
@@ -303,15 +332,17 @@ class _PantallaState extends State<Pantalla> {
             image: AssetImage('${imagen}'),fit:BoxFit.cover,
         ),*//*
       ),*/
-        child:  new Image.asset('${imagen}',
-            /*fit: _fit,*/
-            height: 300,
-            width: 300,
-          fit:BoxFit.fill,
+             child:  new Image.asset('${imagen}',
+               /*fit: _fit,*/
+               height: 275,
+               width: 275,
+               fit:BoxFit.fill,
 
-          ),
-      ),
-
+             ),
+           ),
+           ),
+       )
+    ),
           SizedBox(height: 30),
           Text("Seleccione la opcion correcta",style: TextStyle(fontSize: 40,color: Colors.white,fontWeight: FontWeight.bold,),textAlign: TextAlign.center,),
           SizedBox(height: 40),
@@ -347,6 +378,7 @@ class _PantallaState extends State<Pantalla> {
 
             onChanged: (SingingCharacter? value) {
               setState(() {
+                _animationController.reset();
                 _character = value;
                 print("es el valor${value}");
                 if(_characterVerdadero==value){
@@ -398,6 +430,7 @@ class _PantallaState extends State<Pantalla> {
             autofocus: false,
             onChanged: (SingingCharacter? value) {
               setState(() {
+                _animationController.reset();
                 _character = value;
                 print("es el valor${value}");
                 if(_characterVerdadero==value){
@@ -435,6 +468,7 @@ class _PantallaState extends State<Pantalla> {
             autofocus: false,
             onChanged: (SingingCharacter? value) {
               setState(() {
+                _animationController.reset();
                 _character = value;
                 print("es el valor${value}");
                 if(_characterVerdadero==value){
@@ -473,6 +507,7 @@ class _PantallaState extends State<Pantalla> {
                 autofocus: false,
                 onChanged: (SingingCharacter? value) {
                   setState(() {
+                    _animationController.reset();
                     _character = value;
                     print("es el valor${value}");
                     if(_characterVerdadero==value){
@@ -543,6 +578,8 @@ class _PantallaState extends State<Pantalla> {
                     _incrementCicle();
                     _changeCicle();
                     _changePista();
+                    _animationController.forward();
+                    //_animationController.reset();
                     //Navigator.of(context).pushNamed('/screen');
                     respuestaOk=false;
                     _counterRespuesta=0;

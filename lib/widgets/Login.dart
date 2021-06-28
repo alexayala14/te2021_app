@@ -25,7 +25,9 @@ class LoginState extends State<Login> {
       appBar: AppBar(
         title: Text('Login'),
       ),
+      backgroundColor: Colors.black12,
         body:Center(
+
            // margin: new EdgeInsets.all(60.0),
             //alignment: Alignment.centerRight,
           child:Container(
@@ -35,7 +37,7 @@ class LoginState extends State<Login> {
             height: 500,
               decoration: new BoxDecoration(
 
-                  color: Colors.pinkAccent,
+                  color: Colors.teal,
 
                   borderRadius: new BorderRadius.all(new Radius.circular(25.7))
               ),
