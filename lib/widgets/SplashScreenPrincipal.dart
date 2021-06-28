@@ -4,6 +4,8 @@ import 'package:splash_screen_view/splash_screen_view.dart';
 import 'package:te2021_app/widgets/Login.dart';
 import 'package:te2021_app/widgets/Pantalla.dart';
 
+import 'Score.dart';
+
 class SplashScreenPrincipal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
