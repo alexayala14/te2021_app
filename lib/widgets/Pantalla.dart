@@ -1,8 +1,10 @@
 import 'dart:html';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:te2021_app/widgets/Pregunta.dart';
 import 'package:te2021_app/widgets/Pista.dart';
 enum SingingCharacter { verdadero,leonardo, dali, goya,falso,greco,boticelli,brueghel,tiziano,miguel,giovanni,rafael }
@@ -41,6 +43,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
   String _imagen3='assets/goya.jpg';
   String _imagen4='assets/miguelangel.jpg';
   late AnimationController _animationController;
+  /*late AnimationController _animationController1;
+  late AnimationController _animationController2;*/
   late Animation <double> scaleAnimation;
   late Animation <double> translateAnimation;
   late Animation <double> rotateAnimation;
@@ -48,8 +52,10 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
   @override
   void initState() {
   _animationController = new AnimationController(duration: Duration(seconds: 3),vsync: this);
+  /*_animationController1 = new AnimationController(duration: Duration(seconds: 3),vsync: this);
+  _animationController2 = new AnimationController(duration: Duration(seconds: 3),vsync: this);*/
   scaleAnimation = Tween<double>(begin: 1,end: 1.1).animate(_animationController);
-  translateAnimation = Tween<double>(begin: 0,end: 50).animate(CurvedAnimation(parent: _animationController,curve: Curves.bounceInOut));
+  translateAnimation = Tween<double>(begin: 0,end: 50).animate(CurvedAnimation(parent: _animationController,curve: Curves.elasticInOut));
   rotateAnimation = Tween<double>(begin: 0,end: 50).animate(CurvedAnimation(parent: _animationController,curve: Curves.decelerate));
 
   super.initState();
@@ -290,7 +296,9 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         _imagen2='assets/dali.jpg';
         _imagen3='assets/goya.jpg';
         _imagen4='assets/goya.jpg';
-        _counterCicle=0;
+        //_counterCicle=0;
+      }else if(_counterCicle==11){
+        print("PASA POR EL CICLO ${_counterCicle}");
       }
     });
   }
@@ -298,7 +306,15 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed:() {
+      //Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: BuildContext context), (route) => false);
+        },
+        child: const Icon(Icons.close),
+        backgroundColor: Colors.red,
+      ),
       body:Center(
+
         child:Container(
       /*height: double.infinity,
       width: double.infinity,*/
@@ -393,6 +409,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
             onChanged: (SingingCharacter? value) {
               setState(() {
                 _animationController.reset();
+                /*_animationController1.reset();
+                _animationController2.reset();*/
                 _character = value;
                 print("es el valor${value}");
                 if(_characterVerdadero==value){
@@ -459,6 +477,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
             onChanged: (SingingCharacter? value) {
               setState(() {
                 _animationController.reset();
+                /*_animationController1.reset();
+                _animationController2.reset();*/
                 _character = value;
                 print("es el valor${value}");
                 if(_characterVerdadero==value){
@@ -511,6 +531,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
             onChanged: (SingingCharacter? value) {
               setState(() {
                 _animationController.reset();
+               /* _animationController1.reset();
+                _animationController2.reset();*/
                 _character = value;
                 print("es el valor${value}");
                 if(_characterVerdadero==value){
@@ -564,6 +586,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                 onChanged: (SingingCharacter? value) {
                   setState(() {
                     _animationController.reset();
+                    /*_animationController2.reset();
+                    _animationController1.reset();*/
                     _character = value;
                     print("es el valor${value}");
                     if(_characterVerdadero==value){
@@ -604,6 +628,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
               if(bandera==true){
                 banderaPista=true;
                 _changePista();
+                //_animationController2.forward();
+                //_animationController1.forward();
               _decrement();
               bandera=false;
               }
@@ -627,33 +653,38 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                 //_changeCicle();
                 //banderaPista=false;
                 //_changePista();
-                if(_character!=SingingCharacter.verdadero){
-                  bandera=true;
-                  if(respuestaOk==true){
-                    _increment();
-                    _incrementCicle();
-                    _changeCicle();
-                    _changePista();
-                    _animationController.forward();
-                    //_animationController.reset();
-                    //Navigator.of(context).pushNamed('/screen');
-                    respuestaOk=false;
-                    _counterRespuesta=0;
-                  }
-                  else {
-                    _incrementRespuesta();
-                    if(_counterRespuesta <=2){
-                      banderaPista=true;
-                      _decrement();
-                      print('la respuesta esss:${_counterRespuesta}');
-                      _changePista();
-                    }else {
+                if(_character!=SingingCharacter.verdadero) {
+                  bandera = true;
+                  if (_counterCicle <= 10) {
+                    if (respuestaOk == true) {
+                      _increment();
                       _incrementCicle();
                       _changeCicle();
                       _changePista();
-                      _counterRespuesta=0;
+                      //_animationController1.forward();
                       _animationController.forward();
+                      //_animationController.reset();
+                      //Navigator.of(context).pushNamed('/screen');
+                      respuestaOk = false;
+                      _counterRespuesta = 0;
                     }
+                    else {
+                      _incrementRespuesta();
+                      if (_counterRespuesta <= 2) {
+                        banderaPista = true;
+                        _decrement();
+                        print('la respuesta esss:${_counterRespuesta}');
+                        _changePista();
+                      } else {
+                        _incrementCicle();
+                        _changeCicle();
+                        _changePista();
+                        _counterRespuesta = 0;
+                        _animationController.forward();
+                      }
+                    }
+                  }else {
+                    Navigator.of(context).pushNamed('/score');
                   }
                 }
                 else{
@@ -670,7 +701,21 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
 
           ),
             SizedBox(width: 50),
-            CounterDisplay(count: _counter),
+            AnimatedBuilder(
+              animation: _animationController, builder: (BuildContext context,_) => Transform.scale(
+              scale:scaleAnimation.value,
+              //offset: Offset(rotateAnimation.value,0),
+              //angle:2*pi + 0.1,
+              //angle: 0.01,
+              child:Transform(
+                transform: Matrix4.skewX(0),
+                /*alignment: Alignment.center,
+                transform: Matrix4.identity()
+                  ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*/
+                child:CounterDisplay(count: _counter),
+              ),
+            ),
+            ),
             SizedBox(width: 30),
             SizedBox(height: 30),
 
@@ -680,7 +725,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
           ),
           ),
           SizedBox(height: 30),
-          Container(
+      Container(
             height: 100,
             width: 1500,
             alignment: Alignment.center,
@@ -693,9 +738,23 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                   image: AssetImage('assets/roma.jpg'),fit: BoxFit.cover
               ),*/
             ),
-            child: PistaDisplay(pista:pista),
+            child: AnimatedBuilder(
+              animation: _animationController, builder: (BuildContext context,_) => Transform.translate(
+              //scale:scaleAnimation.value,
+              offset: Offset(translateAnimation.value,0),
+              //angle:2*pi + 0.1,
+              //angle: 0.01,
+              child:Transform(
+                transform: Matrix4.skewX(0),
+                alignment: Alignment.center,
+          /*transform: Matrix4.identity()
+            ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*/
+                child:PistaDisplay(pista:pista),
 
-          ),
+    ),
+            ),
+            ),
+      ),
          /*new Counter(),*/
       ],
     ),
