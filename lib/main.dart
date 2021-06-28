@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         '/pantalla':(context) => Pantalla(),
         '/respuesta':(context) => Respuesta(),
         '/screen':(context) => SplashScreen(),
-        '/score':(context) => Score(),
+        //'/score':(context) => Score(parametro),
 
 
       },

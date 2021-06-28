@@ -2,11 +2,13 @@ import 'dart:html';
 import 'dart:io';
 import 'dart:math';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:te2021_app/widgets/Pregunta.dart';
 import 'package:te2021_app/widgets/Pista.dart';
+import 'package:te2021_app/widgets/Score.dart';
 enum SingingCharacter { verdadero,leonardo, dali, goya,falso,greco,boticelli,brueghel,tiziano,miguel,giovanni,rafael }
 
 class Pantalla extends StatefulWidget {
@@ -48,10 +50,14 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
   late Animation <double> scaleAnimation;
   late Animation <double> translateAnimation;
   late Animation <double> rotateAnimation;
+  final player = AudioCache();
+  /*late AudioCache cache; // you have this
+  late AudioPlayer player; // create this*/
+
 
   @override
   void initState() {
-  _animationController = new AnimationController(duration: Duration(seconds: 3),vsync: this);
+  _animationController = new AnimationController(duration: Duration(seconds: 5),vsync: this);
   /*_animationController1 = new AnimationController(duration: Duration(seconds: 3),vsync: this);
   _animationController2 = new AnimationController(duration: Duration(seconds: 3),vsync: this);*/
   scaleAnimation = Tween<double>(begin: 1,end: 1.1).animate(_animationController);
@@ -131,6 +137,14 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
       }
     });
   }
+
+  /*void _playFile() async{
+    player = await cache.play('assets/templarios.mp3'); // assign player here
+  }
+
+  void _stopFile() {
+    player.stop(); // stop the file like this
+  }*/
 
   void _changeCicle() {
     setState(() {
@@ -218,52 +232,52 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         _imagen4='assets/dali.jpg';
       }else if(_counterCicle==6){
         print("PASA POR EL CICLO ${_counterCicle}");
-        imagen='assets/cristo.jpg';
+        imagen='assets/elviejo.jpg';
          _character1=SingingCharacter.leonardo;
          _character2=SingingCharacter.miguel;
-         _character3=SingingCharacter.giovanni;
+         _character3=SingingCharacter.brueghel;
         _character4=SingingCharacter.dali;
-         _characterVerdadero=SingingCharacter.leonardo;
+         _characterVerdadero=SingingCharacter.brueghel;
          _pintor1= 'Leonardo';
          _pintor2='Miguel Ángel Buonarroti';
-         _pintor3='Giovanni Bellini';
+         _pintor3='Torre de babel';
         _pintor4='Goya';
-        _imagen1='assets/leonardo1.jpg';
-        _imagen2='assets/dali.jpg';
-        _imagen3='assets/goya.jpg';
-        _imagen4='assets/goya.jpg';
+        _imagen1='assets/veronicagreco.jpg';
+        _imagen2='assets/adanevadurero.jpg';
+        _imagen3='assets/torrebabelbruegel.jpg';
+        _imagen4='assets/venusurbino.jpg';
       }else if(_counterCicle==7){
         print("PASA POR EL CICLO ${_counterCicle}");
-        imagen='assets/adanevadurero.jpg';
+        imagen='assets/botticelli.jpg';
          _character1=SingingCharacter.leonardo;
          _character2=SingingCharacter.dali;
          _character3=SingingCharacter.goya;
-        _character4=SingingCharacter.dali;
-         _characterVerdadero=SingingCharacter.leonardo;
+        _character4=SingingCharacter.boticelli;
+         _characterVerdadero=SingingCharacter.boticelli;
          _pintor1= 'Leonardo';
          _pintor2='Dali';
          _pintor3='Alberto Durero';
-        _pintor4='Goya';
-        _imagen1='assets/leonardo1.jpg';
-        _imagen2='assets/dali.jpg';
-        _imagen3='assets/goya.jpg';
-        _imagen4='assets/goya.jpg';
+        _pintor4='Venus';
+        _imagen1='assets/mona.jpg';
+        _imagen2='assets/vistagreco.jpg';
+        _imagen3='assets/virgenleonardo.jpg';
+        _imagen4='assets/venus.jpg';
       }else if(_counterCicle==8){
         print("PASA POR EL CICLO ${_counterCicle}");
-        imagen='assets/virgenleonardo.jpg';
+        imagen='assets/leonardo1.jpg';
          _character1=SingingCharacter.leonardo;
          _character2=SingingCharacter.dali;
          _character3=SingingCharacter.goya;
         _character4=SingingCharacter.dali;
          _characterVerdadero=SingingCharacter.leonardo;
-         _pintor1= 'Leonardo';
+         _pintor1= 'Virgen';
          _pintor2='Dali';
          _pintor3='Goya';
         _pintor4='Goya';
-        _imagen1='assets/leonardo1.jpg';
-        _imagen2='assets/dali.jpg';
-        _imagen3='assets/goya.jpg';
-        _imagen4='assets/goya.jpg';
+        _imagen1='assets/virgenleonardo.jpg';
+        _imagen2='assets/madonna.jpg';
+        _imagen3='assets/vistagreco.jpg';
+        _imagen4='assets/adanevadurero.jpg';
       }else if(_counterCicle==9){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/vistagreco.jpg';
@@ -309,10 +323,20 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
       floatingActionButton: FloatingActionButton(
         onPressed:() {
       //Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: BuildContext context), (route) => false);
+
+          //player.play('templarios.mp3');
+         // _playFile(); // assign player here
+          //player.
+          Navigator.of(context).pushNamedAndRemoveUntil('/login', (Route<dynamic> route) => false);
+
+
+
+
         },
         child: const Icon(Icons.close),
         backgroundColor: Colors.red,
       ),
+
       body:Center(
 
         child:Container(
@@ -657,6 +681,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                   bandera = true;
                   if (_counterCicle <= 10) {
                     if (respuestaOk == true) {
+                      player.play('rueda.mp3');
                       _increment();
                       _incrementCicle();
                       _changeCicle();
@@ -676,6 +701,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                         print('la respuesta esss:${_counterRespuesta}');
                         _changePista();
                       } else {
+                        player.play('rueda.mp3');
                         _incrementCicle();
                         _changeCicle();
                         _changePista();
@@ -684,7 +710,11 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                       }
                     }
                   }else {
-                    Navigator.of(context).pushNamed('/score');
+                   // Navigator.of(context).pushNamed('/score');
+                    Navigator.push(
+                        context,
+                        new MaterialPageRoute(
+                            builder: (context) => Score(_counter)));
                   }
                 }
                 else{

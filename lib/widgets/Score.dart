@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:te2021_app/widgets/Boton.dart';
 class Score extends StatelessWidget{
-
+ final int _counter;
+Score(this._counter);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class Score extends StatelessWidget{
               print("Es el Parametro: "+"$contador");
               Navigator.of(context).pushNamed('/menuPrincipal');
             },
-            texto: 'segundo boton Score',
+            texto: 'LOS PUNTOS SON:${_counter}',
             contador: 1,
           )
         ],
