@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:te2021_app/widgets/AcercaDe.dart';
 import 'package:te2021_app/widgets/Galeria.dart';

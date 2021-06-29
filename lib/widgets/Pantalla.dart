@@ -36,12 +36,12 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
   String _pintor2='Salvador Dali';
   String _pintor3='Goya';
   String _pintor4='Miguel Angel Buonarroti';
-  String _respuesta="ESTA ES LA RESPUESTA DEL TOAST";
+  String _respuesta="";
   SingingCharacter _character1=SingingCharacter.leonardo;
   SingingCharacter _character2=SingingCharacter.dali;
   SingingCharacter _character3=SingingCharacter.goya;
   SingingCharacter _character4=SingingCharacter.miguel;
-  SingingCharacter _characterVerdadero=SingingCharacter.leonardo;
+  SingingCharacter _characterVerdadero=SingingCharacter.miguel;
   BoxFit _fit=BoxFit.contain;
   String _imagen1='assets/leonardo1.jpg';
   String _imagen2='assets/dali.jpg';
@@ -148,45 +148,146 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
     setState(() {
       if(banderaPista==true && _counterCicle==0){
         if(_counterRespuesta==0){
-          pista="El pintor pertenece al rencimiento, nacio en 1775";
+          pista="Desarrolló su labor artística a lo largo de más de setenta años entre Florencia y Roma";
           banderaPista=false;
         }else if(_counterRespuesta==1){
-        pista= "Pista: reintento1";
+        pista= "Pinto sobre yeso el techo de la Capilla Sixtina en el Vaticano";
         banderaPista=false;
         }else if(_counterRespuesta==2){
-          pista= "Pista: reintento2";
+          pista= "Fue muy admirado por sus contemporáneos, que le llamaban el Divino";
           banderaPista=false;
         }
+        _respuesta="Miguel Angel Buonarroti";
       }else if(banderaPista==true && _counterCicle==1){
-        pista= "Pista: Fue un polímata florentino del Renacimiento italiano,Creía que existía una vinculación entre el arte y las matemáticas";
-        banderaPista=false;
+
+        if(_counterRespuesta==0){
+          pista= "A los 25 años obtuvo su primer encargo oficial, la decoración de las Estancias Vaticanas,\n donde pintó algunos frescos como La escuela de Atenas";
+          banderaPista=false;
+        }else if(_counterRespuesta==1){
+          pista= "Nació en Viernes Santo y falleció en esta misma festividad el día que cumplía 37 años";
+          banderaPista=false;
+        }else if(_counterRespuesta==2){
+          pista= "Nació en Urbino —una pequeña ciudad de la Italia central—, en la región de Marcas";
+          banderaPista=false;
+        }
+        _respuesta="Rafael Sanzio";
       }else if(banderaPista==true && _counterCicle==2){
-        pista= "Pista Fue un pintor del Quattrocento italiano,Su nombre real era Alessandro di Mariano di Vanni Filipepi";
-        banderaPista=false;
+
+        if(_counterRespuesta==0){
+          pista="Su obra se ha considerado exponente máximo de la gracia lineal\n de la pintura del primer Renacimiento";
+          banderaPista=false;
+        }else if(_counterRespuesta==1){
+          pista= "Fue un pintor del Quattrocento italiano,\nSu nombre real era Alessandro di Mariano di Vanni Filipepi";
+          banderaPista=false;
+        }else if(_counterRespuesta==2){
+          pista= "En 1467 volvió a Florencia, frecuentando el taller de Andrea del Verrocchio, donde trabajó al lado de Leonardo da Vinci";
+          banderaPista=false;
+        }
+        _respuesta="Sandro Botticelli";
       }else if(banderaPista==true && _counterCicle==3){
-        pista= "Pista3";
-        banderaPista=false;
+
+        if(_counterRespuesta==0){
+          pista="Fue un pintor italiano del Renacimiento,\n uno de los mayores exponentes de la Escuela veneciana";
+          banderaPista=false;
+        }else if(_counterRespuesta==1){
+          pista= "retrató a la clase dirigente de su época, recibió encargos de comunidades religiosas\n y de la nobleza, pintó paisajes, reflejó el clasicismo renacentista \ny anticipó algunas cualidades del Barroco";
+          banderaPista=false;
+        }else if(_counterRespuesta==2){
+          pista= "Los orígenes creativos se encuentran influenciados por su maestro Bellini y por Giorgione";
+          banderaPista=false;
+        }
+        _respuesta="Tiziano Vecellio";
       }else if(banderaPista==true && _counterCicle==4){
-        pista= "Pista4";
-        banderaPista=false;
+
+        if(_counterRespuesta==0){
+          pista="Es considerado el pintor holandés más importante del siglo XVI. Con Jan Van Eyck, el Bosco y Pedro Pablo Rubens";
+          banderaPista=false;
+        }else if(_counterRespuesta==1){
+          pista= "Fue un pintor y grabador brabanzón. Fundador de la dinastía de pintores Brueghel";
+          banderaPista=false;
+        }else if(_counterRespuesta==2){
+          pista= "Es conocido por sus paisajes, género en el que alcanzó una notable importancia.\n Se le suele considerar como el primer artista\n occidental que pintó paisajes por sí mismos";
+          banderaPista=false;
+        }
+        _respuesta="Pieter Brueghel el Viejo";
       }else if(banderaPista==true && _counterCicle==5){
-        pista= "Pista Pintor Nacido en 1541, en Heraclión, actual capital de Creta (Grecia)";
-        banderaPista=false;
+
+        if(_counterRespuesta==0){
+          pista= "Pista Pintor Nacido en 1541, en Heraclión, actual capital de Creta (Grecia)";
+          banderaPista=false;
+        }else if(_counterRespuesta==1){
+          pista= "Fue un pintor de retablos, por ello se comienza con el retablo de Santo Domingo, el primero que concibió";
+          banderaPista=false;
+        }else if(_counterRespuesta==2){
+          pista= "fue un gran retratista.La composición y el estilo están aprendidos de Tiziano,\n la colocación de la figura, normalmente de medio cuerpo\n y los fondos neutros.";
+          banderaPista=false;
+        }
+        _respuesta="El Greco";
       }else if(banderaPista==true && _counterCicle==6){
-        pista= "Pista6";
-        banderaPista=false;
+
+        if(_counterRespuesta==0){
+          pista="Pintada en 1565 por Pieter Brueghel el Viejo, pintor holandés de la escuela flamenca.";
+          banderaPista=false;
+        }else if(_counterRespuesta==1){
+          pista= "Este óleo se encuentra actualmente en el Museo Boymans Van Beuningen, Róterdam, Holanda.";
+          banderaPista=false;
+        }else if(_counterRespuesta==2){
+          pista= "Pone el énfasis en gran edificio de la tradición judía, abandonado y con un aire tétrico.";
+          banderaPista=false;
+        }
+        _respuesta="Torre de babel";
       }else if(banderaPista==true && _counterCicle==7){
-        pista= "Pista7";
-        banderaPista=false;
+
+        if(_counterRespuesta==0){
+          pista="Se trata de uno de los cuadros más representativos del renacimiento italiano,\n pintado entre 1484 y 1486, por Sandro Botticelli";
+          banderaPista=false;
+        }else if(_counterRespuesta==1){
+          pista= "Se encuentra actualmente en la Galería Uffizi, Florencia.";
+          banderaPista=false;
+        }else if(_counterRespuesta==2){
+          pista= "Este cuadro fue en su tiempo una obra revolucionaria por cuanto presentaba\n sin tapujos un desnudo no justificado por ningún componente religioso";
+          banderaPista=false;
+        }
+        _respuesta="El nacimiento de Venus";
       }else if(banderaPista==true && _counterCicle==8){
-        pista= "Pista8";
-        banderaPista=false;
+
+        if(_counterRespuesta==0){
+          pista="Fue pintada en 1501, por Leonardo da Vinci";
+          banderaPista=false;
+        }else if(_counterRespuesta==1){
+          pista= "También conocida como Virgen de la rueca";
+          banderaPista=false;
+        }else if(_counterRespuesta==2){
+          pista= "Muestra a un Jesús de niño alejándose de los brazos de su Madre y mirando la cruz";
+          banderaPista=false;
+        }
+        _respuesta="La Virgen del huso";
       }else if(banderaPista==true && _counterCicle==9){
-        pista= "Pista Pintor Nacido en 1541, en Heraclión, actual capital de Creta (Grecia)";
-        banderaPista=false;
+
+        if(_counterRespuesta==0){
+          pista="Trozo de fresco pintado Miguel Ángel (1512) sobre yeso,\n en el techo de la Capilla Sixtina en el Vaticano";
+          banderaPista=false;
+        }else if(_counterRespuesta==1){
+          pista= " Ilustra uno de los nueve episodios del Génesis representados\n allí por el artista toscano, en el cual\n Dios le da vida a Adán, el primer hombre.";
+          banderaPista=false;
+        }else if(_counterRespuesta==2){
+          pista= "Es el cuarto de los paneles que representan episodios del Génesis en el techo de la capilla";
+          banderaPista=false;
+        }
+        _respuesta="La creación de Adán";
       }else if(banderaPista==true && _counterCicle==10){
-        pista= "Pista: Fue un polímata florentino del Renacimiento italiano,Creía que existía una vinculación entre el arte y las matemáticas";
-        banderaPista=false;
+
+        if(_counterRespuesta==0){
+          pista= "Tela al óleo pintada en 1538, por Tiziano";
+          banderaPista=false;
+        }else if(_counterRespuesta==1){
+          pista= "También llamada Venus del perrito, es una célebre pintura\n al óleo sobre lienzo cuyas dimensiones son de 119 cm x 165 cm";
+          banderaPista=false;
+        }else if(_counterRespuesta==2){
+          pista= "Desde 1736 se encuentra en la Galleria degli Uffizi (Florencia)";
+          banderaPista=false;
+        }
+        _respuesta="Venus de Urbino";
       }else{
         pista= "Necesita ayuda? Presione el boton de pista.";
       }
@@ -312,7 +413,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
          _pintor1= 'La Mona Lisa';
          _pintor2='Vista de Toledo';
          _pintor3='La Virgen del huso';
-        _pintor4='El nacimiento de Venus y La primavera';
+        _pintor4='El nacimiento de Venus';
         _imagen1='assets/mona.jpg';
         _imagen2='assets/vistagreco.jpg';
         _imagen3='assets/virgenleonardo.jpg';

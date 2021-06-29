@@ -47,6 +47,7 @@ class LoginState extends State<Login> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          Text('ARTE 2.0\n',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 50,),),
           Text('Usuario',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30,),),
           TextFormField(
             maxLength: 30,
@@ -92,7 +93,7 @@ class LoginState extends State<Login> {
                   //Navigator.of(context).pushNamed('/screen');
                 }
               },
-              child: Text('Submit',style: TextStyle(fontSize: 20,),)
+              child: Text('Ingresar',style: TextStyle(fontSize: 25,),)
             ),
           ),
         ],
