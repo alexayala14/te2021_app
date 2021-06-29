@@ -1,7 +1,7 @@
 import 'dart:html';
 import 'dart:io';
 import 'dart:math';
-
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -28,12 +28,15 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
   bool respuestaOk=false;
   int _counterCicle=0;
   int _counterRespuesta=0;
+  int _counterOk=0;
+  int _counterNotOk=0;
   bool banderaPista=false;
   bool toggleable=true;
   String _pintor1= 'Leonardo da Vinci';
   String _pintor2='Salvador Dali';
   String _pintor3='Goya';
   String _pintor4='Miguel Angel Buonarroti';
+  String _respuesta="ESTA ES LA RESPUESTA DEL TOAST";
   SingingCharacter _character1=SingingCharacter.leonardo;
   SingingCharacter _character2=SingingCharacter.dali;
   SingingCharacter _character3=SingingCharacter.goya;
@@ -51,6 +54,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
   late Animation <double> translateAnimation;
   late Animation <double> rotateAnimation;
   final player = AudioCache();
+  late FToast fToast;
   /*late AudioCache cache; // you have this
   late AudioPlayer player; // create this*/
 
@@ -63,8 +67,48 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
   scaleAnimation = Tween<double>(begin: 1,end: 1.1).animate(_animationController);
   translateAnimation = Tween<double>(begin: 0,end: 50).animate(CurvedAnimation(parent: _animationController,curve: Curves.elasticInOut));
   rotateAnimation = Tween<double>(begin: 0,end: 50).animate(CurvedAnimation(parent: _animationController,curve: Curves.decelerate));
-
+  fToast = FToast();
+  fToast.init(context);
   super.initState();
+  }
+
+  _showToast() {
+    Widget toast = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25.0),
+        color: Colors.greenAccent,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.check),
+          SizedBox(
+            width: 12.0,
+          ),
+          Text("La Respuesta es: ${_respuesta}"),
+        ],
+      ),
+    );
+
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.BOTTOM,
+      toastDuration: Duration(seconds: 2),
+    );
+
+    // Custom Toast Position
+    fToast.showToast(
+        child: toast,
+        toastDuration: Duration(seconds: 2),
+        positionedToastBuilder: (context, child) {
+          return Positioned(
+            child: child,
+            top: 16.0,
+            left: 16.0,
+          );
+        });
   }
 
   void _increment() {
@@ -80,6 +124,17 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
   void _incrementCicle() {
     setState(() {
       ++_counterCicle;
+    });
+  }
+
+  void _incrementCounterOk() {
+    setState(() {
+      ++_counterOk;
+    });
+  }
+  void _incrementCounterNotOk() {
+    setState(() {
+      ++_counterNotOk;
     });
   }
 
@@ -159,7 +214,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
          _pintor1= 'Miguel Ángel Buonarroti';
          _pintor2='Rafael Sanzio';
          _pintor3='Salvador Dali';
-        _pintor4='Goya';
+        _pintor4='Francisco de Goya';
         _imagen1='assets/miguelangel.jpg';
         _imagen2='assets/rafael.jpg';
         _imagen3='assets/dali.jpg';
@@ -175,8 +230,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
          _characterVerdadero=SingingCharacter.boticelli;
          _pintor1= 'Sandro Botticelli';
          _pintor2='Miguel Ángel Buonarroti';
-         _pintor3='Goya';
-        _pintor4='Rafael';
+         _pintor3='Francisco de Goya';
+        _pintor4='Rafael Sanzio';
         _imagen1='assets/botticelli.jpg';
         _imagen2='assets/miguelangel.jpg';
         _imagen3='assets/goya.jpg';
@@ -193,7 +248,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
          _pintor1= 'Miguel Angel Buonarroti';
          _pintor2='Leonardo da Vinci';
          _pintor3='Tiziano Vecellio';
-        _pintor4='Goya';
+        _pintor4='Francisco de Goya';
         _imagen1='assets/miguelangel.jpg';
         _imagen2='assets/leonardo1.jpg';
         _imagen3='assets/tizziano.jpg';
@@ -238,10 +293,10 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
          _character3=SingingCharacter.brueghel;
         _character4=SingingCharacter.dali;
          _characterVerdadero=SingingCharacter.brueghel;
-         _pintor1= 'Leonardo';
-         _pintor2='Miguel Ángel Buonarroti';
+         _pintor1= 'La Veronica';
+         _pintor2='Adan y Eva';
          _pintor3='Torre de babel';
-        _pintor4='Goya';
+        _pintor4='Venus de Urbino';
         _imagen1='assets/veronicagreco.jpg';
         _imagen2='assets/adanevadurero.jpg';
         _imagen3='assets/torrebabelbruegel.jpg';
@@ -254,10 +309,10 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
          _character3=SingingCharacter.goya;
         _character4=SingingCharacter.boticelli;
          _characterVerdadero=SingingCharacter.boticelli;
-         _pintor1= 'Leonardo';
-         _pintor2='Dali';
-         _pintor3='Alberto Durero';
-        _pintor4='Venus';
+         _pintor1= 'La Mona Lisa';
+         _pintor2='Vista de Toledo';
+         _pintor3='La Virgen del huso';
+        _pintor4='El nacimiento de Venus y La primavera';
         _imagen1='assets/mona.jpg';
         _imagen2='assets/vistagreco.jpg';
         _imagen3='assets/virgenleonardo.jpg';
@@ -270,46 +325,46 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
          _character3=SingingCharacter.goya;
         _character4=SingingCharacter.dali;
          _characterVerdadero=SingingCharacter.leonardo;
-         _pintor1= 'Virgen';
-         _pintor2='Dali';
-         _pintor3='Goya';
-        _pintor4='Goya';
+         _pintor1= 'La Virgen del huso';
+         _pintor2='Madonna Sixtina';
+         _pintor3='Vista de Toledo';
+        _pintor4='Adan y Eva';
         _imagen1='assets/virgenleonardo.jpg';
         _imagen2='assets/madonna.jpg';
         _imagen3='assets/vistagreco.jpg';
         _imagen4='assets/adanevadurero.jpg';
       }else if(_counterCicle==9){
         print("PASA POR EL CICLO ${_counterCicle}");
-        imagen='assets/vistagreco.jpg';
-         _character1=SingingCharacter.leonardo;
+        imagen='assets/miguelangel.jpg';
+         _character1=SingingCharacter.goya  ;
          _character2=SingingCharacter.dali;
-         _character3=SingingCharacter.goya;
-        _character4=SingingCharacter.dali;
-         _characterVerdadero=SingingCharacter.leonardo;
-         _pintor1= 'Leonardo';
-         _pintor2='Dali';
-         _pintor3='Goya';
-        _pintor4='Goya';
-        _imagen1='assets/leonardo1.jpg';
-        _imagen2='assets/dali.jpg';
-        _imagen3='assets/goya.jpg';
-        _imagen4='assets/goya.jpg';
+         _character3=SingingCharacter.leonardo;
+        _character4=SingingCharacter.miguel;
+         _characterVerdadero=SingingCharacter.miguel;
+         _pintor1= 'El Nacimiento de Venus';
+         _pintor2='La Torre de Babel';
+         _pintor3='La Mona Lisa';
+        _pintor4='La creación de Adán ';
+        _imagen1='assets/venus.jpg';
+        _imagen2='assets/torrebabelbruegel.jpg';
+        _imagen3='assets/mona.jpg';
+        _imagen4='assets/creacion.jpg';
       }else if(_counterCicle==10){
         print("PASA POR EL CICLO ${_counterCicle}");
-        imagen='assets/mona.jpg';
+        imagen='assets/tizziano.jpg';
          _character1=SingingCharacter.leonardo;
-         _character2=SingingCharacter.dali;
+         _character2=SingingCharacter.tiziano;
          _character3=SingingCharacter.goya;
         _character4=SingingCharacter.dali;
-         _characterVerdadero=SingingCharacter.leonardo;
-         _pintor1= 'Leonardo';
-         _pintor2='Dali';
-         _pintor3='Goya';
-        _pintor4='Goya';
-        _imagen1='assets/leonardo1.jpg';
-        _imagen2='assets/dali.jpg';
-        _imagen3='assets/goya.jpg';
-        _imagen4='assets/goya.jpg';
+         _characterVerdadero=SingingCharacter.tiziano;
+         _pintor1= 'Adan y Eva';
+         _pintor2='Venus de Urbino';
+         _pintor3='La Veronica';
+        _pintor4='Vista e Toledo';
+        _imagen1='assets/adanevadurero.jpg';
+        _imagen2='assets/venusurbino.jpg';
+        _imagen3='assets/veronicagreco.jpg';
+        _imagen4='assets/vistagreco.jpg';
         //_counterCicle=0;
       }else if(_counterCicle==11){
         print("PASA POR EL CICLO ${_counterCicle}");
@@ -334,7 +389,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
 
         },
         child: const Icon(Icons.close),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.brown,
       ),
 
       body:Center(
@@ -679,13 +734,14 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                 //_changePista();
                 if(_character!=SingingCharacter.verdadero) {
                   bandera = true;
-                  if (_counterCicle <= 10) {
+                  if (_counterCicle < 10) {
                     if (respuestaOk == true) {
                       player.play('rueda.mp3');
                       _increment();
                       _incrementCicle();
                       _changeCicle();
                       _changePista();
+                      _incrementCounterOk();
                       //_animationController1.forward();
                       _animationController.forward();
                       //_animationController.reset();
@@ -705,8 +761,10 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                         _incrementCicle();
                         _changeCicle();
                         _changePista();
+                        _incrementCounterNotOk();
                         _counterRespuesta = 0;
                         _animationController.forward();
+                        _showToast();
                       }
                     }
                   }else {
@@ -714,7 +772,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                     Navigator.push(
                         context,
                         new MaterialPageRoute(
-                            builder: (context) => Score(_counter)));
+                            builder: (context) => Score(_counter,_counterOk,_counterNotOk)));
                   }
                 }
                 else{

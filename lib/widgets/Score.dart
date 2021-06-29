@@ -3,14 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:te2021_app/widgets/Boton.dart';
 class Score extends StatelessWidget{
  final int _counter;
-Score(this._counter);
+ final int _counterOk;
+ final int _counterNotOk;
+Score(this._counter,this._counterOk,this._counterNotOk);
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Score'),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed:() {
+
+          Navigator.of(context).pushNamedAndRemoveUntil('/login', (Route<dynamic> route) => false);
+          },
+        child: const Icon(Icons.close),
+        backgroundColor: Colors.brown,
       ),
       body: Container(
         alignment: Alignment.center,
@@ -28,8 +36,38 @@ Score(this._counter);
         child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget> [
-          Text('Puntos:${_counter}',style: TextStyle(fontSize: 40,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),textAlign: TextAlign.center,),
-         /* MiBoton(
+          Text('Resultados\n\n ',style: TextStyle(fontSize: 60,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),textAlign: TextAlign.center,),
+          Text('Respuestas Incorrectas:${_counterNotOk}\n\nRespuestas Correctas:${_counterOk}\n\nPuntos:${_counter}\n\n',style: TextStyle(fontSize: 40,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),textAlign: TextAlign.center,),
+         Center( child:Table(
+           children: [TableRow(
+             children: [
+               //SizedBox(width: 30),
+               ElevatedButton(
+                 onPressed: (){
+                   Navigator.of(context).pushNamedAndRemoveUntil('/pantalla', (Route<dynamic> route) => false);
+                 },//onPressed,
+                 child: Text('Reintentar',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,),),
+                 style: ElevatedButton.styleFrom(
+                   padding: EdgeInsets.all(15.0),
+                   minimumSize: Size(30.0,30.0),
+                 ),
+               ),
+               SizedBox(width: 10),
+               ElevatedButton(
+                 onPressed: (){
+
+                 },//onPressed,
+                 child: Text('Acerca de',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,),),
+                 style: ElevatedButton.styleFrom(
+                   padding: EdgeInsets.all(15.0),
+                   minimumSize: Size(30.0,30.0),
+                 ),
+               ),
+             ]
+           )],
+         )
+         ),
+          /* MiBoton(
             onPressed: (parametro){
               print("paso por Score");
               print("Es el Parametro: "+parametro);

@@ -11,7 +11,7 @@ class SplashScreenPrincipal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body:SplashScreenView(
-        navigateRoute: Login(),
+        navigateRoute: Score(100,200,300),
         duration: 5000,
         imageSize: 200,
         imageSrc: "assets/logoutn.png",
