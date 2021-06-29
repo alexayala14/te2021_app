@@ -92,16 +92,16 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
     );
 
 
-    fToast.showToast(
+  /*  fToast.showToast(
       child: toast,
       gravity: ToastGravity.BOTTOM,
       toastDuration: Duration(seconds: 2),
-    );
+    );*/
 
     // Custom Toast Position
     fToast.showToast(
         child: toast,
-        toastDuration: Duration(seconds: 2),
+        toastDuration: Duration(seconds: 5),
         positionedToastBuilder: (context, child) {
           return Positioned(
             child: child,

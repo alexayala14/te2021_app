@@ -5,6 +5,7 @@ class Score extends StatelessWidget{
  final int _counter;
  final int _counterOk;
  final int _counterNotOk;
+ final String _texto='Arte 2.0 es una plataforma pública diseñada para facilitar el aprendizaje\n\nsobre temas de historia del arte de manera online.\n\nNuestra misión es hacer que los estudiantes aprendan sobre obras de arte de un modo didáctico.\n\nCon claras herramientas de visualización de argumentos \n\ny una fácil e intuitiva navegación.\n\n Arte 2.0 es la solución perfecta para ayudar a los estudiantes\n\n a desarrollar sus habilidades de razonamiento.\n\nCon arte 2.0 los profesores pueden cargar preguntas e imágenes sobre el tema a desarrollar.\n\nEste software se creó en el año 2021 para la materia Tecnología Educativa \n\nde la carrera Ingeniería en Sistemas de Información\n\n de la Universidad Tecnológica Nacional – Facultad Regional Córdoba.\n\nCreadores del Software:\n\n\n•Alex Ayala\n\n• Ramiro Baudo\n\n• Gastón Moya';
 Score(this._counter,this._counterOk,this._counterNotOk);
 
 
@@ -55,7 +56,15 @@ Score(this._counter,this._counterOk,this._counterNotOk);
                SizedBox(width: 10),
                ElevatedButton(
                  onPressed: (){
+                  showAboutDialog(
+                      context: context,
+                      applicationName: 'Arte 2.0',
+                      applicationVersion: '2.0',
+                      applicationLegalese: '${_texto},',
 
+
+
+                  );
                  },//onPressed,
                  child: Text('Acerca de',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,),),
                  style: ElevatedButton.styleFrom(
