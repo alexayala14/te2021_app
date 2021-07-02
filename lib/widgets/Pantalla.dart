@@ -515,7 +515,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         backgroundColor: Colors.brown,
       ),
 
-      body:Center(
+      body:SafeArea(
+      child:Center(
 
         child:Container(
       /*height: double.infinity,
@@ -600,7 +601,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
               unselectedWidgetColor: Colors.black
           ),
           child:Expanded(child: ListTile(
-          title: Text('${_pintor1}',style: TextStyle(fontSize: 23,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,)/*,textAlign: TextAlign.center*/,),
+          title: Text('${_pintor1}',style: TextStyle(fontSize: 25,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,)/*,textAlign: TextAlign.center*/,),
           leading: /*CircleAvatar(
                 backgroundImage: AssetImage('assets/fondo1.jpg'),
                 radius: 50,
@@ -673,7 +674,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
               unselectedWidgetColor: Colors.black
           ),
           child: Expanded(child:ListTile(
-          title: Text('${_pintor2}',style: TextStyle(fontSize: 23,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),),
+          title: Text('${_pintor2}',style: TextStyle(fontSize: 25,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),),
           leading: Radio<SingingCharacter>(
             value: _character2,
             groupValue: _character,
@@ -727,7 +728,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
               unselectedWidgetColor: Colors.black
           ),
           child: Expanded(child:ListTile(
-          title: Text('${_pintor3}',style: TextStyle(fontSize: 23,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),),
+          title: Text('${_pintor3}',style: TextStyle(fontSize: 25,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),),
           leading: Radio<SingingCharacter>(
             value: _character3,
             groupValue: _character,
@@ -782,7 +783,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                 unselectedWidgetColor: Colors.black
             ),
             child: Expanded(child:ListTile(
-              title: Text('${_pintor4}',style: TextStyle(fontSize: 23,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),),
+              title: Text('${_pintor4}',style: TextStyle(fontSize: 25,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),),
               leading: Radio<SingingCharacter>(
                 value: _character4,
                 groupValue: _character,
@@ -989,6 +990,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
       ],
     ),
       ),
+    ),
     ),
     );
   }
