@@ -37,6 +37,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
   String _pintor3='Goya';
   String _pintor4='Miguel Angel Buonarroti';
   String _respuesta="";
+  String _descripcion="La creación de Adán";
+  String _pregunta="¿Que artista renacentista pinto la obra  ";
   SingingCharacter _character1=SingingCharacter.leonardo;
   SingingCharacter _character2=SingingCharacter.dali;
   SingingCharacter _character3=SingingCharacter.goya;
@@ -320,6 +322,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         _imagen2='assets/rafael.jpg';
         _imagen3='assets/dali.jpg';
         _imagen4='assets/goya.jpg';
+        _descripcion="Madonna Sixtina";
+        _pregunta="¿Que artista renacentista pinto la obra  ";
 
       }else if(_counterCicle==2){
         print("PASA POR EL CICLO ${_counterCicle}");
@@ -337,6 +341,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         _imagen2='assets/miguelangel.jpg';
         _imagen3='assets/goya.jpg';
         _imagen4='assets/rafael.jpg';
+        _descripcion="El nacimiento de Venus";
+        _pregunta="¿Que artista renacentista pinto la obra  ";
 
       }else if(_counterCicle==3){
         print("PASA POR EL CICLO ${_counterCicle}");
@@ -354,6 +360,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         _imagen2='assets/leonardo1.jpg';
         _imagen3='assets/tizziano.jpg';
         _imagen4='assets/goya.jpg';
+        _descripcion="Venus de Urbino";
+        _pregunta="¿Que artista renacentista pinto la obra  ";
       }else if(_counterCicle==4){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/torrebabelbruegel.jpg';
@@ -370,6 +378,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         _imagen2='assets/tizziano.jpg';
         _imagen3='assets/elviejo.jpg';
         _imagen4='assets/botticelli.jpg';
+        _descripcion="La Torre de Babel";
+        _pregunta="¿Que artista renacentista pinto la obra  ";
       }else if(_counterCicle==5){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/veronicagreco.jpg';
@@ -386,6 +396,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         _imagen2='assets/tizziano.jpg';
         _imagen3='assets/botticelli.jpg';
         _imagen4='assets/dali.jpg';
+        _descripcion="La Verónica";
+        _pregunta="¿Que artista renacentista pinto la obra  ";
       }else if(_counterCicle==6){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/elviejo.jpg';
@@ -402,6 +414,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         _imagen2='assets/adanevadurero.jpg';
         _imagen3='assets/torrebabelbruegel.jpg';
         _imagen4='assets/venusurbino.jpg';
+        _descripcion="Pieter Brueghel el Viejo";
+        _pregunta="¿Que obra pertenece al artista renacentista  ";
       }else if(_counterCicle==7){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/botticelli.jpg';
@@ -418,6 +432,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         _imagen2='assets/vistagreco.jpg';
         _imagen3='assets/virgenleonardo.jpg';
         _imagen4='assets/venus.jpg';
+        _descripcion="Sandro Botticelli";
+        _pregunta="¿Que obra pertenece al artista renacentista  ";
       }else if(_counterCicle==8){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/leonardo1.jpg';
@@ -434,6 +450,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         _imagen2='assets/madonna.jpg';
         _imagen3='assets/vistagreco.jpg';
         _imagen4='assets/adanevadurero.jpg';
+        _descripcion="Leonardo da vinci";
+        _pregunta="¿Que obra pertenece al artista renacentista  ";
       }else if(_counterCicle==9){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/miguelangel.jpg';
@@ -450,6 +468,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         _imagen2='assets/torrebabelbruegel.jpg';
         _imagen3='assets/mona.jpg';
         _imagen4='assets/creacion.jpg';
+        _descripcion="Miguel Angel Buonarroti";
+        _pregunta="¿Que obra pertenece al artista renacentista  ";
       }else if(_counterCicle==10){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/tizziano.jpg';
@@ -466,6 +486,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         _imagen2='assets/venusurbino.jpg';
         _imagen3='assets/veronicagreco.jpg';
         _imagen4='assets/vistagreco.jpg';
+        _descripcion="Tiziano Vecellio";
+        _pregunta="¿Que obra pertenece al artista renacentista  ";
         //_counterCicle=0;
       }else if(_counterCicle==11){
         print("PASA POR EL CICLO ${_counterCicle}");
@@ -539,6 +561,9 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
            ),
        )
     ),
+          Text("${_descripcion}",style: TextStyle(fontSize: 30,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),textAlign: TextAlign.center,),
+          SizedBox(height: 30),
+          Text("${_pregunta+_descripcion}?",style: TextStyle(fontSize: 45,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),textAlign: TextAlign.center,),
           SizedBox(height: 30),
           Text("Seleccione la opcion correcta",style: TextStyle(fontSize: 40,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),textAlign: TextAlign.center,),
           SizedBox(height: 40),
@@ -914,7 +939,23 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
           ),
           ),
           SizedBox(height: 30),
-      Container(
+          AnimatedBuilder(
+            animation: _animationController, builder: (BuildContext context,_) => Transform.translate(
+            //scale:scaleAnimation.value,
+            offset: Offset(translateAnimation.value,0),
+            //angle:2*pi + 0.1,
+            //angle: 0.01,
+            child:Transform(
+              transform: Matrix4.skewX(0),
+              alignment: Alignment.center,
+              /*transform: Matrix4.identity()
+            ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*/
+              child:PistaDisplay(pista:pista),
+
+            ),
+          ),
+          ),
+      /*Container(
             height: 100,
             width: 1500,
             alignment: Alignment.center,
@@ -923,9 +964,9 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
             decoration: BoxDecoration(
               color: Colors.brown,
              borderRadius: BorderRadius.circular(10),
-             /* image: DecorationImage(
+             *//* image: DecorationImage(
                   image: AssetImage('assets/roma.jpg'),fit: BoxFit.cover
-              ),*/
+              ),*//*
             ),
             child: AnimatedBuilder(
               animation: _animationController, builder: (BuildContext context,_) => Transform.translate(
@@ -936,14 +977,14 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
               child:Transform(
                 transform: Matrix4.skewX(0),
                 alignment: Alignment.center,
-          /*transform: Matrix4.identity()
-            ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*/
+          *//*transform: Matrix4.identity()
+            ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*//*
                 child:PistaDisplay(pista:pista),
 
     ),
             ),
             ),
-      ),
+      ),*/
          /*new Counter(),*/
       ],
     ),
