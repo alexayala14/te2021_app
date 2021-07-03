@@ -515,408 +515,500 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         backgroundColor: Colors.brown,
       ),
 
-      body:SafeArea(
-      child:Center(
+      body:LayoutBuilder(
+        builder: (_,BoxConstraints constraints) {
+          final size = constraints.maxWidth< constraints.maxHeight ? constraints.maxWidth:constraints.maxHeight;
+          print("EL VALOR ES: ${size}");
+         return Center(
 
-        child:Container(
-      /*height: double.infinity,
+            child: Container(
+              /*height: double.infinity,
       width: double.infinity,*/
-          alignment: Alignment.center,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/pergamino.jpg'),fit: BoxFit.cover
-          ),
-        ),
-      child:Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          SizedBox(height: 10),
-       AnimatedBuilder(
-           animation: _animationController, builder: (BuildContext context,_) => Transform.rotate(
-           //scale:scaleAnimation.value,
-         //offset: Offset(rotateAnimation.value,0),
-          //angle:2*pi + 0.1,
-         angle: 0.01,
-           child:Transform(
-             //transform: Matrix4.skewX(0),
-             alignment: Alignment.center,
-             transform: Matrix4.identity()
-               ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),
-           child: ClipOval(
-             /*decoration: BoxDecoration(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/pergamino.jpg'), fit: BoxFit.cover
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Spacer(),
+                      AnimatedBuilder(
+                          animation: _animationController,
+                          builder: (BuildContext context, _) =>
+                              Transform.rotate(
+                                //scale:scaleAnimation.value,
+                                //offset: Offset(rotateAnimation.value,0),
+                                //angle:2*pi + 0.1,
+                                angle: 0.01,
+                                child: Transform(
+                                  //transform: Matrix4.skewX(0),
+                                  alignment: Alignment.center,
+                                  transform: Matrix4.identity()
+                                    ..setEntry(3, 2, 0.001)
+                                    ..rotateY(rotateAnimation.value),
+                                  child: ClipOval(
+                                    /*decoration: BoxDecoration(
         color: Colors.black12,
         border: Border.all(),
         borderRadius: BorderRadius.circular(20),
-        *//*image: DecorationImage(
+        */ /*image: DecorationImage(
             image: AssetImage('${imagen}'),fit:BoxFit.cover,
-        ),*//*
+        ),*/ /*
       ),*/
-             child:  new Image.asset('${imagen}',
-               /*fit: _fit,*/
-               height: 275,
-               width: 275,
-               fit:BoxFit.fill,
+                                    child: new Image.asset('${imagen}',
+                                      /*fit: _fit,*/
+                                      height: size/3,
+                                      width: size/3,
+                                      fit: BoxFit.fill,
 
-             ),
-           ),
-           ),
-       )
-    ),
-          Text("${_descripcion}",style: TextStyle(fontSize: 30,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),textAlign: TextAlign.center,),
-          SizedBox(height: 30),
-          Text("${_pregunta+_descripcion}?",style: TextStyle(fontSize: 45,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),textAlign: TextAlign.center,),
-          SizedBox(height: 30),
-          Text("Seleccione la opcion correcta",style: TextStyle(fontSize: 40,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),textAlign: TextAlign.center,),
-          SizedBox(height: 40),
-      Center(
-        child:Container(
-        alignment: Alignment.center,
-        margin: EdgeInsets.all(50.0),
+                                    ),
+                                  ),
+                                ),
+                              )
+                      ),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: AnimatedBuilder(
+                            animation: _animationController,
+                            builder: (BuildContext context, _) =>
+                                Transform.scale(
+                                  scale: scaleAnimation.value,
+                                  //offset: Offset(rotateAnimation.value,0),
+                                  //angle:2*pi + 0.1,
+                                  //angle: 0.01,
+                                  child: Transform(
+                                    transform: Matrix4.skewX(0),
+                                    /*alignment: Alignment.center,
+                transform: Matrix4.identity()
+                  ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*/
+                                    //alignment: Alignment.centerRight,
+                                    child: CounterDisplay(count: _counter),
+                                  ),
+                                ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 50),
+                    ],
+                  ),
+                  Text("${_descripcion}", style: TextStyle(fontSize: 30,
+                    color: Colors.black.withOpacity(0.6),
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic,),
+                    textAlign: TextAlign.center,),
+                  SizedBox(height: 30),
+                  Text("${_pregunta + _descripcion}?", style: TextStyle(
+                    fontSize: 45,
+                    color: Colors.black.withOpacity(0.6),
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic,),
+                    textAlign: TextAlign.center,),
+                  SizedBox(height: 30),
+                  Text("Seleccione la opcion correcta", style: TextStyle(
+                    fontSize: 40,
+                    color: Colors.black.withOpacity(0.6),
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic,),
+                    textAlign: TextAlign.center,),
+                  SizedBox(height: 40),
+                  Center(
+                    child: Container(
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.all(50.0),
 
-        child:Row(
-            mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
 
-        children:<Widget>[
-          AnimatedBuilder(
-            animation: _animationController, builder: (BuildContext context,_) => Transform.rotate(
-            //scale:scaleAnimation.value,
-            //offset: Offset(rotateAnimation.value,0),
-            //angle:2*pi + 0.1,
-            angle: 0.01,
-            child:Transform(
-              //transform: Matrix4.skewX(0),
-              alignment: Alignment.center,
-              transform: Matrix4.identity()
-                ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),
-              child:CircleAvatar(
-            backgroundImage: AssetImage('${_imagen1}'),
-            radius: 50,
-          ),
-            ),
-        ),
-          ),
-          Theme(
-          data: ThemeData(
-              unselectedWidgetColor: Colors.black
-          ),
-          child:Expanded(child: ListTile(
-          title: Text('${_pintor1}',style: TextStyle(fontSize: 25,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,)/*,textAlign: TextAlign.center*/,),
-          leading: /*CircleAvatar(
+                        children: <Widget>[
+                          AnimatedBuilder(
+                            animation: _animationController,
+                            builder: (BuildContext context, _) =>
+                                Transform.rotate(
+                                  //scale:scaleAnimation.value,
+                                  //offset: Offset(rotateAnimation.value,0),
+                                  //angle:2*pi + 0.1,
+                                  angle: 0.01,
+                                  child: Transform(
+                                    //transform: Matrix4.skewX(0),
+                                    alignment: Alignment.center,
+                                    transform: Matrix4.identity()
+                                      ..setEntry(3, 2, 0.001)
+                                      ..rotateY(rotateAnimation.value),
+                                    child: CircleAvatar(
+                                      backgroundImage: AssetImage(
+                                          '${_imagen1}'),
+                                      radius: 70,
+                                    ),
+                                  ),
+                                ),
+                          ),
+                          Theme(
+                            data: ThemeData(
+                                unselectedWidgetColor: Colors.black
+                            ),
+                            child: Expanded(child: ListTile(
+                              title: Text('${_pintor1}', style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.black.withOpacity(0.6),
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle
+                                    .italic,) /*,textAlign: TextAlign.center*/,),
+                              leading: /*CircleAvatar(
                 backgroundImage: AssetImage('assets/fondo1.jpg'),
                 radius: 50,
               ),*/
-              Radio<SingingCharacter>(
-            value: _character1,
-            groupValue: _character,
-            toggleable: true,
-            autofocus: false,
+                              Radio<SingingCharacter>(
+                                value: _character1,
+                                groupValue: _character,
+                                toggleable: true,
+                                autofocus: false,
 
-            onChanged: (SingingCharacter? value) {
-              setState(() {
-                _animationController.reset();
-                /*_animationController1.reset();
+                                onChanged: (SingingCharacter? value) {
+                                  setState(() {
+                                    _animationController.reset();
+                                    /*_animationController1.reset();
                 _animationController2.reset();*/
-                _character = value;
-                print("es el valor${value}");
-                if(_characterVerdadero==value){
-                  bandera=true;
-                  /*CounterIncrementor(onPressed: _increment);
+                                    _character = value;
+                                    print("es el valor${value}");
+                                    if (_characterVerdadero == value) {
+                                      bandera = true;
+                                      /*CounterIncrementor(onPressed: _increment);
                   CounterDisplay(count: _counter);*/
-                  respuestaOk=true;
-                  print("EL VALOR DE LA BANDERA ES${bandera}");
-                  print("El contador tiene: ${_counter}");
-                  bandera=false;
+                                      respuestaOk = true;
+                                      print(
+                                          "EL VALOR DE LA BANDERA ES${bandera}");
+                                      print("El contador tiene: ${_counter}");
+                                      bandera = false;
+                                    }
+                                    else {
+                                      print(
+                                          "EL VALOR DE LA BANDERA ES${bandera}");
+                                      respuestaOk = false;
+                                    }
+                                  });
+                                },
+                                activeColor: Colors.green,
+                                //toggleable: true,
+                              ),
+                              //     CircleAvatar(
+                              //     backgroundImage: AssetImage('assets/fondo1.jpg'),
+                              //   ),
+                              //   ],
+                              // ),
+                              //),
 
-                }
-                else{
-                  print("EL VALOR DE LA BANDERA ES${bandera}");
-                  respuestaOk=false;
-                }
-
-
-
-              });
-            },
-            activeColor: Colors.green,
-            //toggleable: true,
-          ),
-          //     CircleAvatar(
-          //     backgroundImage: AssetImage('assets/fondo1.jpg'),
-          //   ),
-          //   ],
-          // ),
-        //),
-
-        ),
-          ),
-          ),
-          AnimatedBuilder(
-            animation: _animationController, builder: (BuildContext context,_) => Transform.rotate(
-            //scale:scaleAnimation.value,
-            //offset: Offset(rotateAnimation.value,0),
-            //angle:2*pi + 0.1,
-            angle: 0.01,
-            child:Transform(
-              //transform: Matrix4.skewX(0),
-              alignment: Alignment.center,
-              transform: Matrix4.identity()
-                ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),
-              child:CircleAvatar(
-            backgroundImage: AssetImage('${_imagen2}'),
-            radius: 50,
-          ),
-            ),
-          ),
-          ),
-        Theme(
-          data: ThemeData(
-              unselectedWidgetColor: Colors.black
-          ),
-          child: Expanded(child:ListTile(
-          title: Text('${_pintor2}',style: TextStyle(fontSize: 25,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),),
-          leading: Radio<SingingCharacter>(
-            value: _character2,
-            groupValue: _character,
-            toggleable: true,
-            autofocus: false,
-            onChanged: (SingingCharacter? value) {
-              setState(() {
-                _animationController.reset();
-                /*_animationController1.reset();
+                            ),
+                            ),
+                          ),
+                          AnimatedBuilder(
+                            animation: _animationController,
+                            builder: (BuildContext context, _) =>
+                                Transform.rotate(
+                                  //scale:scaleAnimation.value,
+                                  //offset: Offset(rotateAnimation.value,0),
+                                  //angle:2*pi + 0.1,
+                                  angle: 0.01,
+                                  child: Transform(
+                                    //transform: Matrix4.skewX(0),
+                                    alignment: Alignment.center,
+                                    transform: Matrix4.identity()
+                                      ..setEntry(3, 2, 0.001)
+                                      ..rotateY(rotateAnimation.value),
+                                    child: CircleAvatar(
+                                      backgroundImage: AssetImage(
+                                          '${_imagen2}'),
+                                      radius: 70,
+                                    ),
+                                  ),
+                                ),
+                          ),
+                          Theme(
+                            data: ThemeData(
+                                unselectedWidgetColor: Colors.black
+                            ),
+                            child: Expanded(child: ListTile(
+                              title: Text('${_pintor2}', style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.black.withOpacity(0.6),
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,),),
+                              leading: Radio<SingingCharacter>(
+                                value: _character2,
+                                groupValue: _character,
+                                toggleable: true,
+                                autofocus: false,
+                                onChanged: (SingingCharacter? value) {
+                                  setState(() {
+                                    _animationController.reset();
+                                    /*_animationController1.reset();
                 _animationController2.reset();*/
-                _character = value;
-                print("es el valor${value}");
-                if(_characterVerdadero==value){
-                  bandera=true;
-                  respuestaOk=true;
-                  print("EL VALOR DE LA BANDERA ES${bandera}");
-                  bandera=false;
-                }
-                else{
-                  print("EL VALOR DE LA BANDERA ES${bandera}");
-                  respuestaOk=false;
-                }
-              });
-            },
-            activeColor: Colors.green,
-            //toggleable: true,
-          ),
-        ),
-          ),
-        ),
-          AnimatedBuilder(
-            animation: _animationController, builder: (BuildContext context,_) => Transform.rotate(
-            //scale:scaleAnimation.value,
-            //offset: Offset(rotateAnimation.value,0),
-            //angle:2*pi + 0.1,
-            angle: 0.01,
-            child:Transform(
-              //transform: Matrix4.skewX(0),
-              alignment: Alignment.center,
-              transform: Matrix4.identity()
-                ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),
-              child:CircleAvatar(
-            backgroundImage: AssetImage('${_imagen3}'),
-            radius: 50,
-          ),
-            ),
-          ),
-          ),
-        Theme(
-          data: ThemeData(
-              unselectedWidgetColor: Colors.black
-          ),
-          child: Expanded(child:ListTile(
-          title: Text('${_pintor3}',style: TextStyle(fontSize: 25,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),),
-          leading: Radio<SingingCharacter>(
-            value: _character3,
-            groupValue: _character,
-            toggleable: true,
-            autofocus: false,
-            onChanged: (SingingCharacter? value) {
-              setState(() {
-                _animationController.reset();
-               /* _animationController1.reset();
+                                    _character = value;
+                                    print("es el valor${value}");
+                                    if (_characterVerdadero == value) {
+                                      bandera = true;
+                                      respuestaOk = true;
+                                      print(
+                                          "EL VALOR DE LA BANDERA ES${bandera}");
+                                      bandera = false;
+                                    }
+                                    else {
+                                      print(
+                                          "EL VALOR DE LA BANDERA ES${bandera}");
+                                      respuestaOk = false;
+                                    }
+                                  });
+                                },
+                                activeColor: Colors.green,
+                                //toggleable: true,
+                              ),
+                            ),
+                            ),
+                          ),
+                          AnimatedBuilder(
+                            animation: _animationController,
+                            builder: (BuildContext context, _) =>
+                                Transform.rotate(
+                                  //scale:scaleAnimation.value,
+                                  //offset: Offset(rotateAnimation.value,0),
+                                  //angle:2*pi + 0.1,
+                                  angle: 0.01,
+                                  child: Transform(
+                                    //transform: Matrix4.skewX(0),
+                                    alignment: Alignment.center,
+                                    transform: Matrix4.identity()
+                                      ..setEntry(3, 2, 0.001)
+                                      ..rotateY(rotateAnimation.value),
+                                    child: CircleAvatar(
+                                      backgroundImage: AssetImage(
+                                          '${_imagen3}'),
+                                      radius: 70,
+                                    ),
+                                  ),
+                                ),
+                          ),
+                          Theme(
+                            data: ThemeData(
+                                unselectedWidgetColor: Colors.black
+                            ),
+                            child: Expanded(child: ListTile(
+                              title: Text('${_pintor3}', style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.black.withOpacity(0.6),
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,),),
+                              leading: Radio<SingingCharacter>(
+                                value: _character3,
+                                groupValue: _character,
+                                toggleable: true,
+                                autofocus: false,
+                                onChanged: (SingingCharacter? value) {
+                                  setState(() {
+                                    _animationController.reset();
+                                    /* _animationController1.reset();
                 _animationController2.reset();*/
-                _character = value;
-                print("es el valor${value}");
-                if(_characterVerdadero==value){
-                  bandera=true;
-                  respuestaOk=true;
-                  print("EL VALOR DE LA BANDERA ES${bandera}");
-                  bandera=false;
-
-                }
-                else{
-                  print("EL VALOR DE LA BANDERA ES${bandera}");
-                  respuestaOk=false;
-                }
-              });
-            },
-            activeColor: Colors.green,
-            //toggleable: true,
-          ),
-        ),
-        ),
-        ),
-          AnimatedBuilder(
-            animation: _animationController, builder: (BuildContext context,_) => Transform.rotate(
-            //scale:scaleAnimation.value,
-            //offset: Offset(rotateAnimation.value,0),
-            //angle:2*pi + 0.1,
-            angle: 0.01,
-            child:Transform(
-              //transform: Matrix4.skewX(0),
-              alignment: Alignment.center,
-              transform: Matrix4.identity()
-                ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),
-              child:CircleAvatar(
-            backgroundImage: AssetImage('${_imagen4}'),
-            radius: 50,
-          ),
-            ),
-          ),
-          ),
-          Theme(
-            data: ThemeData(
-                unselectedWidgetColor: Colors.black
-            ),
-            child: Expanded(child:ListTile(
-              title: Text('${_pintor4}',style: TextStyle(fontSize: 25,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),),
-              leading: Radio<SingingCharacter>(
-                value: _character4,
-                groupValue: _character,
-                toggleable: true,
-                autofocus: false,
-                onChanged: (SingingCharacter? value) {
-                  setState(() {
-                    _animationController.reset();
-                    /*_animationController2.reset();
+                                    _character = value;
+                                    print("es el valor${value}");
+                                    if (_characterVerdadero == value) {
+                                      bandera = true;
+                                      respuestaOk = true;
+                                      print(
+                                          "EL VALOR DE LA BANDERA ES${bandera}");
+                                      bandera = false;
+                                    }
+                                    else {
+                                      print(
+                                          "EL VALOR DE LA BANDERA ES${bandera}");
+                                      respuestaOk = false;
+                                    }
+                                  });
+                                },
+                                activeColor: Colors.green,
+                                //toggleable: true,
+                              ),
+                            ),
+                            ),
+                          ),
+                          AnimatedBuilder(
+                            animation: _animationController,
+                            builder: (BuildContext context, _) =>
+                                Transform.rotate(
+                                  //scale:scaleAnimation.value,
+                                  //offset: Offset(rotateAnimation.value,0),
+                                  //angle:2*pi + 0.1,
+                                  angle: 0.01,
+                                  child: Transform(
+                                    //transform: Matrix4.skewX(0),
+                                    alignment: Alignment.center,
+                                    transform: Matrix4.identity()
+                                      ..setEntry(3, 2, 0.001)
+                                      ..rotateY(rotateAnimation.value),
+                                    child: CircleAvatar(
+                                      backgroundImage: AssetImage(
+                                          '${_imagen4}'),
+                                      radius: 70,
+                                    ),
+                                  ),
+                                ),
+                          ),
+                          Theme(
+                            data: ThemeData(
+                                unselectedWidgetColor: Colors.black
+                            ),
+                            child: Expanded(child: ListTile(
+                              title: Text('${_pintor4}', style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.black.withOpacity(0.6),
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,),),
+                              leading: Radio<SingingCharacter>(
+                                value: _character4,
+                                groupValue: _character,
+                                toggleable: true,
+                                autofocus: false,
+                                onChanged: (SingingCharacter? value) {
+                                  setState(() {
+                                    _animationController.reset();
+                                    /*_animationController2.reset();
                     _animationController1.reset();*/
-                    _character = value;
-                    print("es el valor${value}");
-                    if(_characterVerdadero==value){
-                      bandera=true;
-                      respuestaOk=true;
-                      print("EL VALOR DE LA BANDERA ES${bandera}");
-                      bandera=false;
+                                    _character = value;
+                                    print("es el valor${value}");
+                                    if (_characterVerdadero == value) {
+                                      bandera = true;
+                                      respuestaOk = true;
+                                      print(
+                                          "EL VALOR DE LA BANDERA ES${bandera}");
+                                      bandera = false;
+                                    }
+                                    else {
+                                      print(
+                                          "EL VALOR DE LA BANDERA ES${bandera}");
+                                      respuestaOk = false;
+                                    }
+                                  });
+                                },
+                                activeColor: Colors.green,
+                                //toggleable: true,
+                              ),
+                            ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 50),
+                  Center(
 
-                    }
-                    else{
-                      print("EL VALOR DE LA BANDERA ES${bandera}");
-                      respuestaOk=false;
-                    }
-                  });
-                },
-                activeColor: Colors.green,
-                //toggleable: true,
-              ),
-            ),
-            ),
-          ),
-          ],
-        ),
-      ),
-        ),
-          SizedBox(height: 50),
-          Center(
-
-            child: Table(
-              /*defaultVerticalAlignment: ,*/
-              children:[
-                TableRow(
-          children:[
-            SizedBox(width: 30),
-        ElevatedButton(
-          onPressed: (){
-            setState(() {
-              if(bandera==true){
-                banderaPista=true;
-                _changePista();
-                //_animationController2.forward();
-                //_animationController1.forward();
-              _decrement();
-              bandera=false;
-              }
-              /*if(_counterCicle==0){
+                    child: Table(
+                      /*defaultVerticalAlignment: ,*/
+                      children: [
+                        TableRow(
+                          children: [
+                            SizedBox(width: 30),
+                            ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  if (bandera == true) {
+                                    banderaPista = true;
+                                    _changePista();
+                                    //_animationController2.forward();
+                                    //_animationController1.forward();
+                                    _decrement();
+                                    bandera = false;
+                                  }
+                                  /*if(_counterCicle==0){
                 pista="El pintor pertenece al rencimiento, nacio en 1775";
               }*/
 
-            });
-          },//onPressed,
-          child: Text('Pista',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,),),
-          style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.all(15.0),
-            minimumSize: Size(30.0,30.0),
-          ),
-        ),
-            SizedBox(width: 30),
-          ElevatedButton(
-            onPressed: (){
-              setState(() {
-                /*_incrementCicle();*/
-                //_changeCicle();
-                //banderaPista=false;
-                //_changePista();
-                if(_character!=SingingCharacter.verdadero) {
-                  bandera = true;
-                  if (_counterCicle < 10) {
-                    if (respuestaOk == true) {
-                      player.play('rueda.mp3');
-                      _increment();
-                      _incrementCicle();
-                      _changeCicle();
-                      _changePista();
-                      _incrementCounterOk();
-                      //_animationController1.forward();
-                      _animationController.forward();
-                      //_animationController.reset();
-                      //Navigator.of(context).pushNamed('/screen');
-                      respuestaOk = false;
-                      _counterRespuesta = 0;
-                    }
-                    else {
-                      _incrementRespuesta();
-                      if (_counterRespuesta <= 2) {
-                        banderaPista = true;
-                        _decrement();
-                        print('la respuesta esss:${_counterRespuesta}');
-                        _changePista();
-                      } else {
-                        player.play('rueda.mp3');
-                        _incrementCicle();
-                        _changeCicle();
-                        _changePista();
-                        _incrementCounterNotOk();
-                        _counterRespuesta = 0;
-                        _animationController.forward();
-                        _showToast();
-                      }
-                    }
-                  }else {
-                   // Navigator.of(context).pushNamed('/score');
-                    Navigator.push(
-                        context,
-                        new MaterialPageRoute(
-                            builder: (context) => Score(_counter,_counterOk,_counterNotOk)));
-                  }
-                }
-                else{
-                  pista="Seleccione una opcion para continuar";
-                }
+                                });
+                              }, //onPressed,
+                              child: Text('Pista', style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold,),),
+                              style: ElevatedButton.styleFrom(
+                                padding: EdgeInsets.all(15.0),
+                                minimumSize: Size(30.0, 30.0),
+                              ),
+                            ),
+                            SizedBox(width: 30),
+                            ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  /*_incrementCicle();*/
+                                  //_changeCicle();
+                                  //banderaPista=false;
+                                  //_changePista();
+                                  if (_character !=
+                                      SingingCharacter.verdadero) {
+                                    bandera = true;
+                                    if (_counterCicle < 10) {
+                                      if (respuestaOk == true) {
+                                        player.play('rueda.mp3');
+                                        _increment();
+                                        _incrementCicle();
+                                        _changeCicle();
+                                        _changePista();
+                                        _incrementCounterOk();
+                                        //_animationController1.forward();
+                                        _animationController.forward();
+                                        //_animationController.reset();
+                                        //Navigator.of(context).pushNamed('/screen');
+                                        respuestaOk = false;
+                                        _counterRespuesta = 0;
+                                      }
+                                      else {
+                                        _incrementRespuesta();
+                                        if (_counterRespuesta <= 2) {
+                                          banderaPista = true;
+                                          _decrement();
+                                          print(
+                                              'la respuesta esss:${_counterRespuesta}');
+                                          _changePista();
+                                        } else {
+                                          player.play('rueda.mp3');
+                                          _incrementCicle();
+                                          _changeCicle();
+                                          _changePista();
+                                          _incrementCounterNotOk();
+                                          _counterRespuesta = 0;
+                                          _animationController.forward();
+                                          _showToast();
+                                        }
+                                      }
+                                    } else {
+                                      // Navigator.of(context).pushNamed('/score');
+                                      Navigator.push(
+                                          context,
+                                          new MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Score(_counter, _counterOk,
+                                                      _counterNotOk)));
+                                    }
+                                  }
+                                  else {
+                                    pista =
+                                    "Seleccione una opcion para continuar";
+                                  }
+                                });
+                              }, //onPressed,
+                              child: Text('Siguiente', style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold,),
+                                textAlign: TextAlign.center,),
+                              style: ElevatedButton.styleFrom(
+                                padding: EdgeInsets.all(15.0),
+                                minimumSize: Size(30.0, 30.0),
+                              ),
 
-              });
-            },//onPressed,
-            child: Text('Siguiente',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,),textAlign: TextAlign.center,),
-            style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.all(15.0),
-              minimumSize: Size(30.0,30.0),
-            ),
-
-          ),
-            SizedBox(width: 50),
-            AnimatedBuilder(
+                            ),
+                            SizedBox(width: 50),
+                            /* AnimatedBuilder(
               animation: _animationController, builder: (BuildContext context,_) => Transform.scale(
               scale:scaleAnimation.value,
               //offset: Offset(rotateAnimation.value,0),
@@ -924,39 +1016,41 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
               //angle: 0.01,
               child:Transform(
                 transform: Matrix4.skewX(0),
-                /*alignment: Alignment.center,
+                */ /*alignment: Alignment.center,
                 transform: Matrix4.identity()
-                  ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*/
+                  ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*/ /*
                 child:CounterDisplay(count: _counter),
               ),
             ),
-            ),
-            SizedBox(width: 30),
-            SizedBox(height: 30),
+            ),*/
+                            SizedBox(width: 30),
+                            SizedBox(height: 30),
 
-         ],
-                ),
-         ],
-          ),
-          ),
-          SizedBox(height: 30),
-          AnimatedBuilder(
-            animation: _animationController, builder: (BuildContext context,_) => Transform.translate(
-            //scale:scaleAnimation.value,
-            offset: Offset(translateAnimation.value,0),
-            //angle:2*pi + 0.1,
-            //angle: 0.01,
-            child:Transform(
-              transform: Matrix4.skewX(0),
-              alignment: Alignment.center,
-              /*transform: Matrix4.identity()
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  AnimatedBuilder(
+                    animation: _animationController,
+                    builder: (BuildContext context, _) =>
+                        Transform.translate(
+                          //scale:scaleAnimation.value,
+                          offset: Offset(translateAnimation.value, 0),
+                          //angle:2*pi + 0.1,
+                          //angle: 0.01,
+                          child: Transform(
+                            transform: Matrix4.skewX(0),
+                            alignment: Alignment.center,
+                            /*transform: Matrix4.identity()
             ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*/
-              child:PistaDisplay(pista:pista),
+                            child: PistaDisplay(pista: pista),
 
-            ),
-          ),
-          ),
-      /*Container(
+                          ),
+                        ),
+                  ),
+                  /*Container(
             height: 100,
             width: 1500,
             alignment: Alignment.center,
@@ -965,9 +1059,9 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
             decoration: BoxDecoration(
               color: Colors.brown,
              borderRadius: BorderRadius.circular(10),
-             *//* image: DecorationImage(
+             */ /* image: DecorationImage(
                   image: AssetImage('assets/roma.jpg'),fit: BoxFit.cover
-              ),*//*
+              ),*/ /*
             ),
             child: AnimatedBuilder(
               animation: _animationController, builder: (BuildContext context,_) => Transform.translate(
@@ -978,19 +1072,20 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
               child:Transform(
                 transform: Matrix4.skewX(0),
                 alignment: Alignment.center,
-          *//*transform: Matrix4.identity()
-            ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*//*
+          */ /*transform: Matrix4.identity()
+            ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*/ /*
                 child:PistaDisplay(pista:pista),
 
     ),
             ),
             ),
       ),*/
-         /*new Counter(),*/
-      ],
-    ),
-      ),
-    ),
+                  /*new Counter(),*/
+                ],
+              ),
+            ),
+          );
+        }
     ),
     );
   }
