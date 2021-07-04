@@ -1,5 +1,6 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
+//import 'package:te2021_app/widgets/PantallaInicio.dart';
 import 'package:te2021_app/widgets/AcercaDe.dart';
 import 'package:te2021_app/widgets/Galeria.dart';
 import 'package:te2021_app/widgets/MenuJuegos.dart';
@@ -11,6 +12,7 @@ import 'package:te2021_app/widgets/Tutorial.dart';
 import 'package:te2021_app/widgets/Carmen.dart';
 import 'package:te2021_app/widgets/Mapa.dart';
 import 'package:te2021_app/widgets/Pantalla.dart';
+//import 'package:te2021_app/widgets/PantallaInicio.dart';
 import 'package:te2021_app/widgets/Login.dart';
 import 'package:te2021_app/widgets/SplashScreen.dart';
 import 'package:te2021_app/widgets/SplashScreenPrincipal.dart';
@@ -31,6 +33,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.brown,
         backgroundColor: Colors.red,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
 
       routes: {
@@ -46,6 +49,7 @@ class MyApp extends StatelessWidget {
         //'/pregunta':(context) => Pregunta(),
         '/counterDisplay':(context) => Counter(),
         '/pantalla':(context) => Pantalla(),
+        //'/pantallainicio':(context) => PantallaInicio(),
         '/respuesta':(context) => Respuesta(),
         '/screen':(context) => SplashScreen(),
         //'/score':(context) => Score(parametro),

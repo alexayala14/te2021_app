@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/material/text_form_field.dart';
+import 'package:te2021_app/widgets/PantallaInicio.dart';
 
 class Login extends StatefulWidget {
+
   @override
   LoginState createState() {
     return LoginState();
   }
 }
+
 
 // Create a corresponding State class.
 // This class holds data related to the form.
@@ -17,7 +20,13 @@ class LoginState extends State<Login> {
   // Note: This is a GlobalKey<FormState>,
   // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
-
+  final myController = TextEditingController();
+  @override
+  void dispose() {
+    // Limpia el controlador cuando el Widget se descarte
+    myController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
@@ -51,6 +60,7 @@ class LoginState extends State<Login> {
           Text('Usuario',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30,),),
           TextFormField(
             maxLength: 30,
+            controller: myController,
             style: TextStyle(fontSize: 20,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),
             textAlign: TextAlign.center,
 
@@ -88,8 +98,13 @@ class LoginState extends State<Login> {
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text('Processing Data')));
                   //Navigator.of(context).pushNamed('/menuPrincipal');
-                  Navigator.of(context).pushNamed('/pantalla');
-
+                  //Navigator.of(context).pushNamed('/pantalla');
+                  //Navigator.of(context).pushNamed('/pantallainicio');
+                  Navigator.push(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) =>
+                              PantallaInicio(myController.text.toString())));
                   //Navigator.of(context).pushNamed('/screen');
                 }
               },

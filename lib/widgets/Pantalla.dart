@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:te2021_app/widgets/Pregunta.dart';
 import 'package:te2021_app/widgets/Pista.dart';
 import 'package:te2021_app/widgets/Score.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 enum SingingCharacter { verdadero,leonardo, dali, goya,falso,greco,boticelli,brueghel,tiziano,miguel,giovanni,rafael }
 
 class Pantalla extends StatefulWidget {
@@ -519,11 +520,14 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         builder: (_,BoxConstraints constraints) {
           final size = constraints.maxWidth< constraints.maxHeight ? constraints.maxWidth:constraints.maxHeight;
           print("EL VALOR ES: ${size}");
+          print("EL VALOR ES: ${size/8}");
          return Center(
 
             child: Container(
               /*height: double.infinity,
       width: double.infinity,*/
+              height:1000,
+              width: double.maxFinite,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -645,7 +649,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                     child: CircleAvatar(
                                       backgroundImage: AssetImage(
                                           '${_imagen1}'),
-                                      radius: 70,
+                                      radius: size/13,
                                     ),
                                   ),
                                 ),
@@ -655,12 +659,12 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                 unselectedWidgetColor: Colors.black
                             ),
                             child: Expanded(child: ListTile(
-                              title: Text('${_pintor1}', style: TextStyle(
-                                fontSize: 30,
+                              title: AutoSizeText('${_pintor1}', style: TextStyle(
+                                fontSize: 25,
                                 color: Colors.black.withOpacity(0.6),
                                 fontWeight: FontWeight.bold,
                                 fontStyle: FontStyle
-                                    .italic,) /*,textAlign: TextAlign.center*/,),
+                                    .italic,) /*,textAlign: TextAlign.center*/,maxLines: 4,),
                               leading: /*CircleAvatar(
                 backgroundImage: AssetImage('assets/fondo1.jpg'),
                 radius: 50,
@@ -725,7 +729,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                     child: CircleAvatar(
                                       backgroundImage: AssetImage(
                                           '${_imagen2}'),
-                                      radius: 70,
+                                      radius: size/13,
                                     ),
                                   ),
                                 ),
@@ -735,11 +739,11 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                 unselectedWidgetColor: Colors.black
                             ),
                             child: Expanded(child: ListTile(
-                              title: Text('${_pintor2}', style: TextStyle(
-                                fontSize: 30,
+                              title: AutoSizeText('${_pintor2}', style: TextStyle(
+                                fontSize: 25,
                                 color: Colors.black.withOpacity(0.6),
                                 fontWeight: FontWeight.bold,
-                                fontStyle: FontStyle.italic,),),
+                                fontStyle: FontStyle.italic,),maxLines: 4,),
                               leading: Radio<SingingCharacter>(
                                 value: _character2,
                                 groupValue: _character,
@@ -789,7 +793,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                     child: CircleAvatar(
                                       backgroundImage: AssetImage(
                                           '${_imagen3}'),
-                                      radius: 70,
+                                      radius: size/13,
                                     ),
                                   ),
                                 ),
@@ -799,11 +803,11 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                 unselectedWidgetColor: Colors.black
                             ),
                             child: Expanded(child: ListTile(
-                              title: Text('${_pintor3}', style: TextStyle(
-                                fontSize: 30,
+                              title: AutoSizeText('${_pintor3}', style: TextStyle(
+                                fontSize: 25,
                                 color: Colors.black.withOpacity(0.6),
                                 fontWeight: FontWeight.bold,
-                                fontStyle: FontStyle.italic,),),
+                                fontStyle: FontStyle.italic,),maxLines: 4,),
                               leading: Radio<SingingCharacter>(
                                 value: _character3,
                                 groupValue: _character,
@@ -853,7 +857,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                     child: CircleAvatar(
                                       backgroundImage: AssetImage(
                                           '${_imagen4}'),
-                                      radius: 70,
+                                      radius: size/13,
                                     ),
                                   ),
                                 ),
@@ -863,11 +867,11 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                 unselectedWidgetColor: Colors.black
                             ),
                             child: Expanded(child: ListTile(
-                              title: Text('${_pintor4}', style: TextStyle(
-                                fontSize: 30,
+                              title: AutoSizeText('${_pintor4}', style: TextStyle(
+                                fontSize: 25,
                                 color: Colors.black.withOpacity(0.6),
                                 fontWeight: FontWeight.bold,
-                                fontStyle: FontStyle.italic,),),
+                                fontStyle: FontStyle.italic,),maxLines: 4,),
                               leading: Radio<SingingCharacter>(
                                 value: _character4,
                                 groupValue: _character,
@@ -904,7 +908,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                       ),
                     ),
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: size/17),
                   Center(
 
                     child: Table(
@@ -912,7 +916,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                       children: [
                         TableRow(
                           children: [
-                            SizedBox(width: 30),
+                            SizedBox(width: size/17),
                             ElevatedButton(
                               onPressed: () {
                                 setState(() {
@@ -937,7 +941,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                 minimumSize: Size(30.0, 30.0),
                               ),
                             ),
-                            SizedBox(width: 30),
+                            SizedBox(width: size/17),
                             ElevatedButton(
                               onPressed: () {
                                 setState(() {
@@ -1007,7 +1011,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                               ),
 
                             ),
-                            SizedBox(width: 50),
+                            SizedBox(width: size/17),
                             /* AnimatedBuilder(
               animation: _animationController, builder: (BuildContext context,_) => Transform.scale(
               scale:scaleAnimation.value,
@@ -1023,15 +1027,15 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
               ),
             ),
             ),*/
-                            SizedBox(width: 30),
-                            SizedBox(height: 30),
+                            SizedBox(width: size/17),
+                            SizedBox(height: size/17),
 
                           ],
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: size/17),
                   AnimatedBuilder(
                     animation: _animationController,
                     builder: (BuildContext context, _) =>
