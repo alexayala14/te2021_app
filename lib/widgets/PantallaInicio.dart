@@ -48,7 +48,7 @@ class _PantallaInicioState extends State<PantallaInicio> {
         backgroundColor: Colors.blueGrey.shade900.withOpacity(_opacity),
         elevation: 0,
         title: Text(
-          'EXPLORE',
+          'Arte 2.0',
           style: TextStyle(
             color: Colors.blueGrey.shade100,
             fontSize: 20,
@@ -70,16 +70,16 @@ class _PantallaInicioState extends State<PantallaInicio> {
           children: [
             Stack(
               children: [
-                /*Container(
+                Container(
                   child: SizedBox(
-                    height: screenSize.height * 0.45,
+                    height: screenSize.height,
                     width: screenSize.width,
                     child: Image.asset(
-                      'assets/images/cover.jpg',
+                      'assets/pergamino.jpg',
                       fit: BoxFit.cover,
                     ),
                   ),
-                ),*/
+                ),
                 Column(
                   children: [
                     FloatingQuickAccessBar(screenSize: screenSize),

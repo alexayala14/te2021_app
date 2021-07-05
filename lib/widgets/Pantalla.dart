@@ -2,7 +2,7 @@ import 'dart:html';
 import 'dart:io';
 import 'dart:math';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:audioplayers/audioplayers.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -23,6 +23,7 @@ class Pantalla extends StatefulWidget {
 class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin {
   SingingCharacter? _character = SingingCharacter.verdadero;
   bool bandera=true;
+  bool banderasonido=false;
   int _counter=0;
   String pista= "Necesita ayuda? Presione el boton de pista.";
   String imagen='assets/creacion.jpg';
@@ -50,13 +51,14 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
   String _imagen2='assets/dali.jpg';
   String _imagen3='assets/goya.jpg';
   String _imagen4='assets/miguelangel.jpg';
+  IconData iconosonido= Icons.volume_off_outlined;
   late AnimationController _animationController;
   /*late AnimationController _animationController1;
   late AnimationController _animationController2;*/
   late Animation <double> scaleAnimation;
   late Animation <double> translateAnimation;
   late Animation <double> rotateAnimation;
-  final player = AudioCache();
+  final player = AudioPlayer();
   late FToast fToast;
   /*late AudioCache cache; // you have this
   late AudioPlayer player; // create this*/
@@ -499,7 +501,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         onPressed:() {
       //Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: BuildContext context), (route) => false);
 
@@ -514,7 +516,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         },
         child: const Icon(Icons.close),
         backgroundColor: Colors.brown,
-      ),
+      ),*/
+
 
       body:LayoutBuilder(
         builder: (_,BoxConstraints constraints) {
@@ -537,6 +540,56 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  Stack(
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.bottomLeft,
+
+                        child: FloatingActionButton(
+                          onPressed:() {
+                            player.setAsset('templarios.mp3');
+                            print('PRESIONO MUSICA');
+                            if (banderasonido==true){
+                              player.stop();
+                              setState(() {
+                                banderasonido=false;
+                                iconosonido= Icons.volume_off_outlined;
+                              });
+
+                            }else if(banderasonido==false){
+                              player.play();
+                              setState(() {
+                                banderasonido=true;
+                                iconosonido= Icons.volume_up_outlined;
+                              });
+                            }
+
+                          },
+                          child:  Icon(iconosonido),
+                          backgroundColor: Colors.brown,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: FloatingActionButton(
+                          onPressed:() {
+                            //Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: BuildContext context), (route) => false);
+
+                            //player.play('templarios.mp3');
+                            // _playFile(); // assign player here
+                            //player.
+                            Navigator.of(context).pushNamedAndRemoveUntil('/login', (Route<dynamic> route) => false);
+                            player.stop();
+
+
+
+                          },
+                          child: const Icon(Icons.close),
+                          backgroundColor: Colors.brown,
+                        ),
+                      ),
+                    ],
+                  ),
                   SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -954,7 +1007,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                     bandera = true;
                                     if (_counterCicle < 10) {
                                       if (respuestaOk == true) {
-                                        player.play('rueda.mp3');
+                                        //player.play('rueda.mp3');
                                         _increment();
                                         _incrementCicle();
                                         _changeCicle();
@@ -976,7 +1029,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                               'la respuesta esss:${_counterRespuesta}');
                                           _changePista();
                                         } else {
-                                          player.play('rueda.mp3');
+                                          //player.play('rueda.mp3');
                                           _incrementCicle();
                                           _changeCicle();
                                           _changePista();
@@ -1085,6 +1138,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
             ),
       ),*/
                   /*new Counter(),*/
+
                 ],
               ),
             ),

@@ -16,17 +16,19 @@ class FloatingQuickAccessBar extends StatefulWidget {
 class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
   List _isHovering = [false, false, false, false];
   List<Widget> rowElements = [];
-
+  final String _textoRegla="\nBIENVENIDO A ARTE 2.0\n\nArte 2.0 es un juego donde tendrás que llevar al límite\ntu conocimiento sobre el \"Arte del Renacimiento\".\nPara comenzar el juego debes seleccionar la opción de \"INICIAR\".\nEl juego consta de una serie de preguntas donde deberás\n seleccionar la respuesta correcta y conseguir\n la mayor cantidad de puntos posible.\nCada respuesta acertada sumará 10 PUNTOS.\nPuedes obtener pistas seleccionando el botón \"PISTA\",\n ¡Pero piensalo bien antes de hacerlo! \nCada vez que seleciones dicho botón se te restarán 5 PUNTOS.\nTienes hasta un total de 3 pistas por pregunta.\nEn caso de que la respuesta seleccionada sea incorrecta,\n se utilizará automaticamente una pista, restando sus respectivos puntos.\nUna vez respondas correctamente a la pregunta\n o falles un total de 3 veces, \npasarás a la siguiente pregunte y así sucesivamente.\nCada 5 preguntas la dificultad aumenta, \nvariando la modalidad de las consignas hasta finalizar el juego.\nAl finalizar el juego podrás ver tus PUNTOS TOTALES,\nRESPUESTAS CORRECTAS y RESPUESTAS INCORRECTAS.\n\n¡MUESTRANOS QUE TANTO SABES! BUENA SUERTE :)";
   List<String> items = ['Iniciar Juego', 'Reglas del Juego'];
   List<IconData> icons = [
-    Icons.location_on,
-    Icons.date_range,
+    Icons.videogame_asset,
+    Icons.help,
     Icons.people,
     Icons.wb_sunny
   ];
+  final color = const Color(0xFF6D071A);
 
   List<Widget> generateRowElements() {
     rowElements.clear();
+
     for (int i = 0; i < items.length; i++) {
       Widget elementTile = InkWell(
         splashColor: Colors.transparent,
@@ -38,29 +40,33 @@ class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
         },
         onTap: () {
           if(items[i] == 'Iniciar Juego') {
-            /*Navigator.of(context).pushNamed(
-                                        '/pantalla');*/
-            print("Lo que trae es:${items[i]}");
+            Navigator.of(context).pushNamed(
+                                        '/pantalla');
           }else if(items[i] == 'Reglas del Juego'){
-            /*Navigator.of(context).pushNamed(
-                                        '/pantalla');*/
-            print("Lo que trae es:${items[i]}");
+            showAboutDialog(
+              context: context,
+              applicationName: 'Arte 2.0',
+              applicationVersion: '2.0',
+              applicationLegalese: '${_textoRegla},',
+
+            );
           }
 
         },
         child: Text(
           items[i],
           style: TextStyle(
-            color: _isHovering[i] ? Colors.blueGrey[900] : Colors.blueGrey,
+            color: _isHovering[i] ? Colors.white70 : Colors.white,
+            fontSize: 25,
           ),
         ),
       );
       Widget spacer = SizedBox(
-        height: widget.screenSize.height / 20,
+        height: widget.screenSize.height / 5,
         child: VerticalDivider(
           width: 1,
-          color: Colors.blueGrey[100],
-          thickness: 1,
+          color: Colors.yellow[100],
+          thickness: 6,
         ),
       );
       rowElements.add(elementTile);
@@ -95,6 +101,7 @@ class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
                           EdgeInsets.only(top: widget.screenSize.height / 80),
                       child: Card(
                         elevation: 4,
+                        color: color,
                         child: Padding(
                           padding: EdgeInsets.only(
                               top: widget.screenSize.height / 45,
@@ -110,15 +117,22 @@ class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
                               InkWell(
                                 splashColor: Colors.transparent,
                                 hoverColor: Colors.transparent,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
                                 onTap: () {
                                   if(items[pageIndex] == 'Iniciar Juego') {
-                                    /*Navigator.of(context).pushNamed(
-                                        '/pantalla');*/
-                                    print("Lo que trae es:${items[pageIndex]}");
+                                    Navigator.of(context).pushNamed(
+                                        '/pantalla');
+
                                   }else if(items[pageIndex] == 'Reglas del Juego'){
-                                    /*Navigator.of(context).pushNamed(
-                                        '/pantalla');*/
-                                    print("Lo que trae es:${items[pageIndex]}");
+                                    showAboutDialog(
+                                      context: context,
+                                      applicationName: 'Arte 2.0',
+                                      applicationVersion: '2.0',
+                                      applicationLegalese: '${_textoRegla},',
+
+                                    );
                                   }
                                   //print("Lo que trae es:${items[pageIndex]}");
                                 },
@@ -138,6 +152,12 @@ class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
               )
             : Card(
                 elevation: 5,
+                color: color,
+                shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                Radius.circular(10),
+                ),
+                ),
                 child: Padding(
                   padding: EdgeInsets.only(
                     top: widget.screenSize.height / 50,
@@ -147,6 +167,7 @@ class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: generateRowElements(),
                   ),
+
                 ),
               ),
       ),

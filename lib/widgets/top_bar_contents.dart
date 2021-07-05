@@ -1,9 +1,12 @@
-import 'package:flutter/material.dart';
+import 'dart:html';
 
+
+import 'package:flutter/material.dart';
+//import 'package:audioplayers/audioplayers.dart';
+import 'package:just_audio/just_audio.dart';
 class TopBarContents extends StatefulWidget {
   final double opacity;
   final String _user;
-  //final String _texto='Arte 2.0 es una plataforma pública diseñada para facilitar el aprendizaje\n\nsobre temas de historia del arte de manera online.\n\nNuestra misión es hacer que los estudiantes aprendan sobre obras de arte de un modo didáctico.\n\nCon claras herramientas de visualización de argumentos \n\ny una fácil e intuitiva navegación.\n\n Arte 2.0 es la solución perfecta para ayudar a los estudiantes\n\n a desarrollar sus habilidades de razonamiento.\n\nCon arte 2.0 los profesores pueden cargar preguntas e imágenes sobre el tema a desarrollar.\n\nEste software se creó en el año 2021 para la materia Tecnología Educativa \n\nde la carrera Ingeniería en Sistemas de Información\n\n de la Universidad Tecnológica Nacional – Facultad Regional Córdoba.\n\nCreadores del Software:\n\n\n•Alex Ayala\n\n• Ramiro Baudo\n\n• Gastón Moya';
 
   TopBarContents(this.opacity,this._user);
 
@@ -23,7 +26,13 @@ class _TopBarContentsState extends State<TopBarContents> {
     false
   ];
   final String _texto='Arte 2.0 es una plataforma pública diseñada para facilitar el aprendizaje\n\nsobre temas de historia del arte de manera online.\n\nNuestra misión es hacer que los estudiantes aprendan sobre obras de arte de un modo didáctico.\n\nCon claras herramientas de visualización de argumentos \n\ny una fácil e intuitiva navegación.\n\n Arte 2.0 es la solución perfecta para ayudar a los estudiantes\n\n a desarrollar sus habilidades de razonamiento.\n\nCon arte 2.0 los profesores pueden cargar preguntas e imágenes sobre el tema a desarrollar.\n\nEste software se creó en el año 2021 para la materia Tecnología Educativa \n\nde la carrera Ingeniería en Sistemas de Información\n\n de la Universidad Tecnológica Nacional – Facultad Regional Córdoba.\n\nCreadores del Software:\n\n\n•Alex Ayala\n\n• Ramiro Baudo\n\n• Gastón Moya';
-
+  //final player = AudioCache();
+  //final assetsAudioPlayer = AssetsAudioPlayer();
+  final player = AudioPlayer();
+  /*var duration = await player.setUrl('https://foo.com/bar.mp3');
+  var duration = await player.setFilePath('/path/to/file.mp3');*/
+  //var duration = await player.setAsset('templarios.mp3');
+  bool bandera=false;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +41,8 @@ class _TopBarContentsState extends State<TopBarContents> {
     return PreferredSize(
       preferredSize: Size(screenSize.width, 1000),
       child: Container(
-        color: Colors.blueGrey.shade900.withOpacity(widget.opacity),
+        //color: Colors.blueGrey.shade900.withOpacity(widget.opacity),
+        color: Colors.brown.shade900,
         child: Padding(
           padding: EdgeInsets.all(20),
           child: Row(
@@ -42,10 +52,10 @@ class _TopBarContentsState extends State<TopBarContents> {
                 'Arte 2.0',
                 style: TextStyle(
                   color: Colors.blueGrey.shade100,
-                  fontSize: 40,
+                  fontSize: 50,
                   fontFamily: 'Montserrat',
                   fontWeight: FontWeight.w400,
-                  letterSpacing: 3,
+                  letterSpacing: 4,
                 ),
               ),
               Expanded(
@@ -65,14 +75,14 @@ class _TopBarContentsState extends State<TopBarContents> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(
+                          /*Text(
                             'Discover',
                             style: TextStyle(
                               color: _isHovering[0]
                                   ? Colors.blue.shade200
                                   : Colors.white,
                             ),
-                          ),
+                          ),*/
                           SizedBox(height: 5),
                           Visibility(
                             maintainAnimation: true,
@@ -98,6 +108,21 @@ class _TopBarContentsState extends State<TopBarContents> {
                         });
                       },
                       onTap: () {
+                        /*player.setAsset('templarios.mp3');
+
+                        if (bandera==true){
+                          player.stop();
+                          setState(() {
+                            bandera=false;
+                          });
+
+                        }else if(bandera==false){
+                          player.play();
+                          setState(() {
+                            bandera=true;
+                          });
+                        }*/
+                        /*player.clearAll();*/
                         showAboutDialog(
                           context: context,
                           applicationName: 'Arte 2.0',
@@ -116,7 +141,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                             style: TextStyle(
                               color: _isHovering[1]
                                   ? Colors.blue[200]
-                                  : Colors.brown,
+                                  : Colors.white70,
                               fontSize: 30,
                             ),
                           ),
@@ -148,8 +173,8 @@ class _TopBarContentsState extends State<TopBarContents> {
                 child: Text(
                   'Usuario:${widget._user}',
                   style: TextStyle(
-                    color: _isHovering[2] ? Colors.brown : Colors.brown,
-                    fontSize: 30,
+                    color: _isHovering[2] ? Colors.blue[200] : Colors.white70,
+                    fontSize: 25,
                   ),
                 ),
               ),
@@ -167,9 +192,9 @@ class _TopBarContentsState extends State<TopBarContents> {
                 Navigator.popAndPushNamed(context, '/login');
                 },
                 child: Text(
-                  'Logout',
+                  'Salir',
                   style: TextStyle(
-                    color: _isHovering[3] ? Colors.brown : Colors.brown,
+                    color: _isHovering[3] ? Colors.blue[200] : Colors.white70,
                     fontSize: 25,
                   ),
                 ),

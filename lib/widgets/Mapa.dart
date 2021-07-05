@@ -151,7 +151,7 @@ class _MapaState extends State<Mapa> {
            // Navigator.of(context).pushNamed('/juegos');
             final player = AudioCache();
             player.play('templarios.mp3');
-
+            //player.clearAll();
             }),
           TextButton(child: Text('No'), onPressed: () {
             //Navigator.of(context).pop('No');
