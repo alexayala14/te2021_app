@@ -39,11 +39,10 @@ Score(this._counter,this._counterOk,this._counterNotOk);
         children: <Widget> [
           Text('Resultados\n\n ',style: TextStyle(fontSize: 60,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),textAlign: TextAlign.center,),
           Text('Respuestas Incorrectas:${_counterNotOk}\n\nRespuestas Correctas:${_counterOk}\n\nPuntos:${_counter}\n\n',style: TextStyle(fontSize: 40,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),textAlign: TextAlign.center,),
-         Center( child:Table(
-           children: [TableRow(
-             children: [
-               //SizedBox(width: 30),
-               ElevatedButton(
+         Center( child: Align(
+         alignment: Alignment.center,
+
+             child: ElevatedButton(
                  onPressed: (){
                    Navigator.of(context).pushNamedAndRemoveUntil('/pantalla', (Route<dynamic> route) => false);
                  },//onPressed,
@@ -53,28 +52,9 @@ Score(this._counter,this._counterOk,this._counterNotOk);
                    minimumSize: Size(30.0,30.0),
                  ),
                ),
-               SizedBox(width: 10),
-               ElevatedButton(
-                 onPressed: (){
-                  showAboutDialog(
-                      context: context,
-                      applicationName: 'Arte 2.0',
-                      applicationVersion: '2.0',
-                      applicationLegalese: '${_texto},',
+         ),
 
 
-
-                  );
-                 },//onPressed,
-                 child: Text('Acerca de',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,),),
-                 style: ElevatedButton.styleFrom(
-                   padding: EdgeInsets.all(15.0),
-                   minimumSize: Size(30.0,30.0),
-                 ),
-               ),
-             ]
-           )],
-         )
          ),
           /* MiBoton(
             onPressed: (parametro){

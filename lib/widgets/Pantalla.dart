@@ -6,6 +6,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:te2021_app/widgets/responsive.dart';
 import 'package:te2021_app/widgets/Pregunta.dart';
 import 'package:te2021_app/widgets/Pista.dart';
 import 'package:te2021_app/widgets/Score.dart';
@@ -21,6 +22,9 @@ class Pantalla extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin {
+  final ScrollController _scrollController = ScrollController();
+  double _scrollPosition = 0;
+  double _opacity = 0;
   SingingCharacter? _character = SingingCharacter.verdadero;
   bool bandera=true;
   bool banderasonido=false;
@@ -62,10 +66,15 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
   late FToast fToast;
   /*late AudioCache cache; // you have this
   late AudioPlayer player; // create this*/
-
+  _scrollListener() {
+    setState(() {
+      _scrollPosition = _scrollController.position.pixels;
+    });
+  }
 
   @override
   void initState() {
+    _scrollController.addListener(_scrollListener);
   _animationController = new AnimationController(duration: Duration(seconds: 5),vsync: this);
   /*_animationController1 = new AnimationController(duration: Duration(seconds: 3),vsync: this);
   _animationController2 = new AnimationController(duration: Duration(seconds: 3),vsync: this);*/
@@ -500,6 +509,10 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    _opacity = _scrollPosition < screenSize.height * 0.40
+        ? _scrollPosition / (screenSize.height * 0.40)
+        : 1;
     return Scaffold(
       /*floatingActionButton: FloatingActionButton(
         onPressed:() {
@@ -519,24 +532,29 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
       ),*/
 
 
-      body:LayoutBuilder(
+      body: SingleChildScrollView(
+        controller: _scrollController,
+        physics: ClampingScrollPhysics(),
+         /*LayoutBuilder(
         builder: (_,BoxConstraints constraints) {
           final size = constraints.maxWidth< constraints.maxHeight ? constraints.maxWidth:constraints.maxHeight;
           print("EL VALOR ES: ${size}");
           print("EL VALOR ES: ${size/8}");
-         return Center(
+         return*/ //child:Center(
 
             child: Container(
               /*height: double.infinity,
       width: double.infinity,*/
-              height:1000,
-              width: double.maxFinite,
+
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/pergamino.jpg'), fit: BoxFit.cover
                 ),
               ),
+              child: SizedBox(
+              height: screenSize.height,
+              width: screenSize.width,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -584,13 +602,13 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
 
 
                           },
-                          child: const Icon(Icons.close),
+                          child: const Icon(Icons.logout),
                           backgroundColor: Colors.brown,
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: screenSize.height /900 ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -620,8 +638,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
       ),*/
                                     child: new Image.asset('${imagen}',
                                       /*fit: _fit,*/
-                                      height: size/3,
-                                      width: size/3,
+                                      height: screenSize.height*0.3,
+                                      width: screenSize.width*0.2,
                                       fit: BoxFit.fill,
 
                                     ),
@@ -652,7 +670,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                           ),
                         ),
                       ),
-                      SizedBox(width: 50),
+                      SizedBox(width: screenSize.width/200),
                     ],
                   ),
                   Text("${_descripcion}", style: TextStyle(fontSize: 30,
@@ -660,28 +678,29 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic,),
                     textAlign: TextAlign.center,),
-                  SizedBox(height: 30),
+                  SizedBox(height: screenSize.height/900),
                   Text("${_pregunta + _descripcion}?", style: TextStyle(
                     fontSize: 45,
                     color: Colors.black.withOpacity(0.6),
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic,),
                     textAlign: TextAlign.center,),
-                  SizedBox(height: 30),
+                  SizedBox(height: screenSize.width/300),
                   Text("Seleccione la opcion correcta", style: TextStyle(
                     fontSize: 40,
                     color: Colors.black.withOpacity(0.6),
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic,),
                     textAlign: TextAlign.center,),
-                  SizedBox(height: 40),
+                  SizedBox(height: 10),
                   Center(
                     child: Container(
-                      alignment: Alignment.center,
+                      alignment: Alignment.centerLeft,
+                      height: screenSize.height*0.2,
+                      width: screenSize.width,
                       margin: EdgeInsets.all(50.0),
-
                       child: Row(
-                        mainAxisSize: MainAxisSize.min,
+                        //mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
 
                         children: <Widget>[
@@ -702,7 +721,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                     child: CircleAvatar(
                                       backgroundImage: AssetImage(
                                           '${_imagen1}'),
-                                      radius: size/13,
+                                      radius: screenSize.width/15,
                                     ),
                                   ),
                                 ),
@@ -713,7 +732,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                             ),
                             child: Expanded(child: ListTile(
                               title: AutoSizeText('${_pintor1}', style: TextStyle(
-                                fontSize: 25,
+                                fontSize: 30,
                                 color: Colors.black.withOpacity(0.6),
                                 fontWeight: FontWeight.bold,
                                 fontStyle: FontStyle
@@ -782,7 +801,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                     child: CircleAvatar(
                                       backgroundImage: AssetImage(
                                           '${_imagen2}'),
-                                      radius: size/13,
+                                      radius: screenSize.width/15,
                                     ),
                                   ),
                                 ),
@@ -846,7 +865,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                     child: CircleAvatar(
                                       backgroundImage: AssetImage(
                                           '${_imagen3}'),
-                                      radius: size/13,
+                                      radius: screenSize.width/15,
                                     ),
                                   ),
                                 ),
@@ -910,7 +929,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                     child: CircleAvatar(
                                       backgroundImage: AssetImage(
                                           '${_imagen4}'),
-                                      radius: size/13,
+                                      radius: screenSize.width/15,
                                     ),
                                   ),
                                 ),
@@ -959,9 +978,10 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                           ),
                         ],
                       ),
+
                     ),
                   ),
-                  SizedBox(height: size/17),
+                  SizedBox(height: screenSize.height/90),
                   Center(
 
                     child: Table(
@@ -969,8 +989,11 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                       children: [
                         TableRow(
                           children: [
-                            SizedBox(width: size/17),
-                            ElevatedButton(
+                            //SizedBox(width: screenSize.width/50),
+                            Align(
+                              alignment: Alignment.bottomLeft,
+
+                              child: ElevatedButton(
                               onPressed: () {
                                 setState(() {
                                   if (bandera == true) {
@@ -994,8 +1017,34 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                 minimumSize: Size(30.0, 30.0),
                               ),
                             ),
-                            SizedBox(width: size/17),
-                            ElevatedButton(
+                            ),
+                            //SizedBox(width: screenSize.width/700),
+                            Align(
+                              alignment: Alignment.center,
+
+                              child: AnimatedBuilder(
+                              animation: _animationController,
+                              builder: (BuildContext context, _) =>
+                                  Transform.translate(
+                                    //scale:scaleAnimation.value,
+                                    offset: Offset(translateAnimation.value, 0),
+                                    //angle:2*pi + 0.1,
+                                    //angle: 0.01,
+                                    child: Transform(
+                                      transform: Matrix4.skewX(0),
+                                      alignment: Alignment.center,
+                                      /*transform: Matrix4.identity()
+            ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*/
+                                      child: PistaDisplay(pista: pista),
+
+                                    ),
+                                  ),
+                            ),
+                  ),
+                            Align(
+                              alignment: Alignment.bottomRight,
+
+                              child: ElevatedButton(
                               onPressed: () {
                                 setState(() {
                                   /*_incrementCicle();*/
@@ -1064,88 +1113,26 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                               ),
 
                             ),
-                            SizedBox(width: size/17),
-                            /* AnimatedBuilder(
-              animation: _animationController, builder: (BuildContext context,_) => Transform.scale(
-              scale:scaleAnimation.value,
-              //offset: Offset(rotateAnimation.value,0),
-              //angle:2*pi + 0.1,
-              //angle: 0.01,
-              child:Transform(
-                transform: Matrix4.skewX(0),
-                */ /*alignment: Alignment.center,
-                transform: Matrix4.identity()
-                  ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*/ /*
-                child:CounterDisplay(count: _counter),
-              ),
-            ),
-            ),*/
-                            SizedBox(width: size/17),
-                            SizedBox(height: size/17),
+                            ),
+
+                            //SizedBox(width: screenSize.width/500),
+                           // SizedBox(height: screenSize.height/170),
 
                           ],
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: size/17),
-                  AnimatedBuilder(
-                    animation: _animationController,
-                    builder: (BuildContext context, _) =>
-                        Transform.translate(
-                          //scale:scaleAnimation.value,
-                          offset: Offset(translateAnimation.value, 0),
-                          //angle:2*pi + 0.1,
-                          //angle: 0.01,
-                          child: Transform(
-                            transform: Matrix4.skewX(0),
-                            alignment: Alignment.center,
-                            /*transform: Matrix4.identity()
-            ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*/
-                            child: PistaDisplay(pista: pista),
-
-                          ),
-                        ),
-                  ),
-                  /*Container(
-            height: 100,
-            width: 1500,
-            alignment: Alignment.center,
-            margin: EdgeInsets.all(30.0),
-
-            decoration: BoxDecoration(
-              color: Colors.brown,
-             borderRadius: BorderRadius.circular(10),
-             */ /* image: DecorationImage(
-                  image: AssetImage('assets/roma.jpg'),fit: BoxFit.cover
-              ),*/ /*
-            ),
-            child: AnimatedBuilder(
-              animation: _animationController, builder: (BuildContext context,_) => Transform.translate(
-              //scale:scaleAnimation.value,
-              offset: Offset(translateAnimation.value,0),
-              //angle:2*pi + 0.1,
-              //angle: 0.01,
-              child:Transform(
-                transform: Matrix4.skewX(0),
-                alignment: Alignment.center,
-          */ /*transform: Matrix4.identity()
-            ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*/ /*
-                child:PistaDisplay(pista:pista),
-
-    ),
-            ),
-            ),
-      ),*/
-                  /*new Counter(),*/
 
                 ],
               ),
             ),
-          );
-        }
+            ),
+          //),
+        //}
     ),
     );
+    //);
   }
 
 }
