@@ -43,6 +43,7 @@ dependencies:
   auto_size_text: ^2.1.0
   assets_audio_player_web: ^3.0.3+3
   just_audio: ^0.8.0
+  animated_text_kit: ^4.2.1
 
 dev_dependencies:
   flutter_test:

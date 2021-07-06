@@ -1,6 +1,6 @@
 import 'dart:html';
 
-
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 //import 'package:audioplayers/audioplayers.dart';
 import 'package:just_audio/just_audio.dart';
@@ -48,7 +48,26 @@ class _TopBarContentsState extends State<TopBarContents> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
+              AnimatedTextKit(
+                animatedTexts: [
+                  /*RotateAnimatedText('Arte 2.0'),
+                  RotateAnimatedText('OPTIMISTIC'),*/
+                  WavyAnimatedText(
+                    'Arte 2.0',
+                    textStyle: const TextStyle(
+                      decoration: TextDecoration.underline,
+                      fontSize: 50,
+                      color: Colors.white,
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w400,
+                      letterSpacing: 4,
+                    ),
+                  ),
+                ],
+                isRepeatingAnimation: true,
+                totalRepeatCount: 10,
+              ),
+             /* Text(
                 'Arte 2.0',
                 style: TextStyle(
                   color: Colors.blueGrey.shade100,
@@ -57,7 +76,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                   fontWeight: FontWeight.w400,
                   letterSpacing: 4,
                 ),
-              ),
+              ),*/
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,

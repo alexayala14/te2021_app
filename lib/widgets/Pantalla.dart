@@ -754,8 +754,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                 unselectedWidgetColor: Colors.black
                             ),
                             child: Expanded(child: ListTile(
-                              title: AutoSizeText('${_pintor1}', style: TextStyle(
-                                fontSize: 30,
+                              title: Text('${_pintor1}', style: TextStyle(
+                                fontSize: 25,
                                 color: Colors.black.withOpacity(0.6),
                                 fontWeight: FontWeight.bold,
                                 fontStyle: FontStyle
@@ -834,7 +834,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                 unselectedWidgetColor: Colors.black
                             ),
                             child: Expanded(child: ListTile(
-                              title: AutoSizeText('${_pintor2}', style: TextStyle(
+                              title: Text('${_pintor2}', style: TextStyle(
                                 fontSize: 25,
                                 color: Colors.black.withOpacity(0.6),
                                 fontWeight: FontWeight.bold,
@@ -898,7 +898,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                 unselectedWidgetColor: Colors.black
                             ),
                             child: Expanded(child: ListTile(
-                              title: AutoSizeText('${_pintor3}', style: TextStyle(
+                              title: Text('${_pintor3}', style: TextStyle(
                                 fontSize: 25,
                                 color: Colors.black.withOpacity(0.6),
                                 fontWeight: FontWeight.bold,
@@ -962,7 +962,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                 unselectedWidgetColor: Colors.black
                             ),
                             child: Expanded(child: ListTile(
-                              title: AutoSizeText('${_pintor4}', style: TextStyle(
+                              title: Text('${_pintor4}', style: TextStyle(
                                 fontSize: 25,
                                 color: Colors.black.withOpacity(0.6),
                                 fontWeight: FontWeight.bold,
@@ -1042,7 +1042,8 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                             ),
                             ),
                             //SizedBox(width: screenSize.width/700),
-                            Align(
+                            Expanded(child:
+                                Align(
                               alignment: Alignment.center,
 
                               child: AnimatedBuilder(
@@ -1062,6 +1063,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
 
                                     ),
                                   ),
+                            ),
                             ),
                   ),
                             Align(

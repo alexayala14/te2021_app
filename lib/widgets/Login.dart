@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/material/text_form_field.dart';
 import 'package:te2021_app/widgets/PantallaInicio.dart';
-
+import 'package:animated_text_kit/animated_text_kit.dart';
 class Login extends StatefulWidget {
 
   @override
@@ -27,6 +27,20 @@ class LoginState extends State<Login> {
     myController.dispose();
     super.dispose();
   }
+  final _colorizeTextStyle = TextStyle(
+  //decoration: TextDecoration.underline,
+  fontSize: 50,
+  color: Colors.white,
+  fontFamily: 'Montserrat',
+  fontWeight: FontWeight.w400,
+  letterSpacing: 4,
+  );
+  final _colorizeColors = [
+    Colors.black,
+    Colors.black,
+    Colors.yellow,
+    Colors.black,
+  ];
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
@@ -56,7 +70,21 @@ class LoginState extends State<Login> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text('ARTE 2.0\n',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 50,),),
+          AnimatedTextKit(
+            animatedTexts: [
+              /*RotateAnimatedText('Arte 2.0'),
+                  RotateAnimatedText('OPTIMISTIC'),*/
+              ColorizeAnimatedText(
+                'Arte 2.0',
+                textStyle: _colorizeTextStyle,
+                colors: _colorizeColors,
+
+              ),
+            ],
+            isRepeatingAnimation: true,
+            totalRepeatCount: 10,
+          ),
+          //Text('ARTE 2.0\n',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 50,),),
           Text('Usuario',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30,),),
           TextFormField(
             maxLength: 30,

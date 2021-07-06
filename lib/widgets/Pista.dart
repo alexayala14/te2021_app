@@ -6,6 +6,8 @@ class PistaDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('$pista',style: TextStyle(fontSize: 36,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),/*textAlign: TextAlign.center,*/);
+    return /*FittedBox(
+      fit: BoxFit.scaleDown,
+        child:*/ Text('$pista',style: TextStyle(fontSize: 27,color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,),maxLines: 4,/*textAlign: TextAlign.center,*/);
   }
 }
