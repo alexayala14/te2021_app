@@ -39,13 +39,14 @@ class Pregunta extends StatelessWidget{
 import 'package:flutter/material.dart';
 
 class CounterDisplay extends StatelessWidget {
-  CounterDisplay({required this.count});
+  CounterDisplay({required this.count,required this.countNivel});
 
   final int count;
+  final int countNivel;
 
   @override
   Widget build(BuildContext context) {
-    return Text('Puntos:$count ',style: TextStyle(fontSize: 30,color: Colors.white,fontWeight: FontWeight.bold,backgroundColor: Colors.brown),);
+    return Text('Nivel:$countNivel\n\nPuntos:$count',style: TextStyle(fontSize: 30,color: Colors.white,fontWeight: FontWeight.bold,backgroundColor: Colors.brown),);
   }
 }
 
@@ -74,16 +75,18 @@ class Counter extends StatefulWidget {
 
 class _CounterState extends State<Counter> {
   int _counter = 0;
-
+  int _counterNivel = 1;
   void _increment() {
     setState(() {
       ++_counter;
+      ++_counterNivel;
     });
   }
 
   void _unincrement() {
     setState(() {
       --_counter;
+      --_counterNivel;
     });
   }
 
@@ -94,7 +97,7 @@ class _CounterState extends State<Counter> {
       children: <Widget>[
         CounterIncrementor(onPressed: _increment),
         SizedBox(width: 50),
-        CounterDisplay(count: _counter),
+        CounterDisplay(count: _counter,countNivel: _counterNivel,),
       ],
     );
   }

@@ -29,6 +29,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
   bool bandera=true;
   bool banderasonido=false;
   int _counter=0;
+  int _counterNivel=1;
   String pista= "Necesita ayuda? Presione el boton de pista.";
   String imagen='assets/creacion.jpg';
   bool respuestaOk=false;
@@ -38,6 +39,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
   int _counterNotOk=0;
   bool banderaPista=false;
   bool toggleable=true;
+  String _mensajeImagen="La creación de Adán es un fresco en la bóveda de la Capilla Sixtina, pintado alrededor del año 1511";
   String _pintor1= 'Leonardo da Vinci';
   String _pintor2='Salvador Dali';
   String _pintor3='Goya';
@@ -321,6 +323,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
       if(_counterCicle==1){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/madonna.jpg';
+        _mensajeImagen="La Madonna Sixtina fue pintado aproximadamente entre 1513 y 1514";
          _character1=SingingCharacter.miguel;
          _character2=SingingCharacter.rafael;
          _character3=SingingCharacter.dali;
@@ -340,6 +343,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
       }else if(_counterCicle==2){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/venus.jpg';
+        _mensajeImagen="El nacimiento de Venus (en italiano, La Nascita di Venere) este cuadro es una de las obras cumbre del maestro florentino y del Quattrocento italiano. Está ejecutado al temple sobre lienzo y mide 278,5 cm de ancho por 172,5 cm de alto. Se conserva en la Galería Uffizi,pintada entre 1482 y 1485";
          _character1=SingingCharacter.boticelli;
          _character2=SingingCharacter.miguel;
          _character3=SingingCharacter.goya;
@@ -359,6 +363,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
       }else if(_counterCicle==3){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/venusurbino.jpg';
+        _mensajeImagen="Venus de Urbino, también llamada Venus del perrito, es una célebre pintura al óleo sobre lienzo cuyas dimensiones son de 119 cm x 165 cm, realizada en 1538";
          _character1=SingingCharacter.miguel;
          _character2=SingingCharacter.leonardo;
          _character3=SingingCharacter.tiziano;
@@ -377,6 +382,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
       }else if(_counterCicle==4){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/torrebabelbruegel.jpg';
+        _mensajeImagen="La Torre de Babel es una edificación mencionada en la Biblia. La historia está dirigido a explicar por qué los pueblos del mundo hablan diferentes lenguas.";
          _character1=SingingCharacter.leonardo;
          _character2=SingingCharacter.tiziano;
          _character3=SingingCharacter.brueghel;
@@ -395,6 +401,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
       }else if(_counterCicle==5){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/veronicagreco.jpg';
+        _mensajeImagen="Esta obra muestra una de las reliquias cristianas más importantes el paño de la Verónica, pintada en 1580,";
          _character1=SingingCharacter.greco;
          _character2=SingingCharacter.tiziano;
          _character3=SingingCharacter.boticelli;
@@ -411,8 +418,10 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
         _descripcion="La Verónica";
         _pregunta="¿Que artista renacentista pinto la obra  ";
       }else if(_counterCicle==6){
+        _counterNivel++;
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/elviejo.jpg';
+        _mensajeImagen="Pieter Brueghel de Oude​ llamado el Viejo, /ˈpitəɾ ˈbɾøːxəl/ fue un pintor y grabador brabanzón. Fundador de la dinastía de pintores Brueghel, es considerado el pintor holandés más importante del siglo XVI";
          _character1=SingingCharacter.leonardo;
          _character2=SingingCharacter.miguel;
          _character3=SingingCharacter.brueghel;
@@ -431,6 +440,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
       }else if(_counterCicle==7){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/botticelli.jpg';
+        _mensajeImagen="Alessandro di Mariano di Vanni Filipepi, apodado Sandro Botticelli, fue un pintor del Quattrocento italiano.nacio 17 de mayo 1510";
          _character1=SingingCharacter.leonardo;
          _character2=SingingCharacter.dali;
          _character3=SingingCharacter.goya;
@@ -449,6 +459,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
       }else if(_counterCicle==8){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/leonardo1.jpg';
+        _mensajeImagen="Leonardo da Vinci fue un polímata florentino del Renacimiento italiano. Fue a la vez pintor, anatomista, arquitecto, paleontólogo, ​ artista, botánico, científico, escritor, escultor, filósofo, ingeniero, inventor, músico, poeta y urbanista,nacio el 15 de abril de 1452";
          _character1=SingingCharacter.leonardo;
          _character2=SingingCharacter.dali;
          _character3=SingingCharacter.goya;
@@ -467,6 +478,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
       }else if(_counterCicle==9){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/miguelangel.jpg';
+        _mensajeImagen="(Miguel Ángel Buonarroti, en italiano Michelangelo; Caprese, actual Italia, 1475 - Roma, 1564) Escultor, pintor y arquitecto italiano";
          _character1=SingingCharacter.goya  ;
          _character2=SingingCharacter.dali;
          _character3=SingingCharacter.leonardo;
@@ -485,6 +497,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
       }else if(_counterCicle==10){
         print("PASA POR EL CICLO ${_counterCicle}");
         imagen='assets/tizziano.jpg';
+        _mensajeImagen="Tiziano Vecellio di Gregorio, conocido tradicionalmente en español como Tiziano o Ticiano, ​ fue un pintor italiano del Renacimiento, uno de los mayores exponentes de la Escuela veneciana.Nacio hacia 1477/1490-Venecia";
          _character1=SingingCharacter.leonardo;
          _character2=SingingCharacter.tiziano;
          _character3=SingingCharacter.goya;
@@ -564,14 +577,16 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                         alignment: Alignment.bottomLeft,
 
                         child: FloatingActionButton(
+
                           onPressed:() {
-                            player.setAsset('templarios.mp3');
+                            player.setAsset('renacimientomusica.mp3');
                             print('PRESIONO MUSICA');
                             if (banderasonido==true){
                               player.stop();
                               setState(() {
                                 banderasonido=false;
                                 iconosonido= Icons.volume_off_outlined;
+
                               });
 
                             }else if(banderasonido==false){
@@ -627,7 +642,14 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                   transform: Matrix4.identity()
                                     ..setEntry(3, 2, 0.001)
                                     ..rotateY(rotateAnimation.value),
-                                  child: ClipOval(
+                                  child: Tooltip(
+                                    message: _mensajeImagen,
+                                    //preferBelow: false,
+                                    decoration: BoxDecoration(
+                                      color: Colors.redAccent,
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: ClipOval(
                                     /*decoration: BoxDecoration(
         color: Colors.black12,
         border: Border.all(),
@@ -644,6 +666,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
 
                                     ),
                                   ),
+                                ),
                                 ),
                               )
                       ),
@@ -664,7 +687,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                 transform: Matrix4.identity()
                   ..setEntry(3, 2, 0.001)..rotateY(rotateAnimation.value),*/
                                     //alignment: Alignment.centerRight,
-                                    child: CounterDisplay(count: _counter),
+                                    child: CounterDisplay(count: _counter,countNivel: _counterNivel,),
                                   ),
                                 ),
                           ),
@@ -1045,6 +1068,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                               alignment: Alignment.bottomRight,
 
                               child: ElevatedButton(
+
                               onPressed: () {
                                 setState(() {
                                   /*_incrementCicle();*/
@@ -1095,7 +1119,7 @@ class _PantallaState extends State<Pantalla> with SingleTickerProviderStateMixin
                                           new MaterialPageRoute(
                                               builder: (context) =>
                                                   Score(_counter, _counterOk,
-                                                      _counterNotOk)));
+                                                      _counterNotOk,_counterNivel)));
                                     }
                                   }
                                   else {

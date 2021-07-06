@@ -130,7 +130,11 @@ class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
                                       context: context,
                                       applicationName: 'Arte 2.0',
                                       applicationVersion: '2.0',
-                                      applicationLegalese: '${_textoRegla},',
+                                      //applicationLegalese: '${_textoRegla},',
+                                      children: [
+                                        Text('${_textoRegla}',style: TextStyle(
+                                          fontSize: 40, fontWeight: FontWeight.bold,),),
+                                      ],
 
                                     );
                                   }
